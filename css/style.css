@@ -1,6 +1,6 @@
-/* // fonts here
+/* fonts here
 
-// color scheme of the app: soft purple */
+color scheme of the app: soft purple */
 
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 
@@ -50,7 +50,12 @@ a:hover {
   text-align: center;
 }
 
- /* Grid for the input form */
+.iframe {
+
+}
+
+ /* matchForm.html stylesheet */
+ 
 #matchesInputForm {
 
 }
@@ -63,18 +68,28 @@ a:hover {
 #redcolumn {
   grid-column: 1;
   /* grid-row: 1; */
+
+  border-bottom: none;
+  border-left: none;
+  border-radius: 5em;
+  border-color: red;
 }
 
 #bluecolumn {
   grid-column: 2;
   /* grid-row: 1; */
+
+  border-bottom: none;
+  border-right: none;
+  border-radius: 5em;
+  border-color: blue;
 }
 
 .redinput {
   border-color: red;
   border-style: solid;
   border-radius: 1em;
-  border-width: 0.3em;
+  border-width: thick;
   padding: 0.3em;
 }
 
@@ -82,7 +97,7 @@ a:hover {
   border-color: blue;
   border-style: solid;
   border-radius: 1em;
-  border-width: 0.3em;
+  border-width: thick;
   padding: 0.3em;
 }
 
@@ -107,12 +122,47 @@ input:invalid {
   width: 65%
   height: 3em;
   font-size: 3em;
+  margin: auto auto;
+
+  border-radius: 0.3em;
+  border-width: medium;
+  border-color: purple;
+  border-style: solid;
+  background-color: #d79bff;
+}
+
+#submitButton:hover {
+  border-width: thick;
+}
+
+#topform {
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  border-radius: 10em;
+  border-top-style: solid;
+}
+
+#bottomform {
+  border-left: none;
+  border-right: none;
+  border-bottom-right-radius: 5em;
+  border-bottom-left-radius: 5em;
+  border-top-style: double;
+  border-bottom-style: solid;
+}
+
+#eventcode {
+  text-align: center;
+  margin: auto auto;
 
   border-radius: 0.3em;
   border-color: purple;
-  background-color: white;
+  border-style: solid;
+  padding: 0.3em;
 }
 
+ /* end */
 
 .parallax {
 
@@ -123,6 +173,10 @@ input:invalid {
   margin: auto / auto ;
 }
 
+ /* viewSchedule.html */
+
+
+ /* end */
 meter {
 
 }
