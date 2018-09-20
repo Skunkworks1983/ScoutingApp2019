@@ -1,0 +1,133 @@
+/* // fonts here
+
+// color scheme of the app: soft purple */
+
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+
+html {
+  background-image: url();
+/*
+  parallax scroll:
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  sideways scroll:
+ */
+}
+
+.sidewaysScroll {
+
+}
+
+body {
+
+}
+
+h1 {
+
+}
+
+h2 {
+  font-family: "Titillium Web";
+}
+
+p {
+
+}
+
+a {
+
+}
+
+a:hover {
+
+}
+
+.tweb {
+  font-family: "Titillium Web";
+  text-align: center;
+}
+
+ /* Grid for the input form */
+#matchesInputForm {
+
+}
+
+#matchcontainer {
+  display: grid;
+  grid-column: 50% 50%;
+}
+
+#redcolumn {
+  grid-column: 1;
+  /* grid-row: 1; */
+}
+
+#bluecolumn {
+  grid-column: 2;
+  /* grid-row: 1; */
+}
+
+.redinput {
+  border-color: red;
+  border-style: solid;
+  border-radius: 1em;
+  border-width: 0.3em;
+  padding: 0.3em;
+}
+
+.blueinput {
+  border-color: blue;
+  border-style: solid;
+  border-radius: 1em;
+  border-width: 0.3em;
+  padding: 0.3em;
+}
+
+input:valid {
+  background-color: #b7ffb4;
+}
+
+input:invalid {
+  background-color: #ffb5b5;
+}
+
+.allianceinput {
+  padding: .5em;
+}
+
+.tableheader {
+  font-family: "Titillium Web";
+}
+
+#submitButton {
+  text-align: center;
+  width: 65%
+  height: 3em;
+  font-size: 3em;
+
+  border-radius: 0.3em;
+  border-color: purple;
+  background-color: white;
+}
+
+
+.parallax {
+
+}
+
+.formTitle {
+  text-align: center;
+  margin: auto / auto ;
+}
+
+meter {
+
+}
+
+ /* @media only screen and (max-device-width: 1366px) {
+     .parallax {
+         background-attachment: scroll;
+     } */

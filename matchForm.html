@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script lang="javascript" src="js/formvalidation.js"></script>
+</head>
+
+<!-- <style>
+  background-image: url();
+  background-size: cover;
+  background-repeat: no-repeat;
+</style> -->
+
+<body>
+  <!-- This form is to enter the match schedule manually -->
+  <div style="margin: auto;" onload="errorMessage()">
+    <h2 class="formTitle">Manual Entry Form for Match Schedule</h2>
+    <!-- Add a console.log here that says the same thing -->
+    <p style="text-align: center;">The Blue Alliance is not working, so you can input your match schedule manually instead</p>
+  </div>
+  <form id="matchesInputForm">
+    <fieldset>
+      <legend class="tweb">Event Code</legend><br>
+      <input type="text" required"" id="eventcode" pattern="">
+    </fieldset>
+    <div>
+      <fieldset id="" class="tweb">
+        <legend class="tweb">Schedule</legend>
+        <div class="allianceinput">
+          Match No:<input type="text" required="" id="matchno" pattern="[0-9] {2}">
+        </div>
+        <div id="matchcontainer">
+        <fieldset class="" name="Red" id="redcolumn">
+          <div class="allianceinput">
+            Red 1:  <input type="text" required="" id="red1" class="redinput" pattern="">
+          </div>
+          <div class="allianceinput">
+            Red 2:  <input type="text" required="" id="red2" class="redinput" pattern="">
+          </div>
+          <div class="allianceinput">
+            Red 3:  <input type="text" required="" id="red3" class="redinput" pattern="">
+          </div>
+        </fieldset>
+        <fieldset class="" name="Blue" id="bluecolumn">
+          <div class="allianceinput">
+            Blue 1: <input type="text" required="" id="blue1" class="blueinput" pattern="">
+          </div>
+          <div class="allianceinput">
+            Blue 2: <input type="text" required="" id="blue2" class="blueinput" pattern="">
+          </div>
+          <div class="allianceinput">
+            Blue 3: <input type="text" required="" id="blue3" class="blueinput" pattern="">
+          </div>
+        </fieldset>
+        </div>
+      </fieldset>
+    </div>
+    <br />
+    <!-- TODO: Change the styling on this submit button to better match that of the app as a whole -->
+    <input type="submit" value="Submit" class="tweb" id="submitButton">
+  </form>
+</body>
+</html>
