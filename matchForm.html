@@ -3,10 +3,9 @@
 <head>
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <script lang="javascript" src="js/formvalidation.js"></script>
-  <script lang="javascript" src="js/index.js"></script>
-</head>
-
+  <script lang="text/javascript" src="js/formvalidation.js"></script>
+  <script lang="text/javascript" src="js/index.js"></script>
+</head
 <body onload="errorMessage()">
   <!-- This form is to enter the match schedule manually -->
   <div style="margin: auto;">
@@ -14,38 +13,39 @@
     <!-- Add a console.log here that says the same thing -->
     <p style="text-align: center;" class="tweb">The Blue Alliance is not working, so you can input your match schedule manually instead</p>
   </div>
-  <form id="matchesInputForm">
+  <form id="matchesInputForm" onsubmit="return submitSchedule()">
     <fieldset id="topform">
       <legend class="tweb">Event Code</legend><br>
-      <input type="text" required="" id="eventcode" pattern="[a-z]{2-4}" pattern="[0-9] {4}" title = "event code" >
+      <!-- regex does not work -->
+      <input type="text" required="" id="eventcode" pattern="[a-z] 2-4}" & "[0-9] {4}" title = "event code" >
     </fieldset>
     <div>
       <fieldset id="bottomform" class="tweb">
         <legend class="tweb">Schedule</legend>
         <div class="allianceinput">
-          Match No: <input type="text" required="" id="matchno" pattern="[0-9] {2}" title = "match number" >
+          Match No: <input type="number" required="" id="matchno"  >
         </div>
         <div id="matchcontainer">
         <fieldset class="" name="Red" id="redcolumn">
           <div class="allianceinput">
-            Red 1:  <input type="text" required="" id="red1" class="redinput" pattern="[0-9] {4}" title = "Red 1 team number">
+            Red 1:  <input type="number" required="" id="red1" class="redinput" >
           </div>
           <div class="allianceinput">
-            Red 2:  <input type="text" required="" id="red2" class="redinput" pattern="[0-9] {4}" title = "Red 2 team number">
+            Red 2:  <input type="number" required="" id="red2" class="redinput" >
           </div>
           <div class="allianceinput">
-            Red 3:  <input type="text" required="" id="red3" class="redinput" pattern="[0-9] {4}" title = "Red 3 team number">
+            Red 3:  <input type="number" required="" id="red3" class="redinput" >
           </div>
         </fieldset>
         <fieldset class="" name="Blue" id="bluecolumn">
           <div class="allianceinput">
-            Blue 1: <input type="text" required="" id="blue1" class="blueinput" pattern="[0-9] {4}" title = "Blue 1 team number">
+            Blue 1: <input type="number" required="" id="blue1" class="blueinput" >
           </div>
           <div class="allianceinput">
-            Blue 2: <input type="text" required="" id="blue2" class="blueinput" pattern="[0-9] {4}" title = "Blue 2 team number">
+            Blue 2: <input type="number" required="" id="blue2" class="blueinput">
           </div>
           <div class="allianceinput">
-            Blue 3: <input type="text" required="" id="blue3" class="blueinput" pattern="[0-9] {4}" title = "Blue 3 team number">
+            Blue 3: <input type="number" required="" id="blue3" class="blueinput">
           </div>
         </fieldset>
         </div>
