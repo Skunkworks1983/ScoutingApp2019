@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- This document is to display the current match schedule -->
-<html lang="en" class="sidewaysScroll">
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -12,9 +12,54 @@
     <div id="titlebar">
       <h2 class="viewTitle" >View Match Schedule</h2>
       <p class="tweb">This page will display the match schedule for the event code chosen from either TBA or a manually inputted schedule.</p>
+      <p class="tweb">TODO: Pick event code here</p>
     </div>
-    <div>
-
+    <div id="buttonDIV">
+      <button class="generatebutton1" onclick="">Generate TBA Schedule</button>
+      <button class="generatebutton2" onclick="addRows();">View Local Schedule</button>
+      <button class="generatebutton3" onclick="document.location.reload(false);">Clear Table</button>
+    </div>
+    <br />
+    <div style="font-family: "Titillium Web";">
+      <table id="matchtable">
+        <thead>
+          <tr>
+            <th colspan="7" style="font-family: "Titillium Web";">Event Name Match Schedule</th>
+          </tr>
+        </thead>
+        <colgroup>
+          <col>
+          <col span="3" class="redmatches">
+          <col span="3" class="bluematches">
+        </colgroup>
+        <tbody>
+          <tr>
+            <td class="tablelabel">Match Number</td>
+            <td class="tablelabel">Red One</td>
+            <td class="tablelabel">Red Two</td>
+            <td class="tablelabel">Red Three</td>
+            <td class="tablelabel">Blue One</td>
+            <td class="tablelabel">Blue Two</td>
+            <td class="tablelabel">Blue Three</td>
+          </tr>
+          <!-- <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr> -->
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="7">(C) Skunk Works Robotics 1983</td>
+          </tr>
+        </tfoot>
+        <!-- </thead> -->
+        <!-- <caption>(c) Skunk Works Robotics Scouting Team</caption> -->
+      </table>
     </div>
   </body>
 </html>
