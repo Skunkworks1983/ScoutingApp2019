@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, user-select=no, initial-scale=1" />
+    <!-- <meta http-equiv="refresh" content="3"> -->
+    <script src="js/scoutMeetingTool.js" type="text/javascript"></script>
+    <script src="js/index.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <div class="tweb">
+      <h2>Scout Meeting Tool</h2>
+      <p>This tool is for predicting the outcome of qualification rounds. Simply input the event code for the event you are predicting for! It's magical!</p>
+      <p>Afterwards, enter the number of ranking points predicted for each team, hit the submit button, and <i>literally just read off of the list.</i> It's that easy!</p>
+        <form onsubmit="sendRequest(setTargetEvent());">
+    <!-- form for collecting the event code -->
+          Event Code: <input type="string" required id="eventName" value="ex: 2018wapp" minlength="6" maxlength="8" class="generatebutton1"></input>
+          <button onclick="document.location.reload(falses);" class="generatebutton1">Reset</button>
+          <input type="submit" hidden></input>
+        </form>
+    </div>
+    <hr>
+<!-- Write me a tool that does the scout meeting predictions for us -->
+<!-- Take the competing teams and add the amount of ranking points we decide each team gets -->
+<!--  -->
+<!-- form for collecting the ranking predictions -->
+    <br />
+    <form autocomplete="off" style="margin:auto auto; align-items:center; text-align:center;" class="tweb">
+      <table>
+        <thead>
+          <tr>
+            <td>Team Number</td>
+            <td id="insert">Ranking Points (up to now)</td>
+            <td id="between">Total Ranking Points</td>
+            <td>Predicted Team Standing (at the end of quals)</td>
+          </tr>
+        </thead>
+        <tbody id="add">
+        </tbody>
+      </table>
+      <div style="padding: 0.5em">
+      Predict Matches!: <input type="submit" name="Predict matches" class="generatebutton1"></input>
+      </div>
+    </form>
+  </body>
+</html>

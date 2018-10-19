@@ -1,16 +1,22 @@
-// while(false) {
-// const eventcode = document.getElementById("eventcode");
-// const matchno = document.getElementById("matchno")
-// // red ids
-// const red1 = document.getElementById("red1");
-// const red2 = document.getElementById("red2");
-// const red3 = document.getElementById("red3");
-// // blue ids
-// const blue1 = document.getElementById("blue1");
-// const blue2 = document.getElementById("blue2");
-// const blue3 = document.getElementById("blue3");
-// // make sure this loop doesn't run too much
-// }
+
+function TBArequest() {
+  let eventNombre = document.getElementById('EventNombre').value;
+  const TBAkey = "?X-TBA-Auth-Key=d4V33bAbuXiKfuLW1pc4BaLbr56BgiORtyM5hwmRLU5qNf6Rxh83noDdI0mPJJ3R";
+  const TBAurl = "https://www.thebluealliance.com/api/v3/event/";
+  const Http = new XMLHttpRequest();
+  Http.open("GET", TBAurl.concat(eventNombre + "/matches"));
+  Http.setRequestHeader("X-TBA-Auth-Key", "d4V33bAbuXiKfuLW1pc4BaLbr56BgiORtyM5hwmRLU5qNf6Rxh83noDdI0mPJJ3R");
+  Http.send();
+
+  Http.onreadystatechange = function() {
+    if(this.readyState===4 && this.status==200) {
+      // var TBAresponse = Http.parse();
+      console.log(Http.responseText);
+    }
+  }
+}
+
+
 
 // this document is for validating the form and writing the results to the local storage
 function errorMessage() {
@@ -31,8 +37,6 @@ function errorMessage() {
 //       localStorage.setItem(key, input.value);
 //   });
 // }
-//
-// persistInput(eventcode);
 
 // JSON objects will be stored in the local storage containing the inputted match schedule
 // One JSON object for each event
@@ -42,6 +46,7 @@ function errorMessage() {
 // for some reason Patrick was still using the v2 API
 
 // test JSON objects
+
 testObj = {
             "eventname":"2018wapp",
             "match":[1,2,3,4],
@@ -53,9 +58,7 @@ testObj = {
             "blue3":[5803,69,6283,971]
           }
 
-// for the final version of the JSON object we should nest multiple objects inside of each other, so that we can store all events in a single JSON object to simplify the code necessary for the implementation of viewSchedule
-
-// add loop here that cycles the match numbers
+//
 
 // let total = testObj.match.length;
 function testJSON() {
@@ -74,43 +77,53 @@ function testJSON() {
 // it works using a checksum
 function submitSchedule() {
   let checksum = 0;
-  var conditions = 6;
-  switch (matchno >= 1 && matchno <= 200) {
-    case red1 <= 9999 && red1 >= 1:
-      checksum++;
-      console.log(checksum);
+  const conditions = 6;
+  // defining the entries on the forms
+  let matchno = document.getElementById("matchno").value;
+  let red1 = document.getElementById("red1").value;
+  let red2 = document.getElementById("red2").value;
+  let red3 = document.getElementById("red3").value;
+  let blue1 = document.getElementById("blue1").value;
+  let blue2 = document.getElementById("blue2").value;
+  let blue3 = document.getElementById("blue3").value;
 
-    case red2 <= 9999 && red2 >= 1:
-      checksum++;
-      console.log(checksum);
 
-    case red3 <= 9999 && red3 >= 1:
-      checksum++;
-      console.log(checksum);
 
-    case blue1 <= 9999 && blue1 >= 1:
-      checksum++;
-      console.log(checksum);
-
-    case blue2 <= 9999 && blue2 >= 1:
-      checksum++;
-      console.log(checksum);
-
-    case blue3 <= 9999 && blue3 >= 1:
-      checksum++;
-      console.log(checksum);
-
-    // default:
-    //   return true;
-  }
-
-  // checks to see if all conditions are satisfied
-  if(checksum <= conditions) {
-    return true;
-  } else {
+  if(matchno >= 1 && matchno <= 200 && red2 <= 9999 && red2 >= 1 && red3 <= 9999 && red3 >= 1 && blue1 <= 9999 && blue1 >= 1 && blue2 <= 9999 && blue2 >= 1 && blue3 <= 9999 && blue3 >= 1) {
+    checksum = checksum + 6;
+  } if(checksum === conditions) {
     return false;
+  } else {
+    return true;
   }
-}
+  // switch (matchno >= 1 && matchno <= 200) {
+  //   case red1 <= 9999 && red1 >= 1:
+  //     checksum++;
+  //     console.log(checksum);
+  //
+  //   case red2 <= 9999 && red2 >= 1:
+  //     checksum++;
+  //     console.log(checksum);
+  //
+  //   case red3 <= 9999 && red3 >= 1:
+  //     checksum++;
+  //     console.log(checksum);
+  //
+  //   case blue1 <= 9999 && blue1 >= 1:
+  //     checksum++;
+  //     console.log(checksum);
+  //
+  //   case blue2 <= 9999 && blue2 >= 1:
+  //     checksum++;
+  //     console.log(checksum);
+  //
+  //   case blue3 <= 9999 && blue3 >= 1:
+  //     checksum++;
+  //     console.log(checksum);
+  //
+  //   default:
+  //     return true;
+  // }
 
 // function to add rows to the table
 function addRows() { // event nombre is a tribute to Patrick and his wonderful code
@@ -164,4 +177,9 @@ function addRows() { // event nombre is a tribute to Patrick and his wonderful c
     // add tr to the table body
     tabBody.appendChild(row);
   }
+
+function recordInput() {
+    localStorage.setItem(document.getElementById());
+  }
+}
 }

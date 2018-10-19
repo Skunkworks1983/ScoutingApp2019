@@ -11,41 +11,44 @@
   <div style="margin: auto;">
     <h2 class="formTitle">Manual Entry Form for Match Schedule</h2>
     <!-- Add a console.log here that says the same thing -->
-    <p style="text-align: center;" class="tweb">The Blue Alliance is not working, so you can input your match schedule manually instead</p>
+    <p style="text-align: center;" class="tweb">The Blue Alliance is not working, so you can input your match schedule manually here instead</p>
   </div>
-  <form id="matchesInputForm" onsubmit="return submitSchedule()">
+
+
+
+
+   <form id="matchesInputForm" onsubmit="return submitSchedule()">
     <fieldset id="topform">
       <legend class="tweb">Event Code</legend><br>
-      <!-- regex does not work -->
-      <input type="text" required="" id="eventcode" pattern="[a-z] 2-4}" & "[0-9] {4}" title = "event code" >
+      <input type="text" required="" name="eventcode" regex="(?x)([Rr]egexp?)\?" title = "event code" >
     </fieldset>
     <div>
       <fieldset id="bottomform" class="tweb">
         <legend class="tweb">Schedule</legend>
         <div class="allianceinput">
-          Match No: <input type="number" required="" id="matchno"  >
+          Match No: <input type="number" required="" id="matchno">
         </div>
         <div id="matchcontainer">
         <fieldset class="" name="Red" id="redcolumn">
           <div class="allianceinput">
-            Red 1:  <input type="number" required="" id="red1" class="redinput" >
+            Red 1:  <input type="number" required="" id="red1" class="redinput" onsubmit="return submitSchedule();">
           </div>
           <div class="allianceinput">
-            Red 2:  <input type="number" required="" id="red2" class="redinput" >
+            Red 2:  <input type="number" required="" id="red2" class="redinput" onsubmit="return submitSchedule();">
           </div>
           <div class="allianceinput">
-            Red 3:  <input type="number" required="" id="red3" class="redinput" >
+            Red 3:  <input type="number" required="" id="red3" class="redinput" onsubmit="return submitSchedule();">
           </div>
         </fieldset>
         <fieldset class="" name="Blue" id="bluecolumn">
           <div class="allianceinput">
-            Blue 1: <input type="number" required="" id="blue1" class="blueinput" >
+            Blue 1: <input type="number" required="" id="blue1" class="blueinput" onsubmit="return submitSchedule();">
           </div>
           <div class="allianceinput">
-            Blue 2: <input type="number" required="" id="blue2" class="blueinput">
+            Blue 2: <input type="number" required="" id="blue2" class="blueinput" onsubmit="return submitSchedule();">
           </div>
           <div class="allianceinput">
-            Blue 3: <input type="number" required="" id="blue3" class="blueinput">
+            Blue 3: <input type="number" required="" id="blue3" class="blueinput" onsubmit="return submitSchedule();">
           </div>
         </fieldset>
         </div>
@@ -53,8 +56,7 @@
     </div>
     <br />
     <div>
-    <!-- TODO: Change the styling on this submit button to better match that of the app as a whole -->
-      <input type="submit" value="Submit" class="tweb" id="submitButton">
+      <input type="submit" value="Submit" class="tweb" id="submitButton" onsubmit="return submitSchedule();">
     </div>
   </form>
 </body>

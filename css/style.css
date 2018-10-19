@@ -6,8 +6,18 @@ color scheme of the app: soft purple */
 
 html {
   background-image: url();
-
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select:none;
+  user-select:none;
+  -o-user-select:none;
+  unselectable: on;
 }
+
+.popup {
+  overflow-x: hidden;
+}
+
 /*
   parallax scroll:
   background-attachment: fixed;
@@ -223,6 +233,7 @@ td {
   border-style: solid;
   border-spacing: 0.3em;
   border-radius: 0.3em;
+  padding: 0.3em;
   font-family: "Titillium Web";
 }
 
@@ -232,48 +243,32 @@ td {
   padding: 1em;
 
   border-style: solid;
-  border-bottom-left-radius: 100em;
-  border-top-right-radius: 100em;
-  border-width: thick;
-  /* border-color: black; */
-  border-top: none; border-right: none; border-bottom: none;
-}
-
-.generatebutton2 {
-  background-color: lightgray;
-
-  padding: 1em;
-
-  border-style: solid;
-  border-bottom-right-radius: 100em;
-  border-top-left-radius: 100em;
-  border-width: thick;
-  /* border-color: black; */
-  border-top: none; border-left: none; border-bottom: none;
-}
-
-.generatebutton3 {
-  background-color: lightgray;
-
-  padding: 1em;
-
-  border-style: solid;
   border-radius: 100em;
   border-bottom-right-radius: 0em;
   border-width: medium;
   border-color: black;
+  /* border-top: none; border-right: none; border-bottom: none; */
 
+  text-align: center;
 }
 
 .tablelabel {
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.5);
-  -webkit-text-stroke: 1px black;
+  border-style: double;
+  border-width: thick;
+  /* color: rgba(0, 0, 0, 0.5); */
+  /* -webkit-text-stroke: 1px black; */
+}
+
+#buttonDIV {
+  margin: auto auto;
+  text-align: center;
 }
 
 @media only screen and (max-device-width: 1366px) {
   #titlebar {
     position: relative;
+    border-width: thick;
     top: 1em; left: 5%; right: 5%;
     width: 90%;
 
