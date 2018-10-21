@@ -4,25 +4,22 @@
   <head>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <script lang="text/javascript" src="js/formvalidation.js" importance="high"></script>
+    <script src="js/formvalidation.js" type="text/javascript"></script>
   </head>
 
   <body>
 
-    <script lang="text/javascript" src="js/formvalidation.js"></script>
-
     <div id="titlebar">
       <h2 class="viewTitle" >View Match Schedule</h2>
       <p class="tweb">This page will display the match schedule for the event code chosen from either TBA or a manually inputted schedule.</p>
-      <p class="tweb">TODO: Pick event code here</p>
       <form class="tweb">
-        <input type="text" name="eventName" required value="Add event code here (ex 2018wapp)" id="EventNombre" class="generatebutton1" style="width: 55%;" onsubmit="return "></input>
+        <input type="text" name="eventName" required value="Add event code here (ex 2018wapp)" id="EventNombre" class="generatebutton1" style="width: 55%;" onsubmit="" maxlength="9" minlength="6"></input>
       </form>
     </div>
     <br/><br/>
     <div id="buttonDIV">
-      <button class="generatebutton1" onclick="TBArequest();">Generate TBA Schedule</button>
-      <button class="generatebutton1" onclick="addRows();">View Local Schedule</button>
+      <button class="generatebutton1" id="startbutton" onclick="TBArequest(); ">Generate TBA Schedule</button>
+      <button class="generatebutton1" onclick="addLocal();">View Local Schedule</button>
       <button class="generatebutton1" onclick="document.location.reload(false);">Clear Table</button>
     </div>
     <br />

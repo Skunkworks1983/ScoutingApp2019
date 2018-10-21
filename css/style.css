@@ -11,7 +11,6 @@ html {
   -ms-user-select:none;
   user-select:none;
   -o-user-select:none;
-  unselectable: on;
 }
 
 .popup {
@@ -59,6 +58,8 @@ a:hover {
 .tweb {
   font-family: "Titillium Web";
   text-align: center;
+  align-items: center;
+  background-color: white;
 }
 
 .iframe {
@@ -275,7 +276,58 @@ td {
   }
 }
 
- /* end */
+/* end */
+
+/* Scout Meeting Tool */
+.redform {
+  border-style: dashed;
+  border-color: black;
+  border-radius: 10em;
+
+  text-align: center;
+  font-family: "Titillium Web";
+
+  padding: 0.3em;
+}
+
+input.redform:invalid {
+
+}
+
+.blueform {
+  border-style: dashed;
+  border-color: black;
+  border-radius: 10em;
+
+  text-align: center;
+  font-family: "Titillium Web";
+
+  padding: 0.3em;
+}
+
+input.blueform:invalid {
+
+}
+
+.theader {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky;
+  top: 0;
+  background-attachment: scroll;
+  background-origin: content-box;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+  width: 100%
+}
+/* end */
 meter {
 
 }

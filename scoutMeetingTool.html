@@ -8,39 +8,86 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
   </head>
   <body>
-    <div class="tweb">
+    <div class="tweb" style="">
       <h2>Scout Meeting Tool</h2>
       <p>This tool is for predicting the outcome of qualification rounds. Simply input the event code for the event you are predicting for! It's magical!</p>
       <p>Afterwards, enter the number of ranking points predicted for each team, hit the submit button, and <i>literally just read off of the list.</i> It's that easy!</p>
         <form onsubmit="sendRequest(setTargetEvent());">
     <!-- form for collecting the event code -->
-          Event Code: <input type="string" required id="eventName" value="ex: 2018wapp" minlength="6" maxlength="8" class="generatebutton1"></input>
-          <button onclick="document.location.reload(falses);" class="generatebutton1">Reset</button>
+          Event Code: <input type="string" required id="eventName" value="ex: 2018wapp" minlength="6" maxlength="9" class="generatebutton1"></input>
           <input type="submit" hidden></input>
         </form>
+        <br />
+        <div style="margin:auto auto; align-items:center; text-align:center;">
+          <button type="button" onclick="sendRequest();" class="generatebutton1" id="startbutton">Start</button>
+          <button type="button" onclick="clearResults();" class="generatebutton1">Reset</button>
+          <button type="button" onclick="addTeams();" class="generatebutton1">Check rankings</button>
+          <button type="button" onclick="showComplete();" class="generatebutton1">Show completed matches</button>
+          <button type="button" onclick="showIncomplete();" class="generatebutton1">Show incomplete matches</button>
+        </div>
     </div>
-    <hr>
+    <hr />
 <!-- Write me a tool that does the scout meeting predictions for us -->
 <!-- Take the competing teams and add the amount of ranking points we decide each team gets -->
 <!--  -->
 <!-- form for collecting the ranking predictions -->
     <br />
+  <div style="margin:auto auto; align-items:center; text-align:center;">
     <form autocomplete="off" style="margin:auto auto; align-items:center; text-align:center;" class="tweb">
-      <table>
-        <thead>
+      <table style="width:100%">
+        <thead class="theader" style="background-color:white">
           <tr>
+            <td>Current Rank</td>
             <td>Team Number</td>
-            <td id="insert">Ranking Points (up to now)</td>
-            <td id="between">Total Ranking Points</td>
+            <td>Ranking Points (up to now)</td>
+            <td>Total Ranking Points (after calculation)</td>
             <td>Predicted Team Standing (at the end of quals)</td>
           </tr>
         </thead>
-        <tbody id="add">
+        <tbody id="table1">
         </tbody>
       </table>
       <div style="padding: 0.5em">
-      Predict Matches!: <input type="submit" name="Predict matches" class="generatebutton1"></input>
+        <!-- <button onclick="console.log('Feature is not complete yet')" class="generatebutton1">Predict Matches</button> -->
       </div>
     </form>
+  </div>
+    <hr />
+  <div style="margin:auto auto; align-items:center; text-align:center;" class="tweb">
+    <form>
+      <table class="tweb" style="width:100%">
+        <thead class="theader" id="stickyHeader" style="background-color:white;">
+          <tr>
+            <td colspan="9" class="tweb" >Qual Matches Left</td>
+          </tr>
+          <tr>
+            <td>#</td>
+            <td style="background-color:#ffb7b7">Red #1</td>
+            <td style="background-color:#ffb7b7">Red #2</td>
+            <td style="background-color:#ffb7b7">Red #3</td>
+            <td style="background-color:#b7d8ff">Blue #1</td>
+            <td style="background-color:#b7d8ff">Blue #2</td>
+            <td style="background-color:#b7d8ff">Blue #3</td>
+            <td style="background-color:#ffb7b7">Ranking Points (Red)</td>
+            <td style="background-color:#b7d8ff">Rankings Points (Blue)</td>
+          </tr>
+        </thead>
+        <colgroup>
+          <col></col>
+          <col span="3" class="redmatches"></col>
+          <col span="3" class="bluematches"></col>
+          <col class="redmatches"></col>
+          <col class="bluematches"></col>
+        </colgroup>
+        <tbody id="table2">
+        </tbody>
+        <tfoot>
+          <td colspan="9">Copyright &#xa9; 2018 Skunk Works Robotics</td>
+        </tfoot>
+      </table>
+    </form>
+    <br />
+    <button type="button" onclick="" class="generatebutton1">Generate Predictions</button>
+  </div>
   </body>
 </html>
