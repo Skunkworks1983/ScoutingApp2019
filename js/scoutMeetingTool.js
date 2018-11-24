@@ -9,7 +9,7 @@
 
 // urls
 const TBAheader = "X-TBA-Auth-Key";
-const TBAkey = "d4V33bAbuXiKfuLW1pc4BaLbr56BgiORtyM5hwmRLU5qNf6Rxh83noDdI0mPJJ3R";
+const TBAkey = "d4V33bAbuXiKfuLW1pc4BaLbr56BgiORtyM5hwmRLU5qNf6Rxh83noDdI0mPJJ3R";  // eventually this one should become user input
 const TBAURL = "https://www.thebluealliance.com/api/v3/event/";
 const rankingURL = "/rankings";
 const matchesURL = "/matches/simple";
@@ -23,6 +23,17 @@ let matchesObj;
 let rankingsObj;
 
 let printedResults = false;
+
+// this function does all the other functions so only one button press is needed
+function consolidated() {
+  sendRequest();
+  // eventually this timeout should be changed in detect when the HTTP requests finish
+  // currently it just waits for 3 seconds
+  setTimeout(function() {
+    addTeams();
+    showComplete();
+  }, 3000);
+}
 
 // define the target URL
 function setTargetEvent() {
@@ -124,10 +135,6 @@ function sendRequest(target) {
       }
     }
   }
-}
-// determine how many matches each team has left
-function matchesLeft() { // use the .insertBefore(insert, between); method to insert the new columns in the right place
-
 }
 
 // add values to table
@@ -295,6 +302,10 @@ function showComplete() {
     rpr = document.createElement("td");
     rpb = document.createElement("td");
 
+    // give cells their class
+    // rpr.setAttribute();
+    // rpb.setAttribute();
+
     // create the text that will go inside
     match_no = document.createTextNode(matchesObj[i].match_number);
     cellr1_t = document.createTextNode(red1);
@@ -305,14 +316,6 @@ function showComplete() {
     cellb3_t = document.createTextNode(blue3);
     rpr_t = document.createElement("input");
     rpb_t = document.createElement("input");
-
-    // give each cell a default value of 0
-    // cellr1.setAttribute("class", red1);
-    // cellr2.setAttribute("class", red2);
-    // cellr3.setAttribute("class", red3);
-    // cellb1.setAttribute("class", blue1);
-    // cellb2.setAttribute("class", blue2);
-    // cellb3.setAttribute("class", blue3);
 
     // give the inputs their own attributes so we can find them and add them ups
     rpr_t.setAttribute("type", "number");
@@ -362,3 +365,11 @@ function showComplete() {
 window.addEventListener('load', function() {
   console.log("loaded up");
 });
+
+// hidden at the button because its a disgrace
+// determine how many matches each team has left
+function showIncomplete() { // use the .insertBefore(insert, between); method to insert the new columns in the right place
+  // TODO: finish the last part
+  // WARNING: function is not complete
+  console.warn("function is not done yet, just calculate which matches haven't been played yet yourself bruv");
+}

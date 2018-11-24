@@ -283,6 +283,7 @@ td {
   border-style: solid;
   border-color: black;
   border-radius: 10em;
+  width: 2.5em;
 
   text-align: center;
   font-family: "Titillium Web";
@@ -298,6 +299,7 @@ input.redform:invalid {
   border-style: solid;
   border-color: black;
   border-radius: 10em;
+  width: 2.5em;
 
   text-align: center;
   font-family: "Titillium Web";
