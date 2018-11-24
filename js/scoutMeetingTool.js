@@ -125,17 +125,6 @@ function sendRequest(target) {
     }
   }
 }
-
-// sort the teams once they have been recieved, and match the team numbers and rankings
-function sortMatches() {
-  // matchesObj.match_number..sort(function(a, b){return a - b})
-}
-
-// function that creates the text input box for the match predictions
-function addTextBox() {
-
-}
-
 // determine how many matches each team has left
 function matchesLeft() { // use the .insertBefore(insert, between); method to insert the new columns in the right place
 
@@ -162,11 +151,16 @@ function addTeams() {
     row.setAttribute("id", team);
 
     // create some cells
+    // give all of the cells that are not generated in this function a unique id so they can be changed later
+    // this could be made easier with JQuery, witch has a function to find a child element, making this a lot easier
     standingcell = document.createElement("td");
     teamnocell = document.createElement("td");
     currentrankingscell = document.createElement("td");
+    currentrankingscell.setAttribute("id", team + "currentRank");
     totalrankingscell = document.createElement("td");
+    totalrankingscell.setAttribute("id", team + "predictedRank");
     teamstandingcell = document.createElement("td");
+    teamstandingcell.setAttribute("id", team + "standing");
 
     // text nodes for each
     teamno = document.createTextNode(team);
@@ -206,13 +200,64 @@ function clearResults() {
 
 // add up all of the predictions
 function aggregatePoints() {
+  var i;
+  var j;
+  // array to store the score objects
+  totalPoints = [];
+  for(i = 0; i < rankingsObj.rankings.length; i++) {
+    // ranking points
+    points = 0;
+    // get the team number in integer form
+    team = parseInt(rankingsObj.rankings[i].team_key.substr(3), 10);
+    // get the starting ranking points
+    startingRP = parseInt(document.getElementById(team + "currentRank").innerHTML, 10);
+    // add to Points
+    points = points + startingRP;
+    // add up all of the predicted points
+    predictions = document.getElementsByClassName(team);
+    for(j = 0; j < predictions.length; j++) {
+      points = points + parseInt(predictions[j].value, 10);
+    }
+    // object to store the team scores
+    tempObj = {
+      teamno: team,
+      points: points
+    };
+    // add to points array
+    totalPoints.push(tempObj);
 
+    // print the results to the table
+    // find the cells
+    cell = document.getElementById(team + "predictedRank");
+    // change the inner HTML to the total Points
+    cell.innerHTML = String(points);
+  }
+  sortRankings();
+  finalizeRankings();
+}
+
+// this function adds the final rankings of the teams
+function finalizeRankings() {
+  var k;
+  for(k = 0; k < finalRankings.length; k++) {
+    // get the team number
+    team = parseInt(finalRankings[k].teamno, 10);
+    // get the cell
+    cell = document.getElementById(team + "standing");
+    // add the rank
+    cell.innerHTML = String(k+1);
+  }
 }
 
 // this function removes any playoff matches
 function removePlayoffs() {
   matchesObj = matchesObj.filter(result => result.comp_level === "qm");
   matchesObj = matchesObj.sort((a, b) => a.match_number - b.match_number);
+}
+
+// sort the final predicted rankings
+function sortRankings() {
+  finalRankings = totalPoints.sort((a, b) => b.points - a.points);
 }
 
 function showComplete() {
@@ -261,27 +306,29 @@ function showComplete() {
     rpr_t = document.createElement("input");
     rpb_t = document.createElement("input");
 
-    // give each team its own class
-    cellr1.setAttribute("class", red1);
-    cellr2.setAttribute("class", red2);
-    cellr3.setAttribute("class", red3);
-    cellb1.setAttribute("class", blue1);
-    cellb2.setAttribute("class", blue2);
-    cellb3.setAttribute("class", blue3);
+    // give each cell a default value of 0
+    // cellr1.setAttribute("class", red1);
+    // cellr2.setAttribute("class", red2);
+    // cellr3.setAttribute("class", red3);
+    // cellb1.setAttribute("class", blue1);
+    // cellb2.setAttribute("class", blue2);
+    // cellb3.setAttribute("class", blue3);
 
     // give the inputs their own attributes so we can find them and add them ups
     rpr_t.setAttribute("type", "number");
     rpr_t.setAttribute("required", "");
     rpr_t.setAttribute("max", 4);
     rpr_t.setAttribute("min", 0);
-    rpr_t.setAttribute("class", "redform");
+    rpr_t.setAttribute("class", "redform" + " " + red1 + " " + red2 + " " + red3);
     rpr_t.setAttribute("name", "Red Input Box");
+    rpr_t.setAttribute("value", 0);
     rpb_t.setAttribute("type", "number");
     rpb_t.setAttribute("required", "");
     rpb_t.setAttribute("max", 4);
     rpb_t.setAttribute("min", 0);
-    rpb_t.setAttribute("class", "blueform");
+    rpb_t.setAttribute("class", "blueform" + " " + blue1 + " " + blue2 + " " + blue3);
     rpb_t.setAttribute("name", "Blue Input Box");
+    rpb_t.setAttribute("value", 0);
 
     // add the text nodes to the cells
     cellmn.appendChild(match_no);
@@ -315,17 +362,3 @@ function showComplete() {
 window.addEventListener('load', function() {
   console.log("loaded up");
 });
-
-// When the user scrolls the page, execute stickHeader
-// window.onscroll = function() {stickyHeader()};
-//
-// // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-// function stickyHeader() {
-//   var header = document.getElementById("stickyHeader");
-//   var sticky = header.offsetTop;
-//   if (window.pageYOffset > sticky) {
-//     header.classList.add("sticky");
-//   } else {
-//     header.classList.remove("sticky");
-//   }
-// }

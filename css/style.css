@@ -280,7 +280,7 @@ td {
 
 /* Scout Meeting Tool */
 .redform {
-  border-style: dashed;
+  border-style: solid;
   border-color: black;
   border-radius: 10em;
 
@@ -291,11 +291,11 @@ td {
 }
 
 input.redform:invalid {
-
+  background-color: #DBC8DB;
 }
 
 .blueform {
-  border-style: dashed;
+  border-style: solid;
   border-color: black;
   border-radius: 10em;
 
@@ -306,7 +306,7 @@ input.redform:invalid {
 }
 
 input.blueform:invalid {
-
+  background-color: #DBC8DB;
 }
 
 .theader {
