@@ -3,7 +3,11 @@
 
 // variables
 var i; var j; var k;
-var scoutList = ['Ethan Palisoc', ''];
+var scoutList = ['Ethan Palisoc', 'Evan Palisoc', 'PP Large', 'Caleb Jones', 'Mezie Nwizugbo', 'Patrick Eaton'];
+
+// interval for hue shifting
+const interval = 750;
+let degree = 0;
 
 // urls
 const TBAheader = "X-TBA-Auth-Key";
@@ -75,18 +79,62 @@ function sendRequest(target) {
 
 function populateTable() {
   var list = document.getElementById('scouts');
-  for (let o of scoutList) {
-    scout = document.createElement('')
+  for (i=0; i < scoutList.length; i++) {
+    scout = scoutList[i];
+    menu = document.createElement('option');
+    menu.setAttribute('value', scout);
+    displayValue = document.createTextNode(scout);
+    menu.appendChild(displayValue);
+    list.appendChild(menu);
   }
 }
 
 // function changes the color of the sandstorm logo based on the tablet
 function addSandstormLogo() {
-  if() {
+  // if() {
 
-  }
+  // }
 }
 
 // run code
 init();
 populateTable();
+
+// background hue shifts
+setInterval(function() {
+  hue = degree.toString();
+  var change = document.getElementById("teleop"); // which element gets changed
+  change.style.filter = "hue-rotate(" + hue + "deg)"; // change the hue filter
+  change.style.WebkitFilter = "hue-rotate(" + hue + "deg)"; // change the hue filter
+  degree++; // change the degree by 1
+  // check that the degree does not exceed 360
+  if(degree >= 360) {
+    degree = 0; // reset it if it does
+  }
+}, interval);
+
+setInterval(function() {
+  hue = degree.toString();
+  var change = document.getElementById("event"); // which element gets changed
+  change.style.filter = "hue-rotate(" + hue + "deg)"; // change the hue filter
+  change.style.WebkitFilter = "hue-rotate(" + hue + "deg)"; // change the hue filter
+  degree++; // change the degree by 1
+  // check that the degree does not exceed 360
+  if(degree >= 360) {
+    degree = 0; // reset it if it does
+  }
+}, interval);
+
+setInterval(function() {
+  hue = degree.toString();
+  var change = document.getElementById("settings"); // which element gets changed
+  change.style.filter = "hue-rotate(" + hue + "deg)"; // change the hue filter
+  change.style.WebkitFilter = "hue-rotate(" + hue + "deg)"; // change the hue filter
+  degree++; // change the degree by 1
+  // check that the degree does not exceed 360
+  if(degree >= 360) {
+    degree = 0; // reset it if it does
+  }
+}, interval);
+
+

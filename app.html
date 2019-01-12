@@ -13,13 +13,39 @@
   <!-- Stylesheet -->
   <link rel="stylesheet" type="text/css" href="css/app.css">
 
-  <!-- Javascript -->
-  <script type="text/javascript" src="js/app.js"></script>
+  <script type="text/javascript">
+    scrollOptionsLeft = {
+      left: window.innerWidth,
+      top: 0,
+      behavior: 'smooth'
+    }
+
+    scrollOptionsRight = {
+      left: window.innerWidth * -1,
+      top: 0,
+      behavior: 'smooth'
+    }
+
+    function scrollButtonLeft() {
+      window.scrollBy(scrollOptionsLeft);
+      console.log(scrollOptionsLeft);
+    }
+
+    function scrollButtonRight() {
+      window.scrollBy(scrollButtonRight);
+      console.log(scrollOptionsRight);
+    }
+  </script>
+
 </head>
 
 <body>
   <!-- Scroll Buttons -->
   <!-- TODO: add svg here that is animatable and clickable for use as scroll buttons -->
+  <div class="nav-container">
+    <img src="assets/arrow-left.svg" title="Previous Page" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();">
+    <img src="assets/arrow-right.svg" title="Next Page" alt="navigation arrows" id="right-nav-arrow" onclick="scrollButtonRight();">
+  </div>
   <div class="scroll-container">
     <!-- Settings + Upload | Page 1 -->
     <section class="slide" id="settings">
@@ -51,14 +77,14 @@
       <div class="slide" data-paroller-factor="0.5" data-paroller-direction="horizontal" data-paroller-type="background">
         <div class="content">
           <div class="title">
-            <h1>&#128640; Match Select &#128640;</h1>
+            <h1>&#128621; Match Select &#128621;</h1>
           </div>
           <hr style="margin-left: 20%; margin-right: 20%;">
           <div class="select">
             <div class="scout-select">
               <h2>Scout Select</h2>
-              <select class="scouts"  name="Scout Name" style="align-self:center">
-                <option value="Test">Test</option>
+              <select id="scouts"  name="Scout Name" style="align-self:center" multiple> <!-- Could add the size property-->
+                <option value="PP">Test</option>
               </select>
             </div>
           </div>
@@ -69,8 +95,8 @@
     <!-- Sandstorm | Page 3 -->
     <section class="slide" id="sandstorm">
       <div class="slide" data-paroller-factor="0.5" data-paroller-direction="horizontal" data-paroller-type="background">
-        <div class="content">
-          <svg id="sandstormLogo"></svg>
+        <div class="content" id="sandstorm-logo">
+            <h1>&#127744;</h1>
         </div>
       </div>
     </section>
@@ -85,14 +111,17 @@
     </section>
   </div>
 
+  <!-- Javascript -->
   <!-- Import JQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- Import Parallax.js -->
   <!-- <script src="js/parallax.min.js"></script> -->
   <!-- alternate parallax plugin (works for horizontal scrolling) -->
-  <script src="js/jquery.paroller.min.js"></script>
+  <script type="text/javascript" src="js/jquery.paroller.min.js"></script>
   <!-- Import Velocity.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js"></script>
+  <!-- Run app.js -->
+  <script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
