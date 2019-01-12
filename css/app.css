@@ -5,15 +5,17 @@ html {
   border: 0;
   margin: 0;
   font-family: "Titillium Web";
-  background-image: url('../assets/MovingStarfield.gif');
+  /* background-image: url('../assets/MovingStarfield.gif');
   background-repeat: repeat;
-  background-size: contain;
+  background-size: contain; */
 }
 
 body {
   padding: 0;
   border: 0;
   margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 
@@ -28,7 +30,7 @@ h2 {
 }
 
 /* Currently no polyfill for scroll snapping */
-.scroll-container {
+#scroll-container {
   height: 100vh;
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
@@ -157,6 +159,7 @@ h2 {
 }
 
 #scouts {
+  -ms-flex-item-align: center;
   align-self: center;
   padding: 0.25em;
 }
@@ -172,6 +175,8 @@ h2 {
 }
 
 .nav-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   z-index: 3;
   width: 100vw;
@@ -182,11 +187,13 @@ h2 {
 }
 
 #left-nav-arrow {
+  -ms-flex-item-align: start;
   align-self: flex-start;
   height: 12vh;
 }
 
 #right-nav-arrow {
+  -ms-flex-item-align: end;
   align-self: flex-end;
   height: 12vh;
 }

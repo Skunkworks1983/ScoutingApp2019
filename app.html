@@ -14,39 +14,33 @@
   <link rel="stylesheet" type="text/css" href="css/app.css">
 
   <script type="text/javascript">
-    scrollOptionsLeft = {
-      left: window.innerWidth,
-      top: 0,
-      behavior: 'smooth'
-    }
-
-    scrollOptionsRight = {
-      left: window.innerWidth * -1,
-      top: 0,
-      behavior: 'smooth'
+    function scrollButtonRight() {
+      var container = document.getElementById('scroll-container');
+      container.scrollBy({
+        top: 0,
+        left: window.innerWidth,
+        behavior: 'smooth'});
     }
 
     function scrollButtonLeft() {
-      window.scrollBy(scrollOptionsLeft);
-      console.log(scrollOptionsLeft);
-    }
-
-    function scrollButtonRight() {
-      window.scrollBy(scrollButtonRight);
-      console.log(scrollOptionsRight);
+      var container = document.getElementById('scroll-container');
+      container.scrollBy({
+        top: 0,
+        left: window.innerWidth*-1,
+        behavior: 'smooth'});
     }
   </script>
 
 </head>
 
-<body>
+<body onload="scrollButtonRight();">
   <!-- Scroll Buttons -->
   <!-- TODO: add svg here that is animatable and clickable for use as scroll buttons -->
   <div class="nav-container">
     <img src="assets/arrow-left.svg" title="Previous Page" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();">
     <img src="assets/arrow-right.svg" title="Next Page" alt="navigation arrows" id="right-nav-arrow" onclick="scrollButtonRight();">
   </div>
-  <div class="scroll-container">
+  <div id="scroll-container">
     <!-- Settings + Upload | Page 1 -->
     <section class="slide" id="settings">
       <div class="slide" data-paroller-factor="0.5" data-paroller-direction="horizontal" data-paroller-type="background">
@@ -62,10 +56,23 @@
           <div class="event-select">
             <h2>Event Select</h2>
             <div class="flex">
-              <input type="text" title="Enter an event code here" value="Test" id="eventcode"></input>
-              <select class="" name="">
-
-              </select>
+              <div style="align-items:center; flex:1;">
+                <input type="text" title="Enter an event code here" value="Event Code Here" id="eventcode"></input>
+              </div>
+              <div style="align-items:center; flex:1;">
+                <select class="" name="Tablet Team Assignment">
+                  <optgroup label="Red">
+                    <option value="Red 1">R-1</option>
+                    <option value="Red 2">R-2</option>
+                    <option value="Red 3">R-3</option>
+                  </optgroup>
+                  <optgroup label="Blue">
+                    <option value="Blue 1">B-1</option>
+                    <option value="Blue 2">B-2</option>
+                    <option value="Blue 3">B-3</option>
+                  </optgroup>
+                </select>
+              </div>
             </div>
           </div>
         </div>
@@ -96,7 +103,7 @@
     <section class="slide" id="sandstorm">
       <div class="slide" data-paroller-factor="0.5" data-paroller-direction="horizontal" data-paroller-type="background">
         <div class="content" id="sandstorm-logo">
-            <h1>&#127744;</h1>
+          <img src="" alt="">
         </div>
       </div>
     </section>
