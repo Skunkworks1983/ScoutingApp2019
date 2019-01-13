@@ -20,6 +20,61 @@ var matches = new XMLHttpRequest();
 // define JSON objects
 let matchesObj;
 
+// scout data JSON object
+var data = {
+  scoutName: 'IAN', // name of scout
+  event: '2019wasno', // event code (2019xxxx)
+  matchNumber: 1, // match number
+  alliance: 'red', // blue or red
+  teamNumber: 2046, // team number ex. 1983
+  station: 1, // field driver station ex. 1 or 2 or 3
+  noShow: false, // do they show up
+  storm: { // sandstorm values
+    startPos: 1, // which level does the robot start on ex. 1 or 2
+    crossLine: false, // did they cross the line?
+    cargoHatch: 0, // how many hatches were placed on the cargo ship
+    cargoCargo: 0, // how many cargoes were placed
+    lRocketCargo: 0, // how many cargoes placed in left rocket
+    rRocketCargo: 0, // how many cargoes placed in right rocket
+    retrieveHatch: 0, // how many hatches retrieved
+    retrieveCargo: 0, // how many cargoes retrieved
+    droppedHatches: 0, // how many hatches dropped
+    droppedCargo: 0, // how many cargoes dropped
+    deadBot: false, // robot is inoperable
+  },
+  tele: { // teleop values
+    acquire: {
+      hatchLoad: 0, // how many hatches loaded from loading station
+      hatchFloor: 0, // how many hatches loaded from ground
+      cargoLoad: 0, // how many cargoes loaded from loading station
+      cargoFloor: 0, // how many cargoes loaded from ground
+    },
+    lRocket: { // rocket left of the driver station
+      hatchNear: 0, // load a hatch to the side of the rocket nearer to the driver station
+      hatchFar: 0, // load a hatch to the side of the rocket farther from the driver station
+      cargo1: 0, // load a cargo into first level
+      cargo2: 0, // load a cargo into the second level
+      cargo3: 0, // load a cargo into the third level
+    },
+    rRocket: { // rocket right of the driver station
+      hatchNear: 0,
+      hatchFar: 0,
+      cargo1: 0,
+      cargo2: 0,
+      cargo3: 0,
+    },
+    cargoHatch: 0, // how many hatches placed on the cargo ship
+    cargoCargp: 0, // how many cargpes placed in the cargo ship
+    impaired: false, // did a subsystem on the robot break
+    droppedHatches: 0, // how many hatches dropped
+    droppedCargo: 0, // how many cargoes dropped
+    deadBot: false, // did the bot die altogether
+  },
+  climb: 0, // did they climb; values range from 0 (no climb), 1 (level 1), 2 (level 2), 3 (level 3)
+  assistedClimb: false, // did they assist another bot to climb
+  recievedClimb: false, // did they recieve help climbing
+}
+
 // init function
 const init = function() {
   // CSS Scroll Snap Polyfill for older browsers
@@ -91,14 +146,23 @@ function populateTable() {
 
 // function changes the color of the sandstorm logo based on the tablet
 function addSandstormLogo() {
-  // if() {
+  var color = document.getElementById('colorTeam');
+  var logo = document.getElementById('sandstormLogo');
+  if(color.value === '1' || color.value === '2' || color.value === '3') {
+    logo.setAttribute('src', 'assets/SandstormRed.png');
+  } else if(color.value === '4' || color.value === '5' || color.value === '6') {
+    logo.setAttribute('src', 'assets/SandstormBlue.png');
+  }
+}
 
-  // }
+function cacheSettings() {
+
 }
 
 // run code
 init();
 populateTable();
+addSandstormLogo();
 
 // background hue shifts
 setInterval(function() {
@@ -136,5 +200,3 @@ setInterval(function() {
     degree = 0; // reset it if it does
   }
 }, interval);
-
-
