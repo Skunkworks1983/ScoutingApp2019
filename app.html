@@ -35,7 +35,7 @@
 
 </head>
 
-<body onload="">
+<body>
   <!-- Scroll Buttons -->
   <!-- TODO: add svg here that is animatable and clickable for use as scroll buttons -->
   <div class="nav-container">
@@ -56,11 +56,11 @@
           <div class="title">
             <h1>&#9881; Settings &#9881;</h1>
           </div>
-          <hr style="margin-left: 20%; margin-right: 20%;">
+          <!-- <hr style="margin-left: 20%; margin-right: 20%;"> -->
           <div class="upload">
             <h2>Data Upload</h2>
           </div>
-          <hr style="margin-left: 20%; margin-right: 20%;">
+          <!-- <hr style="margin-left: 20%; margin-right: 20%;"> -->
           <div class="event-select">
             <h2>Event Select</h2>
             <div class="flex">
@@ -69,7 +69,7 @@
                 <button type="button" name="evencode-submit" onclick="getRequest();">Get schedule</button>
               </div>
               <div style="align-items:center; flex:1;">
-                <select class="" name="Tablet Team Assignment" id="colorTeam">
+                <select class="" name="Tablet Team Assignment" id="colorTeam" onchange="adjustColor();">
                   <optgroup label="Red">
                     <option value="1">Red 1</option>
                     <option value="2">Red 2</option>
@@ -96,7 +96,7 @@
             <!-- <h1 style="font-size: 3em;">Skunkworks &#42842;obotics</h1> -->
             <h1>&#128621; Match Select &#128621;</h1>
           </div>
-          <hr style="margin-left: 20%; margin-right: 20%;">
+          <!-- <hr style="margin-left: 20%; margin-right: 20%;"> -->
           <div class="select">
             <div class="scout-select">
               <h2>Scout Select</h2>
@@ -115,7 +115,7 @@
     <!-- Sandstorm | Page 3 -->
     <section class="slide" id="sandstorm">
       <div class="slide" data-paroller-factor="0.5" data-paroller-direction="horizontal" data-paroller-type="background">
-        <div class="content" id="sandstorm-logo">
+        <div class="content">
           <img alt="Sandstorm Logo" id="sandstormLogo">
         </div>
       </div>

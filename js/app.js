@@ -100,8 +100,9 @@ function sendRequest(target) {
       switch(this.status) {
           case 200:
             console.log("Ranking request completed successfully");
-            rankingsObj = JSON.parse(matches.responseText);
+            Obj = JSON.parse(matches.responseText);
             // changeButtonColor("startbutton", "#b7ffb4");
+            matches
             break;
 
           case 401:
@@ -162,7 +163,7 @@ function adjustColor() {
   } else if(color.value === '4' || color.value === '5' || color.value === '6') {
     // adjust sandstorm logo
     logo.setAttribute('src', 'assets/SandstormBlue.png');
-    //
+    // adjust team number logo
   }
 }
 
@@ -173,7 +174,7 @@ function cacheSettings() {
 // run code
 init();
 populateTable();
-addSandstormLogo();
+adjustColor();
 
 // background hue shifts
 setInterval(function() {
