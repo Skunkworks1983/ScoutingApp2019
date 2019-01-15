@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
+<!-- Make sure the page starts on app.html#event -->
 <head>
   <!-- MetaData -->
   <meta charset="utf-8" lang="en">
@@ -34,16 +35,16 @@
 
 </head>
 
-<body onload="scrollButtonRight();">
+<body onload="">
   <!-- Scroll Buttons -->
   <!-- TODO: add svg here that is animatable and clickable for use as scroll buttons -->
   <div class="nav-container">
     <img src="assets/arrow-left.svg" title="Previous Page" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();">
-    <!-- <object type="image/svg+xml" data="assets/arrow-left.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page"> 
+    <!-- <object type="image/svg+xml" data="assets/arrow-left.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
       Fallback Picture here
     </object> -->
     <img src="assets/arrow-right.svg" title="Next Page" alt="navigation arrows" id="right-nav-arrow" onclick="scrollButtonRight();">
-    <!-- <object type="image/svg+xml" data="assets/arrow-right.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page"> 
+    <!-- <object type="image/svg+xml" data="assets/arrow-right.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
       Fallback image in here
     </object> -->
   </div>
@@ -64,19 +65,20 @@
             <h2>Event Select</h2>
             <div class="flex">
               <div style="align-items:center; flex:1;">
-                <input type="text" title="Enter an event code here" value="Event Code Here" id="eventcode"></input>
+                <input type="text" title="Enter an event code here" value="Event Code Here" id="eventcode" min="6" max="9"></input>
+                <button type="button" name="evencode-submit" onclick="getRequest();">Get schedule</button>
               </div>
               <div style="align-items:center; flex:1;">
-                <select class="" name="Tablet Team Assignment">
+                <select class="" name="Tablet Team Assignment" id="colorTeam">
                   <optgroup label="Red">
-                    <option value="Red 1">Red-1</option>
-                    <option value="Red 2">Red-2</option>
-                    <option value="Red 3">Red-3</option>
+                    <option value="1">Red 1</option>
+                    <option value="2">Red 2</option>
+                    <option value="3">Red 3</option>
                   </optgroup>
                   <optgroup label="Blue">
-                    <option value="Blue 1">Blue-1</option>
-                    <option value="Blue 2">Blue-2</option>
-                    <option value="Blue 3">Blue-3</option>
+                    <option value="4">Blue 1</option>
+                    <option value="5">Blue 2</option>
+                    <option value="6">Blue 3</option>
                   </optgroup>
                 </select>
               </div>
@@ -98,10 +100,13 @@
           <div class="select">
             <div class="scout-select">
               <h2>Scout Select</h2>
-              <select id="scouts"  name="Scout Name" style="align-self:center" multiple> <!-- Could add the size property-->
+              <select id="scouts" name="Scout Name" style="align-self:center" multiple> <!-- Could add the size property-->
                 <option value="PP">Test</option>
               </select>
             </div>
+          </div>
+          <div class="team-number">
+            <h3></h3>
           </div>
         </div>
       </div>
@@ -120,7 +125,9 @@
     <section class="slide" id="teleop">
       <div class="slide" data-paroller-factor="0.5" data-paroller-direction="horizontal" data-paroller-type="background">
         <div class="content">
-
+          <div class="title">
+            <h1>Tele-Op</h1>
+          </div>
         </div>
       </div>
     </section>

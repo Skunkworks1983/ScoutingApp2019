@@ -162,17 +162,13 @@ h2 {
   -ms-flex-item-align: center;
   align-self: center;
   padding: 0.25em;
-  
+
 }
 
 .flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-}
-
-#eventcode {
-
 }
 
 .nav-container {
@@ -200,5 +196,12 @@ h2 {
 }
 
 #sandstormLogo {
-  
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+.team-number {
+  justify-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
 }

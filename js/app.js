@@ -91,44 +91,51 @@ function changeButtonColor(id, color) {
 
 // function to send, recieve, and process the GET request for match data
 function sendRequest(target) {
-  // TODO: Add logic here to determine whether the event is valid
-  let cont = true;
-  if(cont === false) {
-    return "target not set";
-  } else {
-    // send rankings http request
-    matches.open("GET", TBAURL.concat(target + matchesURL));
-    matches.setRequestHeader(TBAheader, TBAkey);
-    matches.send();
-    matches.onreadystatechange = function() {
-      if(this.readyState === 4) {
-        switch(this.status) {
-            case 200:
-              console.log("Ranking request completed successfully");
-              rankingsObj = JSON.parse(rankings.responseText);
-              // changeButtonColor("startbutton", "#b7ffb4");
-              break;
+  // send rankings http request
+  matches.open("GET", TBAURL.concat(target + matchesURL));
+  matches.setRequestHeader(TBAheader, TBAkey);
+  matches.send();
+  matches.onreadystatechange = function() {
+    if(this.readyState === 4) {
+      switch(this.status) {
+          case 200:
+            console.log("Ranking request completed successfully");
+            rankingsObj = JSON.parse(matches.responseText);
+            // changeButtonColor("startbutton", "#b7ffb4");
+            break;
 
-            case 401:
-              console.warn("TBA API key is invalid");
-              console.info("Enter a valid key (R)");
-              // changeButtonColor("startbutton", "#ffb5b5");
-              alert("TBA API key is invalid; Enter a valid key por favor. Error 401 on rankings <-- for the tech support");
-              break;
+          case 401:
+            console.warn("TBA API key is invalid");
+            console.info("Enter a valid key (R)");
+            // changeButtonColor("startbutton", "#ffb5b5");
+            alert("TBA API key is invalid; Enter a valid key por favor. Error 401 on rankings <-- for the tech support");
+            break;
 
-            case 404:
-              console.info("Invalid URL");
-              // changeButtonColor("startbutton", "#ffb5b5");
-              alert("Invalid URL entered. Error 404 on rankings <-- for the tech support");
-              break;
+          case 404:
+            console.info("Invalid URL");
+            // changeButtonColor("startbutton", "#ffb5b5");
+            alert("Invalid URL entered. Error 404 on rankings <-- for the tech support");
+            break;
 
-            default:
-              // changeButtonColor("startbutton", "#ffb5b5");
-              console.warn("Something wrong happened in rankings. This means the function went all the way through the switch without triggering any conditions");
-              break;
-        }
+          default:
+            // changeButtonColor("startbutton", "#ffb5b5");
+            console.warn("Something wrong happened in rankings. This means the function went all the way through the switch without triggering any conditions");
+            break;
       }
     }
+  }
+}
+
+function getRequest() {
+  var enterEvent = document.getElementById('eventcode');
+  var eventCode = enterEvent.value;
+  var ec1 = eventCode.substr(0,4);
+  var ec2 = eventCode.substr(4);
+  if(parseInt(ec1, 10) === 2019 && ec2.length === 2 || ec2.length === 3 || ec2.length === 4 || ec2.length === 5) {
+    sendRequest(eventCode);
+    enterEvent.style.boxShadow = '0px 0px';
+  } else {
+    enterEvent.style.boxShadow = '0px 0px 2px 0.22em red';
   }
 }
 
@@ -145,13 +152,17 @@ function populateTable() {
 }
 
 // function changes the color of the sandstorm logo based on the tablet
-function addSandstormLogo() {
+function adjustColor() {
   var color = document.getElementById('colorTeam');
   var logo = document.getElementById('sandstormLogo');
   if(color.value === '1' || color.value === '2' || color.value === '3') {
+    // adjust sandstorm logo
     logo.setAttribute('src', 'assets/SandstormRed.png');
+    // adjust team number border
   } else if(color.value === '4' || color.value === '5' || color.value === '6') {
+    // adjust sandstorm logo
     logo.setAttribute('src', 'assets/SandstormBlue.png');
+    //
   }
 }
 
