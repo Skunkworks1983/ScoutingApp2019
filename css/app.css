@@ -123,13 +123,40 @@ h2 {
   background-image: url("../assets/fuzz.gif");
 }
 
+#showDataTable {
+  width: 100%;
+  height: 50%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 .parallax-window {
   background: transparent;
+}
+
+.flex1 {
+  -webkit-box-flex:1;
+  -ms-flex:1;
+  flex:1;
+}
+
+.flex-center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+
 }
 
 .title {
   font-family: "Titillium Web";
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /* -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row; */
 }
 
 .select {
@@ -198,16 +225,39 @@ h2 {
   height: 12vh;
 }
 
-
-
 #sandstormLogo {
-  justify-self: center;
-  -ms-flex-item-align: center;
-  align-self: center;
+  -ms-flex-item-align: flex-start;
+  align-self: flex-start;
+  width: 35vw;
+}
+
+#teleLogo {
+  -ms-flex-item-align: start;
+  align-self: flex-start;
+  width: 35vw;
+}
+
+.mainLogo {
+  width: 35vw;
 }
 
 .team-number {
   justify-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
+}
+
+.edgeLeft {
+  background-color: lightgray;
+
+  padding: 1em;
+
+  border-style: solid;
+  border-radius: 100em;
+  border-bottom-right-radius: 0em;
+  border-width: medium;
+  border-color: black;
+  /* border-top: none; border-right: none; border-bottom: none; */
+
+  text-align: center;
 }

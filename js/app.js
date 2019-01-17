@@ -155,15 +155,28 @@ function populateTable() {
 // function changes the color of the sandstorm logo based on the tablet
 function adjustColor() {
   var color = document.getElementById('colorTeam');
-  var logo = document.getElementById('sandstormLogo');
+  var sandstormLogo = document.getElementById('sandstormLogo');
+  var teleLogo = document.getElementById('teleLogo');
   if(color.value === '1' || color.value === '2' || color.value === '3') {
     // adjust sandstorm logo
-    logo.setAttribute('src', 'assets/SandstormRed.png');
+    sandstormLogo.setAttribute('src', 'assets/SandstormRed.png');
     // adjust team number border
+
+    // adjust tele logo color
+
+    // adjust the select color
+    color.style.backgroundColor = 'red';
+    teleLogo.setAttribute('src', 'assets/TeleOpRocketRed.gif');
   } else if(color.value === '4' || color.value === '5' || color.value === '6') {
     // adjust sandstorm logo
-    logo.setAttribute('src', 'assets/SandstormBlue.png');
+    sandstormLogo.setAttribute('src', 'assets/SandstormBlue.png');
     // adjust team number logo
+
+    // adjust tele logo color
+    teleLogo.setAttribute('src', 'assets/TeleOpRocketBlue.gif');
+
+    // adjust select color
+    color.style.backgroundColor = 'blue';
   }
 }
 
@@ -180,8 +193,10 @@ adjustColor();
 setInterval(function() {
   hue = degree.toString();
   var change = document.getElementById("teleop"); // which element gets changed
+  var teleLogo = document.getElementById('teleLogo');
   change.style.filter = "hue-rotate(" + hue + "deg)"; // change the hue filter
   change.style.WebkitFilter = "hue-rotate(" + hue + "deg)"; // change the hue filter
+  teleLogo.style.filter = "hue-rotate(" + (360-degree) + "deg)"; // keep the teleop rocket the same color
   degree++; // change the degree by 1
   // check that the degree does not exceed 360
   if(degree >= 360) {
