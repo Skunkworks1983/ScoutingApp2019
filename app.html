@@ -4,7 +4,7 @@
 <head>
   <!-- MetaData -->
   <meta charset="utf-8" lang="en">
-  <meta name="viewport" content="initial-scale=1, width=device-width, user-scalable=no">
+  <meta name="viewport" content="initial-scale=1, width=device-width, user-scalable=no, maximum-scale=1, minimum-scale=1">
   <meta name="author" content="Skunk Works Robotics Scouting Team">
   <meta name="keywords" content="">
   <meta name="robots" content="nofollow">
@@ -48,46 +48,22 @@
       Fallback image in here
     </object> -->
   </div>
+
+  <!-- Main -->
   <div id="scroll-container">
     <!-- Settings + Upload | Page 1 -->
     <section class="slide" id="settings">
-      <div class="slide" data-paroller-factor="0.5" data-paroller-direction="horizontal" data-paroller-type="background">
+      <div class="slide" data-paroller-factor="0.3" data-paroller-direction="horizontal" data-paroller-type="background">
         <div class="content">
           <div class="title">
-            <h1>&#9881; Settings &#9881;</h1>
+            <h1>Ｓｅｔｔｉｎｇｓ　（永翁愛）</h1>
           </div>
-          <!-- <hr style="margin-left: 20%; margin-right: 20%;"> -->
-          <div class="upload">
-            <h2>Data Upload</h2>
-            <div class="flex">
-              <button style="flex:1" type="button" name="upload" class="edgeLeft">Upload</button>
-              <button style="flex:1" type="button" name="delete" class="edgeLeft">Delete Entries</button>
-            </div>
-            <div id="showDataTable">
-              <table>
-                <thead>
-                  <tr>
-                    <td>Select</td>
-                    <td>Match</td>
-                    <td>Event</td>
-                    <td>Time</td>
-                  </tr>
-                </thead>
-              </table>
-            </div>
-          </div>
-          <!-- <hr style="margin-left: 20%; margin-right: 20%;"> -->
-          <div class="event-select">
-            <h2>Event Select</h2>
-            <div class="">
-              <div class="flex">
-                <input type="text" title="Enter an event code here" value="Event Code Here" id="eventcode" min="6" max="9" class="edgeLeft"></input>
-                <button type="button" name="eventcode-submit" onclick="getRequest();" class="edgeLeft">Get schedule</button>
-              </div>
-              <br>
-              <div class="flex">
-                <h3 class="flex1">Tablet Station:&nbsp;</h3>
-                <select class="flex1 edgeLeft" name="Tablet Team Assignment" id="colorTeam" onchange="adjustColor();">
+          <div class="flex-column">
+            <div class="flex1">
+              <div class="flex flex-row flex-justify-space-evenly">
+                <input type="text" title="Enter an event code here" value="Event Code Here" id="eventcode" min="6" max="9" class="edgeNone large">
+                <button type="button" name="eventcode-submit" onclick="getRequest();" class="edgeRight">Get Schedule</button>
+                <select class="edgeRight" name="Tablet Team Assignment" id="colorTeam" onchange="adjustColor();">
                   <optgroup label="Red">
                     <option value="1">Red 1</option>
                     <option value="2">Red 2</option>
@@ -101,6 +77,101 @@
                 </select>
               </div>
             </div>
+            <br><br>
+            <div class="flex1">
+              <h1>Ｄａｔａ Ｕｐｌｏａｄ　（蒸のマ愛）</h1>
+              <button type="button" name="upload" class="edgeNone" onclick="">Upload Selected</button>
+              <button type="button" name="delete" class="edgeNone" onclick="">Delete Selected</button>
+              <button type="button" name="uploadAll" class="edgeRight" onclick="">Upload all</button>
+              <!-- Data Table -->
+              <hr>
+              <div class="table">
+                <table>
+                  <thead>
+                    <tr>
+                      <td>#</td>
+                      <td>Event</td>
+                      <td>Match</td>
+                      <td>Team</td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td>2019wasno</td>
+                      <td>12</td>
+                      <td>1983</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td>2019wasno</td>
+                      <td>13</td>
+                      <td>2046</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td>2019wasno</td>
+                      <td>13</td>
+                      <td>2046</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td>2019wasno</td>
+                      <td>13</td>
+                      <td>2046</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td>2019wasno</td>
+                      <td>13</td>
+                      <td>2046</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td>2019wasno</td>
+                      <td>13</td>
+                      <td>2046</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td>2019wasno</td>
+                      <td>13</td>
+                      <td>2046</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td>2019wasno</td>
+                      <td>13</td>
+                      <td>2046</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td>2019wasno</td>
+                      <td>13</td>
+                      <td>2046</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td>2019wasno</td>
+                      <td>13</td>
+                      <td>2046</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td>2019wasno</td>
+                      <td>13</td>
+                      <td>2046</td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td>2019wasno</td>
+                      <td>13</td>
+                      <td>2046</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -108,23 +179,19 @@
 
     <!-- Match + Scout Select | Page 2 | Default Page -->
     <section class="slide" id="event">
-      <div class="slide" data-paroller-factor="0.5" data-paroller-direction="horizontal" data-paroller-type="background">
+      <div class="slide" data-paroller-factor="0.3" data-paroller-direction="horizontal" data-paroller-type="background">
         <div class="content">
-          <div class="title">
-            <h1 style="align-self:start; text-align:left;">Match Select</h1>
-            <img style="align-self:end" src="assets/bwlogo.png" alt="Deep Space" class="mainLogo">
+          <h1>Pre-Match</h1>
+          <div class="matchSelect">
+            <h2>Match Select</h2>
+            <input type="text" name="" value="1" class="edgeRight">
           </div>
-          <!-- <hr> -->
-          <div class="select">
-            <div class="scout-select">
-              <h2>Scout Select</h2>
-              <select id="scouts" name="Scout Name" style="align-self:center" class="edgeLeft"> <!-- Could add the size property-->
-                <option value="PP">Test</option>
-              </select>
-            </div>
+          <div class="scoutSelect">
+            <h2>Scout Select</h2>
+            <select class="edgeRight" name="" id="scouts"></select>
           </div>
-          <div class="team-number">
-            <h3></h3>
+          <div class="meme">
+            <img src="" alt="" id="meme">
           </div>
         </div>
       </div>
@@ -132,18 +199,58 @@
 
     <!-- Sandstorm | Page 3 -->
     <section class="slide" id="sandstorm">
-      <div class="slide" data-paroller-factor="0.5" data-paroller-direction="horizontal" data-paroller-type="background">
+      <div class="slide" data-paroller-factor="0.3" data-paroller-direction="horizontal" data-paroller-type="background">
         <div class="content">
-          <img alt="Sandstorm Logo" id="sandstormLogo">
+          <div class="title-row">
+            <img id="sandstormLogo" alt="Sandstorm Logo" class="title-img">
+          </div>
+          <div class="flex-row">
+            <span>Start Position <input type="number" name="startPos" value="1" id="startPos" default="1" disabled> </span>
+            <span>Crossed HAB Line &nbsp;<input type="checkbox" name="" value="0" id="sandStorm.crossLine" default="0"></span>
+            <div class="flex" style="width: 100%">
+              <div class="flex1" style="flex-flow: row wrap;">
+                <h3>Obscured</h3>
+                <div class="">
+                  <h4>Rocket</h4>
+                  <span>Hatch &nbsp;<input class="edgeLeft" type="number" id="sandStorm.obscured.rocket.hatch" value="0" default="0" disabled></span>
+                  <span>Cargo &nbsp;<input class="edgeLeft" type="number" id="sandStorm.obscured.rocket.cargo" value="0" default="0" disabled></span>
+                </div>
+                <div class="">
+                  <h4>Cargo Ship</h4>
+                  <span>Hatch &nbsp;<input class="edgeLeft" type="number" id="sandStorm.obscured.ship.hatch" value="0" default="0" disabled></span>
+                  <span>Cargo &nbsp;<input class="edgeLeft" type="number" id="sandStorm.obscured.ship.cargo" value="0" default="0"> </span>
+                </div>
+              </div>
+              <div class="flex1">
+                <h3>Unobscured</h3>
+                <div class="">
+                  <h4>Rocket</h4>
+                  <span></span>
+                </div>
+                <div class="">
+                  <h4>Cargo Ship</h4>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+            <span>No Show &nbsp;<input type="radio" name="presence" value="0" id="noShow" default="0"></span>
+            <span>Dead Bot &nbsp;<input type="radio" name="presence" value="0" id="sandStorm.deadBot" default="0"></span>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Tele-Op | Page 4 -->
     <section class="slide" id="teleop">
-      <div class="slide" data-paroller-factor="0.5" data-paroller-direction="horizontal" data-paroller-type="background">
+      <div class="slide" data-paroller-factor="0.3" data-paroller-direction="horizontal" data-paroller-type="background">
         <div class="content">
-          <img alt="Tele Logo" id="teleLogo">
+          <div class="title-row">
+            <img id="teleLogo" alt="Teleoperated Logo" class="title-img">
+          </div>
+          <div class="flex-row">
+            <span></span>
+            <span><input type="radio" name="presence" value="0" id="dead"></span>
+          </div>
         </div>
       </div>
     </section>

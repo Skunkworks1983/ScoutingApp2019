@@ -20,61 +20,6 @@ var matches = new XMLHttpRequest();
 // define JSON objects
 let matchesObj;
 
-// scout data JSON object
-var data = {
-  scoutName: 'IAN', // name of scout
-  event: '2019wasno', // event code (2019xxxx)
-  matchNumber: 1, // match number
-  alliance: 'red', // blue or red
-  teamNumber: 2046, // team number ex. 1983
-  station: 1, // field driver station ex. 1 or 2 or 3
-  noShow: false, // do they show up
-  storm: { // sandstorm values
-    startPos: 1, // which level does the robot start on ex. 1 or 2
-    crossLine: false, // did they cross the line?
-    cargoHatch: 0, // how many hatches were placed on the cargo ship
-    cargoCargo: 0, // how many cargoes were placed
-    lRocketCargo: 0, // how many cargoes placed in left rocket
-    rRocketCargo: 0, // how many cargoes placed in right rocket
-    retrieveHatch: 0, // how many hatches retrieved
-    retrieveCargo: 0, // how many cargoes retrieved
-    droppedHatches: 0, // how many hatches dropped
-    droppedCargo: 0, // how many cargoes dropped
-    deadBot: false, // robot is inoperable
-  },
-  tele: { // teleop values
-    acquire: {
-      hatchLoad: 0, // how many hatches loaded from loading station
-      hatchFloor: 0, // how many hatches loaded from ground
-      cargoLoad: 0, // how many cargoes loaded from loading station
-      cargoFloor: 0, // how many cargoes loaded from ground
-    },
-    lRocket: { // rocket left of the driver station
-      hatchNear: 0, // load a hatch to the side of the rocket nearer to the driver station
-      hatchFar: 0, // load a hatch to the side of the rocket farther from the driver station
-      cargo1: 0, // load a cargo into first level
-      cargo2: 0, // load a cargo into the second level
-      cargo3: 0, // load a cargo into the third level
-    },
-    rRocket: { // rocket right of the driver station
-      hatchNear: 0,
-      hatchFar: 0,
-      cargo1: 0,
-      cargo2: 0,
-      cargo3: 0,
-    },
-    cargoHatch: 0, // how many hatches placed on the cargo ship
-    cargoCargp: 0, // how many cargpes placed in the cargo ship
-    impaired: false, // did a subsystem on the robot break
-    droppedHatches: 0, // how many hatches dropped
-    droppedCargo: 0, // how many cargoes dropped
-    deadBot: false, // did the bot die altogether
-  },
-  climb: 0, // did they climb; values range from 0 (no climb), 1 (level 1), 2 (level 2), 3 (level 3)
-  assistedClimb: false, // did they assist another bot to climb
-  recievedClimb: false, // did they recieve help climbing
-}
-
 // init function
 const init = function() {
   // CSS Scroll Snap Polyfill for older browsers
@@ -135,12 +80,14 @@ function getRequest() {
   if(parseInt(ec1, 10) === 2019 && ec2.length === 2 || ec2.length === 3 || ec2.length === 4 || ec2.length === 5) {
     sendRequest(eventCode);
     enterEvent.style.boxShadow = '0px 0px';
+    // send the request
+    return true
   } else {
     enterEvent.style.boxShadow = '0px 0px 2px 0.22em red';
   }
 }
 
-function populateTable() {
+function populateScouts() {
   var list = document.getElementById('scouts');
   for (i=0; i < scoutList.length; i++) {
     scout = scoutList[i];
@@ -152,25 +99,46 @@ function populateTable() {
   }
 }
 
+function populateTable() {
+  // retrieve data out of local storage
+  // get out the old table population code
+}
+
+// on touch hold, clear inputs
+// send some sort of feedback to user
+// eg. vibration or circle loop closing timer; ideally both
+function clearInput() {
+
+}
+
 // function changes the color of the sandstorm logo based on the tablet
 function adjustColor() {
   var color = document.getElementById('colorTeam');
   var sandstormLogo = document.getElementById('sandstormLogo');
   var teleLogo = document.getElementById('teleLogo');
+  var teamNumber = document.getElementsByClassName('team-number');
   if(color.value === '1' || color.value === '2' || color.value === '3') {
     // adjust sandstorm logo
     sandstormLogo.setAttribute('src', 'assets/SandstormRed.png');
+
     // adjust team number border
+    for(i=0; i < teamNumber.length; i++) {
+      teamNumber[i].style.borderColor = 'red';
+    };
 
     // adjust tele logo color
+    teleLogo.setAttribute('src', 'assets/TeleOpRocketRed.gif');
 
     // adjust the select color
     color.style.backgroundColor = 'red';
-    teleLogo.setAttribute('src', 'assets/TeleOpRocketRed.gif');
   } else if(color.value === '4' || color.value === '5' || color.value === '6') {
     // adjust sandstorm logo
     sandstormLogo.setAttribute('src', 'assets/SandstormBlue.png');
+
     // adjust team number logo
+    for(i=0; i < teamNumber.length; i++) {
+      teamNumber[i].style.borderColor = 'blue';
+    };
 
     // adjust tele logo color
     teleLogo.setAttribute('src', 'assets/TeleOpRocketBlue.gif');
@@ -180,50 +148,57 @@ function adjustColor() {
   }
 }
 
+// this function removes any playoff matches (in case there are any)
+function removePlayoffs() {
+  matchesObj = matchesObj.filter(result => result.comp_level === "qm");
+  matchesObj = matchesObj.sort((a, b) => a.match_number - b.match_number);
+}
+
 function cacheSettings() {
 
 }
 
 // run code
 init();
-populateTable();
+populateScouts();
 adjustColor();
 
 // background hue shifts
-setInterval(function() {
-  hue = degree.toString();
-  var change = document.getElementById("teleop"); // which element gets changed
-  var teleLogo = document.getElementById('teleLogo');
-  change.style.filter = "hue-rotate(" + hue + "deg)"; // change the hue filter
-  change.style.WebkitFilter = "hue-rotate(" + hue + "deg)"; // change the hue filter
-  teleLogo.style.filter = "hue-rotate(" + (360-degree) + "deg)"; // keep the teleop rocket the same color
-  degree++; // change the degree by 1
-  // check that the degree does not exceed 360
-  if(degree >= 360) {
-    degree = 0; // reset it if it does
-  }
-}, interval);
+// setInterval(function() {
+//   hue = degree.toString();
+//   var change = document.getElementById("teleop"); // which element gets changed
+//   var teleLogo = document.getElementById('teleLogo');
+//   change.style.filter = "hue-rotate(" + hue + "deg)"; // change the hue filter
+//   change.style.WebkitFilter = "hue-rotate(" + hue + "deg)"; // change the hue filter
+//   teleLogo.style.filter = "hue-rotate(" + (360-degree) + "deg)"; // keep the teleop rocket the same color
+//   degree++; // change the degree by 1
+//   // check that the degree does not exceed 360
+//   if(degree >= 360) {
+//     degree = 0; // reset it if it does
+//   }
+// }, interval);
 
-setInterval(function() {
-  hue = degree.toString();
-  var change = document.getElementById("event"); // which element gets changed
-  change.style.filter = "hue-rotate(" + hue + "deg)"; // change the hue filter
-  change.style.WebkitFilter = "hue-rotate(" + hue + "deg)"; // change the hue filter
-  degree++; // change the degree by 1
-  // check that the degree does not exceed 360
-  if(degree >= 360) {
-    degree = 0; // reset it if it does
-  }
-}, interval);
+// setInterval(function() {
+//   hue = degree.toString();
+//   var change = document.getElementById("event"); // which element gets changed
+//   change.style.filter = "hue-rotate(" + hue + "deg)"; // change the hue filter
+//   change.style.WebkitFilter = "hue-rotate(" + hue + "deg)"; // change the hue filter
+//   degree++; // change the degree by 1
+//   // check that the degree does not exceed 360
+//   if(degree >= 360) {
+//     degree = 0; // reset it if it does
+//   }
+// }, interval);
 
-setInterval(function() {
-  hue = degree.toString();
-  var change = document.getElementById("settings"); // which element gets changed
-  change.style.filter = "hue-rotate(" + hue + "deg)"; // change the hue filter
-  change.style.WebkitFilter = "hue-rotate(" + hue + "deg)"; // change the hue filter
-  degree++; // change the degree by 1
-  // check that the degree does not exceed 360
-  if(degree >= 360) {
-    degree = 0; // reset it if it does
-  }
-}, interval);
+// cycle settings background color
+// setInterval(function() {
+//   hue = degree.toString();
+//   var change = document.getElementById("settings"); // which element gets changed
+//   change.style.filter = "hue-rotate(" + hue + "deg)"; // change the hue filter
+//   change.style.WebkitFilter = "hue-rotate(" + hue + "deg)"; // change the hue filter
+//   degree++; // change the degree by 1
+//   // check that the degree does not exceed 360
+//   if(degree >= 360) {
+//     degree = 0; // reset it if it does
+//   }
+// }, interval);

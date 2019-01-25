@@ -1,13 +1,17 @@
+/* Import CDN fonts */
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web');
+
+/* Import local fonts */
+@font-face {
+  font-family: "MS Sans Serif";
+  src: url("../assets/fonts/Microsoft Sans Serif.ttf") format("ttf");
+}
 
 html {
   padding: 0;
   border: 0;
   margin: 0;
   font-family: "Titillium Web";
-  /* background-image: url('../assets/MovingStarfield.gif');
-  background-repeat: repeat;
-  background-size: contain; */
 }
 
 body {
@@ -21,12 +25,80 @@ body {
 
 h1 {
   margin: 0;
+  font-size: 1.6em;
 }
 
 h2 {
-  -ms-flex-item-align: center;
-  align-self: center;
+  margin: 0;
+}
+
+table {
   text-align: center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  width: 100%;
+  max-height: 50%;
+  border-collapse: separate;
+}
+
+tr {
+  border-style: solid;
+  border-color: black;
+  border-width: 0.1em;
+  border-radius: 1em;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: lightgrey;
+}
+
+tbody tr:nth-child(even) {
+  background-color: white;
+}
+
+td {
+  border-right: 0.1em solid grey;
+  /* border-left: 0.1em solid grey; */
+  margin: 0;
+}
+
+h3, h4 {
+  margin:0;
+}
+
+input {
+  width: 1.5em;
+}
+
+input.large {
+  width: auto;
+  height: auto;
+}
+
+.fatFinger { /* for fat fingers */
+  width: 2em;
+  height: 2em;
+}
+
+.title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+}
+
+.table {
+  display: block;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 50%;
 }
 
 /* Currently no polyfill for scroll snapping */
@@ -51,11 +123,6 @@ h2 {
   height: 100vh;
   width: 100vw;
   scroll-snap-align: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -ms-flex-line-pack: center;
-  align-content: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -65,9 +132,6 @@ h2 {
 
 /* Contents of the slide */
 .content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   height: 85vh;
@@ -75,21 +139,10 @@ h2 {
   margin: auto;
   background-color: white;
   border: black solid 0.3rem;
-  -ms-flex-flow: wrap;
-  flex-flow: wrap;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
   padding: 1em;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  /* justify-content: center; */
-  -ms-flex-line-pack: center;
-  align-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+  border-radius: 2rem;
+  border-bottom-right-radius: 0em;
+  overflow: hidden;
 }
 
 /* Page 1 */
@@ -98,6 +151,7 @@ h2 {
   background-size: cover;
   background-image: url("../assets/vaporwave.jpg");
   background-position: center;
+  /* font-family: "SimSun" !important; */
 }
 
 /* Page 2 */
@@ -130,75 +184,56 @@ h2 {
   overflow-x: hidden;
 }
 
+#eventcode {
+  margin: 0.3em;
+}
+
 .parallax-window {
   background: transparent;
 }
 
-.flex1 {
-  -webkit-box-flex:1;
-  -ms-flex:1;
-  flex:1;
-}
-
-.flex-center {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-
-}
-
-.title {
-  font-family: "Titillium Web";
-  text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  /* -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row; */
-}
-
-.select {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.event-select {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  /* border-right-color: grey;
-  border-right-style: solid;
-  border-right-width: 0.1em;
-  margin-right: 0.35em; */
-}
-
-.scout-select {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  /* border-left-color: grey;
-  border-left-style: solid;
-  border-left-width: 0.1em;
-  margin-left: 0.35em; */
-}
-
-#scouts {
-  -ms-flex-item-align: center;
-  align-self: center;
-  padding: 0.25em;
-
-}
-
+/* Flex templates */
 .flex {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.flex-column {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+}
+
+.flex1 {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.flex-grow {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.flex-row {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+.flex-justify-space-evenly {
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+}
+
+.flex-shrink {
+  -ms-flex-negative: 1;
+  flex-shrink: 1;
 }
 
 .nav-container {
@@ -225,30 +260,28 @@ h2 {
   height: 12vh;
 }
 
-#sandstormLogo {
-  -ms-flex-item-align: flex-start;
-  align-self: flex-start;
-  width: 35vw;
-}
-
-#teleLogo {
-  -ms-flex-item-align: start;
-  align-self: flex-start;
-  width: 35vw;
-}
-
-.mainLogo {
-  width: 35vw;
-}
-
 .team-number {
-  justify-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
 }
 
-.edgeLeft {
+.edgeNone {
   background-color: lightgray;
+  font-size: 1.1em;
+
+  padding: 1em;
+
+  border-style: solid;
+  border-radius: 100em;
+  border-width: medium;
+  border-color: black;
+
+  text-align: center;
+}
+
+.edgeRight {
+  background-color: lightgray;
+  font-size: 1.1em;
 
   padding: 1em;
 
@@ -257,7 +290,102 @@ h2 {
   border-bottom-right-radius: 0em;
   border-width: medium;
   border-color: black;
-  /* border-top: none; border-right: none; border-bottom: none; */
 
   text-align: center;
+}
+
+.edgeLeft {
+  background-color: lightgray;
+  font-size: 1.1em;
+
+  padding: 1em;
+
+  border-style: solid;
+  border-radius: 100em;
+  border-bottom-left-radius: 0em;
+  border-width: medium;
+  border-color: black;
+
+  text-align: center;
+}
+
+.matchSelect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+}
+
+.scoutSelect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+}
+
+span {
+  width: 100px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.meme {
+
+}
+
+#meme {
+
+}
+
+button:focus {
+  outline: none;
+}
+
+button.win95 {
+
+}
+
+.title95 {
+
+}
+
+.title-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+}
+
+.title-img {
+  max-height: 15vh;
+  height: auto;
+
+}
+
+/* Reset (circle fill) animation */
+@-webkit-keyframes resetCircle {
+  0% {
+
+  }
+  100% {
+
+  }
+}
+
+@keyframes resetCircle {
+  0% {
+
+  }
+  100% {
+
+  }
 }
