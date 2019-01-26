@@ -57,9 +57,30 @@ tbody tr:nth-child(even) {
 }
 
 td {
-  border-right: 0.1em solid grey;
-  /* border-left: 0.1em solid grey; */
   margin: 0;
+  border-style: solid;
+  border-spacing: 0.3em;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  font-family: "Titillium Web";
+
+}
+
+thead {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky;
+  top: 0;
+  background-attachment: scroll;
+  background-origin: content-box;
+  /* background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)); */
+  border-top: black solid 2px;
+  border-bottom: black solid 2px;
+  font-style: bold;
+  font-size: 1.3em;
 }
 
 h3, h4 {
@@ -98,7 +119,7 @@ input.large {
   display: block;
   overflow-x: hidden;
   overflow-y: scroll;
-  height: 50%;
+  height: 50vh;
 }
 
 /* Currently no polyfill for scroll snapping */
@@ -179,7 +200,7 @@ input.large {
 
 #showDataTable {
   width: 100%;
-  height: 50%;
+  height: 60%;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -269,7 +290,7 @@ input.large {
   background-color: lightgray;
   font-size: 1.1em;
 
-  padding: 1em;
+  padding: 0.8em;
 
   border-style: solid;
   border-radius: 100em;
@@ -283,7 +304,7 @@ input.large {
   background-color: lightgray;
   font-size: 1.1em;
 
-  padding: 1em;
+  padding: 0.8em;
 
   border-style: solid;
   border-radius: 100em;
@@ -298,7 +319,7 @@ input.large {
   background-color: lightgray;
   font-size: 1.1em;
 
-  padding: 1em;
+  padding: 0.8em;
 
   border-style: solid;
   border-radius: 100em;
@@ -317,6 +338,12 @@ input.large {
   -webkit-box-direction: normal;
   -ms-flex-flow: column wrap;
   flex-flow: column wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .scoutSelect {
@@ -327,12 +354,21 @@ input.large {
   -webkit-box-direction: normal;
   -ms-flex-flow: column wrap;
   flex-flow: column wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 span {
   width: 100px;
+  height: 30px;
   margin-left: 10px;
   margin-right: 10px;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 .meme {
@@ -341,6 +377,19 @@ span {
 
 #meme {
 
+}
+
+.up {
+  background-color: rgba(120,0,0,0.5);
+}
+
+.down {
+  background-color: rgba(0,0,120,0.5);
+}
+
+button.up, button.down {
+  font-size: 2em;
+  padding: 0.1em;
 }
 
 button:focus {
@@ -363,6 +412,9 @@ button.win95 {
   -webkit-box-direction: normal;
   -ms-flex-flow: row nowrap;
   flex-flow: row nowrap;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
 }
 
 .title-img {

@@ -21,14 +21,14 @@ var matches = new XMLHttpRequest();
 let matchesObj;
 
 // init function
-const init = function() {
+$(document).ready(function(){
   // CSS Scroll Snap Polyfill for older browsers
   // scrollSnapPolyfill();
   // initialize paroller.js
   $("[data-paroller-factor]").paroller();
-}
+});
 
-// function changes the color of ann element
+// function changes the color of an element
 function changeButtonColor(id, color) {
   button = document.getElementById(id);
   button.style.backgroundColor = color;
@@ -69,6 +69,26 @@ function sendRequest(target) {
             break;
       }
     }
+  }
+}
+
+// make field go up
+function up(id, amount) {
+  var target = document.getElementById(id);
+  if(target.value < 6) {
+    target.setAttribute("value", parseInt(target.value, 10) + parseInt(amount, 10));
+  } else {
+    return "Trying to go over 6"
+  }
+}
+
+// make field go down
+function down(id, amount) {
+  var target = document.getElementById(id);
+  if(target.value > 0) {
+    target.setAttribute("value", parseInt(target.value, 10) - parseInt(amount, 10));
+  } else {
+    return "Trying to go under 0"
   }
 }
 
@@ -159,7 +179,6 @@ function cacheSettings() {
 }
 
 // run code
-init();
 populateScouts();
 adjustColor();
 
