@@ -1,0 +1,272 @@
+@font-face {
+font-family: deepspacefont;
+src: url('nasa.ttf');
+}
+
+.logo {
+  align-items: center;
+  margin: auto;
+  display: block;
+}
+.title {
+  align-items: center;
+  width: 100vw;
+}
+html {
+  overflow-x: hidden;
+  background-image: url("spacebackground.jpg");
+}
+.incrementButton{
+	text-align: right;
+	font-size: 1.2em;
+	border-style: solid;
+	border-width: 2px;
+	border-color: BLACK;
+  height: 50px;
+	width: 50px;
+	background-color: #EEEEEE;
+}
+
+.minusButtons{
+  {
+  	text-align: right;
+  	font-size: 1.2em;
+  	border-style: solid;
+  	border-width: 2px;
+  	border-color: BLACK;
+  	width: 100px;
+  	background-color: #EEEEEE;
+  }
+}
+.font{
+    font-size: 1.5em;
+    font-family: deepspacefont;
+    color: red;
+}
+
+:focus{
+  outline:none;
+}
+.radio{
+  -webkit-appearance:button;
+  -moz-appearance:button;
+  appearance:button;
+  border:4px solid #ccc;
+  border-top-color:#bbb;
+  border-left-color:#bbb;
+  background:#fff;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+}
+.radio:checked{
+  border:20px solid #4099ff;
+}
+
+
+h1 {
+  color:red;
+  text-align: center;
+  font-family: deepspacefont;
+  text-align: center;
+  flex: 1;
+}
+
+body {
+overflow-x: hidden;
+}
+
+.radio{
+  -webkit-appearance:button;
+  -moz-appearance:button;
+  appearance:button;
+  border:4px solid #ccc;
+  border-top-color:#bbb;
+  border-left-color:#bbb;
+  background:#fff;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+}
+.radio:checked{
+  border:20px solid #4099ff;
+}
+#i1{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+#i2{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+
+#autoCargoshipU{
+  width: 50px;
+  height:40px;
+}
+#autoCargoshipO{
+  width: 50px;
+  height:40px;
+}
+
+#dropped{
+width: 50px;
+height:40px;'
+
+}
+
+#acquiredH{
+  width: 50px;
+  height:40px;
+}
+#acquiredC{
+  width: 50px;
+  height:40px;
+}
+
+
+.largerCheckbox
+{
+	width: 30px;
+	height: 30px;
+}
+.bignumber{
+  width: 40px;
+  height: 40px;
+
+}
+
+
+
+.flex{
+  height: 75px;
+
+}
+.flex2{
+  height: 100px;
+  width: 500px;
+}
+
+.flex3{
+  height: 175px;
+}
+
+.col1{
+  align-items: flex-start;
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 1em;
+  color: red;
+  font-family: deepspacefont;
+  height: 265px;
+  width: 150px;
+}
+
+
+.col2{
+  align-items: flex-start;
+  justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: red;
+  font-family: deepspacefont;
+  height: 100px;
+  width: 600px;
+
+
+}
+.col7{
+  align-items: center;
+    justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: red;
+  font-family: deepspacefont;
+  height: 50px;
+}
+.col8{
+  align-items: center;
+    justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: red;
+  font-family: deepspacefont;
+  height: 65px;
+}
+.col9{
+  align-items: center;
+    justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: red;
+  font-family: deepspacefont;
+  height:45px;
+}
+.col11{
+  align-items: center;
+    justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: red;
+  font-family: deepspacefont;
+  height:50px;
+}
+.col13{
+  align-items: center;
+    justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: red;
+  font-family: deepspacefont;
+  height:100px;
+}
+.col15{
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: red;
+  font-family: deepspacefont;
+  height:50px;
+}
+.col16{
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: red;
+  font-family: deepspacefont;
+}
+.col17{
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: red;
+  font-family: deepspacefont;
+  height:50px;
+}
+.col18{
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: red;
+  font-family: deepspacefont;
+  height:50px;
+}

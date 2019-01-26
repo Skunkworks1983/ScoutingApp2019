@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Tele de blue</title>
+    <link rel="stylesheet" href="Autoblue.css">
+    <script type="text/javascript" src="Autoblue.js"></script>
+  </head>
+  <style>
+    h1 {
+    color:blue;
+    text-align: center;
+    font-family: deepspacefont;
+    }
+
+    .flex{
+      display:flex;
+    }
+
+    .col1{
+      flex:1;
+    }
+    @font-face {
+  font-family: deepspacefont;
+  src: url('nasa.ttf');
+  }
+
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+
+   {
+  color:blue;
+  font-family: deepspacefont;
+  width: 100vh;
+  }
+
+    </style>
+  <body>
+    <br><br>
+    <div class="title">
+      <img src="SandStormblue.png" class="logo">
+      <h1>Auto</h1>
+      </div>
+
+      <div class="flex">
+        <div class="col1">
+
+            <p class="font">Position: &nbsp</p>
+            <p class="font">Lvl 1</p>
+                <input type="radio" class="radio" name="test" id=i2>
+                <p class="font">Lvl 2</p>
+                    <input type="radio" class="radio" name="test" id=i2>
+                  </div>
+
+
+                </div>
+
+                <div class="flex2">
+                  <div class="col2">
+                    <p class="font">Preloaded: &nbsp</p>
+                      <p class="font">Hatch</p>
+                          <input type="radio" class="radio" name="test2" id=i2>
+                          <p class="font">Cargo</p>
+                              <input type="radio" class="radio" name="test2" id=i2>
+                            </div>
+
+
+                          </div>
+
+
+
+
+                        </div>
+                      </div>
+                  <div class="flex3">
+                    <div class="col7">
+                    <p class="font"> Deployed:</p>
+                    </div>
+                    <div class="col8">
+                      <p class="font"> U</p>
+                        <input type="radio" class="radio" name="test3" id=i2>1
+                        <input type="radio" class="radio" name="test3" id=i2>2
+                        <input type="radio" class="radio" name="test3" id=i2>3
+
+
+                    </div>
+                      </div>
+                    <div class="col9">
+                      <p class="font"> O</p>
+                      <input type="radio" class="radio" name="test3" id=i2>1
+                      <input type="radio" class="radio" name="test3" id=i2>2
+                      <input type="radio" class="radio" name="test3" id=i2>3
+
+                      </div>
+                      <div class="col10">
+                        <p class="font">Cargo Ship  </p>
+                        <div class="col11">
+                          <p class="font">U &nbsp; </p>
+                          <SPAN id="autoCargoshipUSpan">
+                						<BUTTON class="incrementButton minusButtons" onClick="numberDown('autoCargoshipU', 1, 69)" >-1</BUTTON>
+                						<INPUT class="incrementScoreboard" id="autoCargoshipU" type="text" value="0"  disabled>
+                						<BUTTON class="incrementButton plusButtons" onClick="numberUp('autoCargoshipU', 1, 69)">+1</BUTTON>
+                					</SPAN>
+
+                          <p class="font">&nbsp O &nbsp; </p>
+                            <SPAN id="autoCargoshipOSpan">
+                          <BUTTON class="incrementButton minusButtons" onClick="numberDown('autoCargoshipO', 1, 69)" >-1</BUTTON>
+                          <INPUT class="incrementScoreboard" id="autoCargoshipO" type="text" value="0" disabled>
+                          <BUTTON class="incrementButton plusButtons" onClick="numberUp('autoCargoshipO', 1, 69)"  >+1</BUTTON>
+                        </span>
+
+                      </div>
+                    </div>
+
+
+                    <div class="col12">
+                      <p class="font">Acquired  </p>
+                      <div class="col13">
+                        <p class="font">H &nbsp; </p>
+                        <SPAN id="acquiblueHSpan">
+                          <BUTTON class="incrementButton minusButtons" onClick="numberDown2('acquiblueH', 1, 69)" >-1</BUTTON>
+                          <INPUT class="incrementScoreboard" id="acquiblueH" type="text" value="0"  disabled>
+                          <BUTTON class="incrementButton plusButtons" onClick="numberUp2('acquiblueH', 1, 69)">+1</BUTTON>
+                        </SPAN>
+                        <p class="font">&nbsp C &nbsp; </p>
+                        <SPAN id="acquiblueCSpan">
+                      <BUTTON class="incrementButton minusButtons" onClick="numberDown2('acquiblueC', 1, 69)" >-1</BUTTON>
+                      <INPUT class="incrementScoreboard" id="acquiblueC" type="text" value="0" disabled>
+                      <BUTTON class="incrementButton plusButtons" onClick="numberUp2('acquiblueC', 1, 69)"  >+1</BUTTON>
+                    </span>
+
+
+                    </div>
+                  </div>
+
+
+
+
+
+                            <div class="col15">
+                              <p class="font"> U</p>
+                              <input type="radio" class="radio" name="test5" id=i2>1
+                              <input type="radio" class="radio" name="test5" id=i2>2
+                              <input type="radio" class="radio" name="test5" id=i2>3
+
+                            </div>
+                            <div class="col16">
+                              <p class="font"> O</p>
+                              <input type="radio" class="radio" name="test6" id=i2>1
+                              <input type="radio" class="radio" name="test6" id=i2>2
+                              <input type="radio" class="radio" name="test6" id=i2>3
+                              </div>
+                          <div class="col18">
+                            <p class="font"> Dropped &nbsp;</p>
+                            <SPAN id="droppedSpan">
+                              <BUTTON class="incrementButton minusButtons" onClick="numberDown3('dropped', 1, 69)" >-1</BUTTON>
+                              <INPUT class="incrementScoreboard" id="dropped" type="text" value="0"  disabled>
+                              <BUTTON class="incrementButton plusButtons" onClick="numberUp3('dropped', 1, 69)">+1</BUTTON>
+                            </SPAN>
+
+                          </div>
+                          <div class="col69">
+                            <p class="font"> Dead</p>
+                          <input type="checkbox" class="largerCheckbox" name="checkBox">
+                        </div>
+                        <div class="col3">
+                            <p class="font"> No Show</p>
+                            <input type="checkbox" class="largerCheckbox" name="checkBox">
+
+                          </div>
