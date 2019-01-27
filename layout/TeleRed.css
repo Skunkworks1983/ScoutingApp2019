@@ -1,0 +1,365 @@
+@font-face {
+font-family: deepspacefont;
+src: url('nasa.ttf');
+}
+
+html {
+  overflow-x: hidden;
+  background-image: url("spacebackground.jpg");
+}
+
+h1 {
+  color:Red;
+  text-align: center;
+  font-family: deepspacefont;
+  text-align: center;
+  flex: 1;
+}
+
+body {
+overflow-x: hidden;
+}
+
+.flex{
+  height: 75px;
+}
+
+.flex2{
+  height:75px;
+}
+
+.flex3{
+  height:75px;
+}
+
+.flex4{
+  height:350px;
+}
+.flex5{
+  height:100px;
+}
+.bignumber{
+  width: 40px;
+  height: 40px;
+
+}
+.largerCheckbox{
+  width:30px;
+  height: 30px;
+}
+
+.incrementButton{
+	text-align: right;
+	font-size: 1.2em;
+	border-style: solid;
+	border-width: 2px;
+	border-color: BLACK;
+  height: 50px;
+	width: 50px;
+	background-color: #EEEEEE;
+}
+
+.minusButtons{
+  {
+  	text-align: right;
+  	font-size: 1.2em;
+  	border-style: solid;
+  	border-width: 2px;
+  	border-color: BLACK;
+  	width: 100px;
+  	background-color: #EEEEEE;
+  }
+}
+
+#CargoCollected{
+  width: 50px;
+  height:40px;
+}
+
+#HatchesCollected{
+  width: 50px;
+  height:40px;
+
+}
+
+#Floor{
+  width: 50px;
+  height:40px;
+}
+
+#DeployCargo1{
+  width: 50px;
+  height:40px;
+
+}
+#DeployCargo2{
+  width: 50px;
+  height:40px;
+
+}
+
+#DeployCargo3{
+  width: 50px;
+  height:40px;
+
+}
+#dropped{
+  width: 50px;
+  height:40px;
+
+}
+
+
+
+.col1 {
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    overflow: hidden;
+    padding: 1em;
+    color: Red;
+    font-family: deepspacefont;
+    height:50px;
+
+}
+
+
+.col2 {
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    overflow: hidden;
+    padding: 1em;
+    color: Red;
+    font-family: deepspacefont;
+    height:50px;
+
+}
+
+.col3{
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: Red;
+  font-family: deepspacefont;
+  height:50px;
+}
+
+.col4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  width: 600px;
+  overflow-x: hidden;
+
+}
+
+.col4 > div {
+
+  width: 300px;
+  margin: 10px;
+  text-align: center;
+  font-size: 30px;
+  color: Red;
+  font-family: deepspacefont;
+  overflow-x: hidden;
+}
+
+.col5{
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  padding: 1em;
+  color: Red;
+  font-family: deepspacefont;
+  height:600px;
+}
+ .col6{
+   align-items: center;
+   justify-content: flex-start;
+   display: flex;
+   overflow: hidden;
+   padding: 1em;
+   color: Red;
+   font-family: deepspacefont;
+   height:30px;
+
+ }
+.col7{
+
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: Red;
+  font-family: deepspacefont;
+  height:30px;
+}
+
+.col8 {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0em;
+  color: Red;
+  font-family: deepspacefont;
+  height:60px
+}
+
+.col9{
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: Red;
+  font-family: deepspacefont;
+  height:20px;
+
+}
+
+.col11{
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: Red;
+  font-family: deepspacefont;
+  height:20px;
+
+}
+
+.col13{
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: Red;
+  font-family: deepspacefont;
+  height:50px;
+
+}
+.col14{
+  align-items: flex-start;
+  justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: Red;
+  font-family: deepspacefont;
+  height:100px;
+
+}
+
+
+.col15{
+  align-items: flex-start;
+  justify-content: flex-start;
+  display: flex;
+  overflow: hidden;
+  padding: 1em;
+  color: Red;
+  font-family: deepspacefont;
+  height:100px;
+
+
+}
+
+
+
+
+#splashSubmit {
+  align-items: end;
+  display: flex;
+  border-style: solid;
+  border-color: Red;
+  border-width: 10px;
+  background-color: #808080;
+  font-size: 12pt;
+  font-weight: bold;
+  color: white;
+  overflow-x: hidden;
+  font-family: deepspacefont;
+
+
+
+
+}
+
+
+.contents{
+ display: flex;
+ justify-content: flex-start;
+ align-items: flex-start;
+ overflow-x: hidden;
+
+
+}
+
+
+#NumberBoxOne{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: hidden;
+}
+
+
+
+
+.logo {
+  align-items: center;
+  margin: auto;
+  display: block;
+}
+
+.title {
+  align-items: center;
+  width: 100vw;
+}
+
+.font {
+  font-size: 1.5em;
+  font-family: deepspacefont;
+  color: Red;
+}
+
+.font2{
+  font-size: 1.5em;
+  font-family: deepspacefont;
+  color: Red;
+
+}
+
+.font3{
+  font-size: 1em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: hidden;
+  font-family: deepspacefont;
+  color: Red;
+
+
+
+}
+
+.font4{
+  font-size: 0.9em;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: hidden;
+  font-family: deepspacefont;
+  color: Red;
+
+}

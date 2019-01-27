@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Skunk Works Scouting App</title>
+    <link rel="stylesheet" href="HomePage2019.css">
+</head>
+
+<style>
+
+
+.flex {
+  display:flex;
+}
+.col1 {
+  flex:1;
+}
+.col2 {
+  flex:2;
+}
+  @font-face {
+font-family: deepspacefont;
+src: url('nasa.ttf');
+}
+
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+h1 {
+color:gray;
+text-align: center;
+font-family: deepspacefont;
+}
+
+img{
+display: block;
+margin-left: auto;
+margin-right: auto;
+margin-top: 50px;
+height: 150px;
+width: 200px;
+}
+
+
+
+form {
+color:gray;
+font-family: deepspacefont;
+width: 100vh;
+
+
+
+}
+
+
+
+</style>
+  <body>
+    <br><br>
+    <div class="title">
+      <img src="https://info.firstinspires.org/hubfs/campaigns/2019_launch/logo-deep-space.svg" class="logo">
+      <h1>Skunk Works Robotics 2019 Scouting App</h1>
+    </div>
+
+    <div class="flex">
+      <div class="col1">
+        <form action = "/action.page.php">
+        <p class="font">Scout:</p>
+        <select class="dropdownMenus" id="scoutSelect">
+					<option value="Default">Elegir Tu Nombre</option>
+					<option value="testScout">Test</option>
+          <option value="testScout">Ethan</option>
+          <option value="testScout">Iliyan</option>
+          <option value="testScout">PPITCHES</option>
+
+				</select>
+        <br><br><br><br><br><br><br>
+        <p class="font">Match Number:</p>
+         <input type="number" name="quantity" min="1" max="999" required><br>
+             </div>
+      <div class="col2">
+        <form action = "/action.page.php">
+          <p class="font">Red:</p>
+              <input type="radio" class="radio" name="test" id=i1>
+              <div class="col3">
+                <p class="font">Blue:</p>
+                    <input type="radio" class="radio" name="test" id=i2>
+              </div>
+
+
+
+        </form>
+
+    </div>
+
+      </form>
+  </div>
+  </body>
+</html>

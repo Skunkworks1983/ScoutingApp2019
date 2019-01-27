@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Tele de Red</title>
+    <link rel="stylesheet" href="TeleRed.css">
+    <script type="text/javascript" src="TeleRed.js"></script>
+</head>
+
+<style>
+
+
+.flex {
+  display:flex;
+}
+.col1 {
+  flex:1;
+}
+
+.col2{
+  flex:1;
+}
+
+.col3{
+  flex:1;
+}
+
+
+  @font-face {
+font-family: deepspacefont;
+src: url('nasa.ttf');
+}
+
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+h1 {
+color:Red;
+text-align: center;
+font-family: deepspacefont;
+}
+
+img{
+display: block;
+margin-left: auto;
+margin-right: auto;
+margin-top: 50px;
+height: 150px;
+width: 200px;
+}
+
+
+
+ {
+color:Red;
+font-family: deepspacefont;
+width: 100vh;
+
+
+
+}
+
+</style>
+
+
+<body>
+  <br><br>
+  <div class="title">
+    <img src="telerocketRed.gif" class="logo">
+    <h1>Tele-op</h1>
+
+  </div>
+  <div class="flex">
+    <div class="col1">
+      <p class="font"> Cargo Collected &nbsp;</p>
+      <SPAN id="CargoCollectedSpan">
+        <BUTTON class="incrementButton minusButtons" onClick="numberDown('CargoCollected', 1, 69)" >-1</BUTTON>
+        <INPUT class="incrementScoreboard" id="CargoCollected" type="text" value="0"  disabled>
+        <BUTTON class="incrementButton plusButtons" onClick="numberUp('CargoCollected', 1, 69)">+1</BUTTON>
+      </SPAN>
+
+    </div>
+
+</div>
+<div class="flex2">
+  <div class="col2">
+    <p class="font">Hatches Collected &nbsp;</p>
+    <SPAN id="HatchesCollectedSpan">
+      <BUTTON class="incrementButton minusButtons" onClick="numberDown2('HatchesCollected', 1, 69)" >-1</BUTTON>
+      <INPUT class="incrementScoreboard" id="HatchesCollected" type="text" value="0"  disabled>
+      <BUTTON class="incrementButton plusButtons" onClick="numberUp2('HatchesCollected', 1, 69)">+1</BUTTON>
+
+     </div>
+
+</div>
+
+
+<div class="flex3">
+  <div class="col3">
+    <p class="font">From Floor: &nbsp;</p>
+    <SPAN id="FloorSpan">
+      <BUTTON class="incrementButton minusButtons" onClick="numberDown3('Floor', 1, 69)" >-1</BUTTON>
+      <INPUT class="incrementScoreboard" id="Floor" type="text" value="0"  disabled>
+      <BUTTON class="incrementButton plusButtons" onClick="numberUp3('Floor', 1, 69)">+1</BUTTON>
+
+
+     </div>
+
+</div>
+
+
+<div class="flex4">
+
+  <p class="font">Deploy Hatch</p><br>
+  <div class="col4">
+    <div>1
+      <p class="font4">L Rocket</p>
+
+    <p class="font3">Near</p>
+    <div class="contents">
+  <table>
+      <tr>
+          <td data-bind="foreach: viewModel.Addresses() ">
+              <label for="CheckBoxOne"><input id="CheckBoxOne" type="checkbox" class="largerCheckbox"  data-bind="attr: { value: $data }, checked: viewModel.ui.OptionsCheck" />
+              <span data-bind="text: $data"></span>
+              </label>
+          </td>
+      </tr>
+  </table>
+  </div>
+      <p class="font3">Far</p>
+      <div class="contents">
+    <table>
+        <tr>
+            <td data-bind="foreach: viewModel.Addresses() ">
+                <label for="CheckBoxOne"><input id="CheckBoxOne" type="checkbox"  class="largerCheckbox"  data-bind="attr: { value: $data }, checked: viewModel.ui.OptionsCheck" />
+                <span data-bind="text: $data"></span>
+                </label>
+            </td>
+        </tr>
+    </table>
+    </div>
+
+    <p class="font4">R Rocket</p>
+    <p class="font3">Near</p>
+    <div class="contents">
+  <table>
+      <tr>
+          <td data-bind="foreach: viewModel.Addresses() ">
+              <label for="CheckBoxOne"><input id="CheckBoxOne" type="checkbox"  class="largerCheckbox"  data-bind="attr: { value: $data }, checked: viewModel.ui.OptionsCheck" />
+              <span data-bind="text: $data"></span>
+              </label>
+          </td>
+      </tr>
+  </table>
+  </div>
+      <p class="font3">Far</p>
+      <div class="contents">
+    <table>
+        <tr>
+            <td data-bind="foreach: viewModel.Addresses() ">
+                <label for="CheckBoxOne"><input id="CheckBoxOne" type="checkbox"  class="largerCheckbox"  data-bind="attr: { value: $data }, checked: viewModel.ui.OptionsCheck" />
+                <span data-bind="text: $data"></span>
+                </label>
+            </td>
+        </tr>
+    </table>
+    </div>
+  </div>
+
+    <div>2
+      <p class="font4">L Rocket</p>
+
+    <p class="font3">Near</p>
+    <div class="contents">
+  <table>
+      <tr>
+          <td data-bind="foreach: viewModel.Addresses() ">
+              <label for="CheckBoxOne"><input id="CheckBoxOne" type="checkbox"  class="largerCheckbox"  data-bind="attr: { value: $data }, checked: viewModel.ui.OptionsCheck" />
+              <span data-bind="text: $data"></span>
+              </label>
+          </td>
+      </tr>
+  </table>
+  </div>
+      <p class="font3">Far</p>
+      <div class="contents">
+    <table>
+        <tr>
+            <td data-bind="foreach: viewModel.Addresses() ">
+                <label for="CheckBoxOne"><input id="CheckBoxOne" type="checkbox"  class="largerCheckbox"  data-bind="attr: { value: $data }, checked: viewModel.ui.OptionsCheck" />
+                <span data-bind="text: $data"></span>
+                </label>
+            </td>
+        </tr>
+    </table>
+    </div>
+
+    <p class="font4">R Rocket</p>
+    <p class="font3">Near</p>
+    <div class="contents">
+  <table>
+      <tr>
+          <td data-bind="foreach: viewModel.Addresses() ">
+              <label for="CheckBoxOne"><input id="CheckBoxOne" type="checkbox"  class="largerCheckbox"   data-bind="attr: { value: $data }, checked: viewModel.ui.OptionsCheck" />
+              <span data-bind="text: $data"></span>
+              </label>
+          </td>
+      </tr>
+  </table>
+  </div>
+      <p class="font3">Far</p>
+      <div class="contents">
+    <table>
+        <tr>
+            <td data-bind="foreach: viewModel.Addresses() ">
+                <label for="CheckBoxOne"><input id="CheckBoxOne" type="checkbox"  class="largerCheckbox"  data-bind="attr: { value: $data }, checked: viewModel.ui.OptionsCheck" />
+                <span data-bind="text: $data"></span>
+                </label>
+            </td>
+        </tr>
+    </table>
+    </div>
+
+
+    </div>
+    <div>3
+      <p class="font4">L Rocket</p>
+
+    <p class="font3">Near</p>
+    <div class="contents">
+  <table>
+      <tr>
+          <td data-bind="foreach: viewModel.Addresses() ">
+              <label for="CheckBoxOne"><input id="CheckBoxOne" type="checkbox"  class="largerCheckbox"  data-bind="attr: { value: $data }, checked: viewModel.ui.OptionsCheck" />
+              <span data-bind="text: $data"></span>
+              </label>
+          </td>
+      </tr>
+  </table>
+  </div>
+      <p class="font3">Far</p>
+      <div class="contents">
+    <table>
+        <tr>
+            <td data-bind="foreach: viewModel.Addresses() ">
+                <label for="CheckBoxOne"><input id="CheckBoxOne" type="checkbox"  class="largerCheckbox"  data-bind="attr: { value: $data }, checked: viewModel.ui.OptionsCheck" />
+                <span data-bind="text: $data"></span>
+                </label>
+            </td>
+        </tr>
+    </table>
+    </div>
+
+    <p class="font4">R Rocket</p>
+    <p class="font3">Near</p>
+    <div class="contents">
+  <table>
+      <tr>
+          <td data-bind="foreach: viewModel.Addresses() ">
+              <label for="CheckBoxOne"><input id="CheckBoxOne" type="checkbox"  class="largerCheckbox"  data-bind="attr: { value: $data }, checked: viewModel.ui.OptionsCheck" />
+              <span data-bind="text: $data"></span>
+              </label>
+          </td>
+      </tr>
+  </table>
+  </div>
+      <p class="font3">Far</p>
+      <div class="contents">
+    <table>
+        <tr>
+            <td data-bind="foreach: viewModel.Addresses() ">
+                <label for="CheckBoxOne"><input id="CheckBoxOne" type="checkbox" class="largerCheckbox"  data-bind="attr: { value: $data }, checked: viewModel.ui.OptionsCheck" />
+                <span data-bind="text: $data"></span>
+                </label>
+            </td>
+        </tr>
+    </table>
+    </div>
+  </div>
+  </div>
+  </div>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+
+
+
+
+  <div class="flex5">
+    <div class="col6">
+        <p class="font2">Deploy Cargo &nbsp; </p>
+        </div>
+
+        <div class="col7">
+          <p class="font2">Lvl 1&nbsp;</p>
+        </div>
+
+        <div class="col8">
+          <SPAN id="DeployCargo1Span">
+          <BUTTON class="incrementButton minusButtons" onClick="numberDown4('DeployCargo1', 1, 69)" >-1</BUTTON>
+          <INPUT class="incrementScoreboard" id="DeployCargo1" type="text" value="0"  disabled>
+          <BUTTON class="incrementButton plusButtons" onClick="numberUp4('DeployCargo1', 1, 69)">+1</BUTTON>
+        </div>
+
+        <div class="col9">
+          <p class="font2"> Lvl 2 &nbsp;</p>
+            </div>
+
+            <div class="col10">
+              <SPAN id="DeployCargo2Span">
+              <BUTTON class="incrementButton minusButtons" onClick="numberDown5('DeployCargo2', 1, 69)" >-1</BUTTON>
+              <INPUT class="incrementScoreboard" id="DeployCargo2" type="text" value="0"  disabled>
+              <BUTTON class="incrementButton plusButtons" onClick="numberUp5('DeployCargo2', 1, 69)">+1</BUTTON>
+            </div>
+
+
+            <div class="col11">
+              <p class="font2"> Lvl 3 &nbsp;</p>
+                </div>
+
+                <div class="col12">
+                  <SPAN id="DeployCargo3Span">
+                  <BUTTON class="incrementButton minusButtons" onClick="numberDown6('DeployCargo3', 1, 69)" >-1</BUTTON>
+                  <INPUT class="incrementScoreboard" id="DeployCargo3" type="text" value="0"  disabled>
+                  <BUTTON class="incrementButton plusButtons" onClick="numberUp6('DeployCargo3', 1, 69)">+1</BUTTON>
+                </div>
+
+    <div class="flex6">
+
+  <div class="col14">
+    <p class="font"> Dropped &nbsp;</p>
+    <SPAN id="droppedSpan">
+      <BUTTON class="incrementButton minusButtons" onClick="numberDown7('dropped', 1, 69)" >-1</BUTTON>
+      <INPUT class="incrementScoreboard" id="dropped" type="text" value="0"  disabled>
+      <BUTTON class="incrementButton plusButtons" onClick="numberUp7('dropped', 1, 69)">+1</BUTTON>
+    </SPAN>
+
+  </div>
+  <div class="col420">
+    <p class="font">Impaired?</p>
+    <input type="checkbox" class="largerCheckbox" name="checkBox">
+
+
+</div>
+
+  <div class="col69">
+    <p class="font"> Dead</p>
+  <input type="checkbox" class="largerCheckbox" name="checkBox">
+</div>
+
+
+</body>
+</html>
