@@ -213,9 +213,9 @@
           <div class="flex-row">
             <div class="flex" style="width: 100%">
               <div class="flex1" style="flex-flow: row wrap;">
-                <h3>Obscured Goal</h3>
+                <h3>Rocket</h3>
                 <div class="">
-                  <h4>Rocket</h4>
+                  <h4>Level 1</h4>
                   <div>
                     Hatch &nbsp;
                     <button type="button" class="down edgeLeft" onclick="down('sandStorm.obscured.rocket.hatch', 1)">&#10556;</button>
@@ -230,7 +230,7 @@
                   </div>
                 </div>
                 <div class="">
-                  <h4>Cargo Ship</h4>
+                  <h4>Level 2</h4>
                   <div>
                     Hatch &nbsp;
                     <button type="button" class="down edgeLeft" onclick="down('sandStorm.obscured.ship.hatch', 1)">&#10556;</button>
@@ -239,16 +239,31 @@
                   </div>
                   <div>
                     Cargo &nbsp;
-                    <button type="button" class="down edgeLeft" onclick="down(sandStorm.obscured.ship.cargo', 1)">&#10556;</button>
+                    <button type="button" class="down edgeLeft" onclick="down('sandStorm.obscured.ship.cargo', 1)">&#10556;</button>
                     <input class="edgeNone" type="number" id="sandStorm.obscured.ship.cargo" value="0" default="0" disabled>
                     <button type="button" class="up edgeRight" onclick="up('sandStorm.obscured.ship.cargo', 1)">&#10557;</button>
                   </div>
                 </div>
+                <div class="">
+                  <h4>Level 3</h4>
+                  <div>
+                    Hatch &nbsp;
+                    <button type="button" class="down edgeLeft" onclick="down('sandStorm.obscured.ship.hatch1', 1)">&#10556;</button>
+                    <input class="edgeNone" type="number" id="sandStorm.obscured.ship.hatch1" value="0" default="0" disabled>
+                    <button type="button" class="up edgeRight" onclick="up('sandStorm.obscured.ship.hatch1', 1)">&#10557;</button>
+                  </div>
+                  <div>
+                    Cargo &nbsp;
+                    <button type="button" class="down edgeLeft" onclick="down('sandStorm.obscured.ship.cargo1', 1)">&#10556;</button>
+                    <input class="edgeNone" type="number" id="sandStorm.obscured.ship.cargo1" value="0" default="0" disabled>
+                    <button type="button" class="up edgeRight" onclick="up('sandStorm.obscured.ship.cargo1', 1)">&#10557;</button>
+                  </div>
+                </div>
               </div>
               <div class="flex1">
-                <h3>Unobscured Goal</h3>
+                <h3>Cargo Ship</h3>
                 <div class="">
-                  <h4>Rocket</h4>
+                  <h4></h4>
                   <div>
                     Hatch &nbsp;
                     <button type="button" class="down edgeLeft" onclick="down('sandStorm.unobscured.rocket.hatch', 1)">&#10556;</button>
@@ -262,52 +277,36 @@
                     <button type="button" class="up edgeRight" onclick="up('sandStorm.unobscured.rocket.cargo', 1)">&#10557;</button>
                   </div>
                 </div>
+                <hr>
                 <div class="">
-                  <h4>Cargo Ship</h4>
+                  <h3>Retrieved Game Pieces</h3>
                   <div>
                     Hatch &nbsp;
-                    <button type="button" class="down edgeLeft" onclick="down('sandStorm.unobscured.ship.hatch', 1)">&#10556;</button>
-                    <input class="edgeNone" type="number" id="sandStorm.unobscured.ship.hatch" value="0" default="0" disabled>
-                    <button type="button" class="up edgeRight" onclick="up('sandStorm.unobscured.ship.hatch', 1)">&#10557;</button>
+                    <button type="button" class="down edgeLeft" onclick="down('sandStorm.retrieved.hatch', 1)">&#10556;</button>
+                    <input class="edgeNone" type="number" id="sandStorm.retrieved.hatch" value="0" default="0" disabled>
+                    <button type="button" class="up edgeRight" onclick="up('sandStorm.retrieved.hatch', 1)">&#10557;</button>
                   </div>
                   <div>
                     Cargo &nbsp;
-                    <button type="button" class="down edgeLeft" onclick="down('sandStorm.unobscured.ship.cargo', 1)">&#10556;</button>
-                    <input class="edgeNone" type="number" id="sandStorm.unobscured.ship.cargo" value="0" default="0" disabled>
-                    <button type="button" class="up edgeRight" onclick="up('sandStorm.unobscured.ship.cargo', 1)">&#10557;</button>
+                    <button type="button" class="down edgeLeft" onclick="down('sandStorm.retrieved.cargo', 1)">&#10556;</button>
+                    <input class="edgeNone" type="number" id="sandStorm.retrieved.cargo" value="0" default="0" disabled>
+                    <button type="button" class="up edgeRight" onclick="up('sandStorm.retrieved.cargo', 1)">&#10557;</button>
+                  </div>    
+                </div>
+                <div class="">
+                  <h3>Dropped Game Pieces</h3>
+                  <div>
+                    Hatch &nbsp;
+                    <button type="button" class="down edgeLeft" onclick="down('sandStorm.dropped.hatch', 1)">&#10556;</button>
+                    <input class="edgeNone" type="number" id="sandStorm.dropped.hatch" value="0" default="0" disabled>
+                    <button type="button" class="up edgeRight" onclick="up('sandStorm.dropped.hatch', 1)">&#10557;</button>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="flex" style="width: 100%">
-              <div class="flex1">
-                <h3>Retrieved Game Pieces</h3>
-                <div>
-                  Hatch &nbsp;
-                  <button type="button" class="down edgeLeft" onclick="down('sandStorm.retrieved.hatch', 1)">&#10556;</button>
-                  <input class="edgeNone" type="number" id="sandStorm.retrieved.hatch" value="0" default="0" disabled>
-                  <button type="button" class="up edgeRight" onclick="up('sandStorm.retrieved.hatch', 1)">&#10557;</button>
-                </div>
-                <div>
-                  Cargo &nbsp;
-                  <button type="button" class="down edgeLeft" onclick="down('sandStorm.retrieved.cargo', 1)">&#10556;</button>
-                  <input class="edgeNone" type="number" id="sandStorm.retrieved.cargo" value="0" default="0" disabled>
-                  <button type="button" class="up edgeRight" onclick="up('sandStorm.retrieved.cargo', 1)">&#10557;</button>
-                </div>
-              </div>
-              <div class="flex1">
-                <h3>Dropped Game Pieces</h3>
-                <div>
-                  Hatch &nbsp;
-                  <button type="button" class="down edgeLeft" onclick="down('sandStorm.dropped.hatch', 1)">&#10556;</button>
-                  <input class="edgeNone" type="number" id="sandStorm.dropped.hatch" value="0" default="0" disabled>
-                  <button type="button" class="up edgeRight" onclick="up('sandStorm.dropped.hatch', 1)">&#10557;</button>
-                </div>
-                <div>
-                  Cargo &nbsp;
-                  <button type="button" class="down edgeLeft" onclick="down('sandStorm.dropped.cargo', 1)">&#10556;</button>
-                  <input class="edgeNone" type="number" id="sandStorm.dropped.cargo" value="0" default="0" disabled>
-                  <button type="button" class="up edgeRight" onclick="up('sandStorm.dropped.cargo', 1)">&#10557;</button>
+                  <div>
+                     Cargo &nbsp;
+                    <button type="button" class="down edgeLeft" onclick="down('sandStorm.dropped.cargo', 1)">&#10556;</button>
+                    <input class="edgeNone" type="number" id="sandStorm.dropped.cargo" value="0" default="0" disabled>
+                    <button type="button" class="up edgeRight" onclick="up('sandStorm.dropped.cargo', 1)">&#10557;</button>
+                  </div>    
                 </div>
               </div>
             </div>
@@ -327,7 +326,7 @@
           </div>
           <div class="flex-row">
             <span></span>
-            <span><input type="radio" name="presence" value="0" id="teleOp.dead"></span>
+            <span>Dead Bot &nbsp;<input type="radio" name="presence" value="0" id="teleOp.dead"></span>
 
 
             <h3>Retrieved</h3>

@@ -174,6 +174,7 @@ function removePlayoffs() {
   matchesObj = matchesObj.sort((a, b) => a.match_number - b.match_number);
 }
 
+// applies 
 function cacheSettings() {
 
 }
@@ -181,6 +182,16 @@ function cacheSettings() {
 // run code
 populateScouts();
 adjustColor();
+
+// unchecks checked radio buttons when clicked again
+$('input[type="radio"]').click(function() {
+  if(this.checked) {
+    this.attr('checked');
+  } else {
+    this.attr('checked');
+  }
+  // console.log(this);
+});
 
 // background hue shifts
 // setInterval(function() {

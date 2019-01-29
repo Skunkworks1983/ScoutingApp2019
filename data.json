@@ -1,0 +1,99 @@
+{
+  "event": "2019wasno",
+  "match": 0,
+  "alliance": "Red",
+  "teamNumber": 0,
+  "scoutStation": 1,
+  "position": 1,
+  "noShow": false,
+  "startPos": 1,
+  "sandStorm": {
+    "crossLine": false,
+    "deadBot": false,
+    "rocket": {
+      "level1": {
+        "hatch": 0,
+        "cargo": 0
+      },
+      "level2": {
+        "hatch": 0,
+        "cargo": 0 
+      },
+      "level3": {
+        "hatch": 0,
+        "cargo": 0  
+      }
+    },
+    "ship": {
+      "hatch": 0,
+      "cargo": 0
+    },
+   "retrieved": {
+      "hatch": 0,
+      "cargo": 0
+    },
+    "dropped": {
+      "hatch": 0,
+      "cargo": 0
+    } 
+  },
+  "teleOp": {
+    "obscured": {
+      "rocket": {
+        "level1": {
+          "hatch": 0,
+          "cargo": 0
+        },
+        "level2": {
+          "hatch": 0,
+          "cargo": 0  
+        },
+        "level3": {
+          "hatch": 0,
+          "cargo": 0  
+        }
+      },
+      "ship": {
+        "hatch": 0,
+        "cargo": 0
+      }
+    },
+    "unobscured": {
+      "rocket": {
+        "level1": {
+          "hatch": 0,
+          "cargo": 0  
+        },
+        "level2": {
+          "hatch": 0,
+          "cargo": 0  
+        },
+        "level3": {
+          "hatch": 0,
+          "cargo": 0  
+        }
+      },
+      "ship": {
+        "hatch": 0,
+        "cargo": 0
+      }
+    },
+    "retrieved": {
+      "loading": {
+        "hatch": 0,
+        "cargo": 0
+      },
+      "floor": {
+        "hatch": 0,
+        "cargo": 0
+      }
+    },
+    "dropped": {
+      "hatch": 0,
+      "cargo": 0
+    },
+    "climbLevel": 0,
+    "assistedClimb": false,
+    "recievedClimb": false
+  }
+}
