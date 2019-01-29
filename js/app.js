@@ -1,5 +1,6 @@
 // import polyfill
-// import scrollSnapPolyfill from 'css-scroll-snap-polyfill'
+// import scrollSnapPolyfill from 'node_modules/css-scroll-snap-polyfill/dist';
+// const scrollSnapPolyfill = require('css-scroll-snap-polyfill');
 
 // variables
 var i; var j; var k;
@@ -26,6 +27,7 @@ $(document).ready(function(){
   // scrollSnapPolyfill();
   // initialize paroller.js
   $("[data-paroller-factor]").paroller();
+  console.log('loaded up');
 });
 
 // function changes the color of an element
@@ -174,7 +176,7 @@ function removePlayoffs() {
   matchesObj = matchesObj.sort((a, b) => a.match_number - b.match_number);
 }
 
-// applies 
+// applies
 function cacheSettings() {
 
 }

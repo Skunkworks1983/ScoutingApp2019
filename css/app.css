@@ -12,6 +12,11 @@ html {
   border: 0;
   margin: 0;
   font-family: "Titillium Web";
+
+  background-repeat: repeat;
+  background-size: contain;
+  background-image: url('../assets/MovingStarfield.gif');
+  background-attachment: fixed;
 }
 
 body {
@@ -177,25 +182,25 @@ input.large {
 
 /* Page 2 */
 #event {
-  background-repeat: repeat;
+  /* background-repeat: repeat;
   background-size: contain;
-  background-image: url('../assets/MovingStarfield.gif');
+  background-image: url('../assets/MovingStarfield.gif'); */
 }
 
 /* Page 3 */
 #sandstorm {
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat;
   background-size: cover;
   background-position: right;
-  background-image: url("../assets/sandstorm.jpg");
+  background-image: url("../assets/sandstorm.jpg"); */
 }
 
 /* Page 4 */
 #teleop {
-  background-repeat: repeat;
+  /* background-repeat: repeat;
   background-size: contain;
   background-position: center;
-  background-image: url("../assets/fuzz.gif");
+  background-image: url("../assets/fuzz.gif"); */
 }
 
 #showDataTable {
