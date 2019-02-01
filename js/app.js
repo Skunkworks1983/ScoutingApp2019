@@ -25,11 +25,20 @@ var matches = new XMLHttpRequest();
 let matchesObj;
 
 // init function
-$(document).ready(function(){
+$(document).ready(function() {
   // CSS Scroll Snap Polyfill for older browsers
   // scrollSnapPolyfill();
   // initialize paroller.js
   $("[data-paroller-factor]").paroller();
+
+  // unchecks checked radio buttons when clicked again
+  $('input[name="presence"]').click(function(){
+    if (this.previous) {
+        this.checked = false;
+    }
+    this.previous = this.checked;
+  });
+
   console.log('loaded up');
 });
 
@@ -54,18 +63,22 @@ function selectAll() {
       items[i].checked = false;
     }
     verify = false;
-    source.innerHTML = 'Select All'
+    source.innerHTML = 'Select All';
   }
 }
 
 // delete selected data and table entries
 function deleteData() {
-  
+  let parent = $('.datacheck:checked').parents('tr');
+  for(i = 0; i < parent.length; i++) {
+    parent[i].remove();
+  }
+  // TODO: delete JSON object from local storage
 }
 
 // function to send, recieve, and process the GET request for match data
 function sendRequest(target) {
-  // send rankings http request
+  // send match http request
   matches.open("GET", TBAURL.concat(target + matchesURL));
   matches.setRequestHeader(TBAheader, TBAkey);
   matches.send();
@@ -74,22 +87,22 @@ function sendRequest(target) {
       switch(this.status) {
           case 200:
             console.log("Ranking request completed successfully");
-            Obj = JSON.parse(matches.responseText);
+            matchObj = JSON.parse(matches.responseText);
             // changeButtonColor("startbutton", "#b7ffb4");
-            matches
+            // matches
             break;
 
           case 401:
             console.warn("TBA API key is invalid");
-            console.info("Enter a valid key (R)");
+            console.info("Enter a valid key");
             // changeButtonColor("startbutton", "#ffb5b5");
-            alert("TBA API key is invalid; Enter a valid key por favor. Error 401 on rankings <-- for the tech support");
+            alert("TBA API key is invalid; Enter a valid key por favor. Error 401 <-- for the tech support");
             break;
 
           case 404:
             console.info("Invalid URL");
             // changeButtonColor("startbutton", "#ffb5b5");
-            alert("Invalid URL entered. Error 404 on rankings <-- for the tech support");
+            alert("Invalid URL entered. Error 404 <-- for the tech support");
             break;
 
           default:
@@ -203,7 +216,7 @@ function removePlayoffs() {
   matchesObj = matchesObj.sort((a, b) => a.match_number - b.match_number);
 }
 
-// applies
+// applies data to local storage
 function cacheSettings() {
 
 }
@@ -212,17 +225,6 @@ function cacheSettings() {
 populateScouts();
 adjustColor();
 
-// unchecks checked radio buttons when clicked again
-$('input[name="presence"]').click(function() {
-  var radio = this;
-  if(radio.checked) {
-    console.log('Radio is checked');
-    setTimeout(function() {
-      radio.checked = false}, 1);
-  } else {
-    return
-  }
-});
 
 // background hue shifts
 // setInterval(function() {
