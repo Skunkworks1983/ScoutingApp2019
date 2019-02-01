@@ -5,6 +5,9 @@
 // variables
 var i; var j; var k;
 var scoutList = ['Ethan Palisoc', 'Evan Palisoc', 'PP Large', 'Caleb Jones', 'Mezie Nwizugbo', 'Patrick Eaton'];
+var buttons;
+var verify = false;
+
 
 // interval for hue shifting
 const interval = 750;
@@ -34,6 +37,30 @@ $(document).ready(function(){
 function changeButtonColor(id, color) {
   button = document.getElementById(id);
   button.style.backgroundColor = color;
+}
+
+// function that checks all the data
+function selectAll() {
+  var source = document.getElementById('selectAll');
+  var items = document.getElementsByClassName('datacheck');
+  if (!verify) {
+    for (i = 0; i < items.length; i++) {
+      items[i].checked = true;
+    }
+    verify = true;
+    source.innerHTML = 'Deselect All';
+  } else {
+    for (i = 0; i < items.length; i++) {
+      items[i].checked = false;
+    }
+    verify = false;
+    source.innerHTML = 'Select All'
+  }
+}
+
+// delete selected data and table entries
+function deleteData() {
+  
 }
 
 // function to send, recieve, and process the GET request for match data
@@ -75,7 +102,7 @@ function sendRequest(target) {
 }
 
 // make field go up
-function up(id, amount) {
+function up(id, amount, limit) {
   var target = document.getElementById(id);
   if(target.value < 6) {
     target.setAttribute("value", parseInt(target.value, 10) + parseInt(amount, 10));
@@ -85,7 +112,7 @@ function up(id, amount) {
 }
 
 // make field go down
-function down(id, amount) {
+function down(id, amount, limit) {
   var target = document.getElementById(id);
   if(target.value > 0) {
     target.setAttribute("value", parseInt(target.value, 10) - parseInt(amount, 10));
@@ -186,13 +213,15 @@ populateScouts();
 adjustColor();
 
 // unchecks checked radio buttons when clicked again
-$('input[type="radio"]').click(function() {
-  if(this.checked) {
-    this.attr('checked');
+$('input[name="presence"]').click(function() {
+  var radio = this;
+  if(radio.checked) {
+    console.log('Radio is checked');
+    setTimeout(function() {
+      radio.checked = false}, 1);
   } else {
-    this.attr('checked');
+    return
   }
-  // console.log(this);
 });
 
 // background hue shifts

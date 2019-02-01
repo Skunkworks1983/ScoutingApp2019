@@ -171,13 +171,20 @@ input.large {
   overflow: hidden;
 }
 
+.scrollable {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 /* Page 1 */
 #settings {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("../assets/vaporwave.jpg");
   background-position: center;
-  /* font-family: "SimSun" !important; */
+
+  /* Windows 95 */
+  font-family: "MS Sans Serif" !important;
 }
 
 /* Page 2 */
@@ -403,6 +410,14 @@ button:focus {
 
 button.win95 {
 
+}
+
+.box95 {
+  background:#C0C0C0;
+  border-width:1px;
+  border-color:#FFFFFF #808080 #808080 #FFFFFF;
+  border-style:solid;
+  border-radius: 0;
 }
 
 .title95 {

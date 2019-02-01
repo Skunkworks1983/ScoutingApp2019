@@ -50,10 +50,10 @@
   </div>
 
   <!-- Main -->
-  <div id="scroll-container">
+  <div style="background-position: center;" id="scroll-container"  data-paroller-factor="0.3" data-paroller-direction="horizontal" data-paroller-type="background">
     <!-- Settings + Upload | Page 1 -->
-    <section class="slide" id="settings">
-      <div class="slide" data-paroller-factor="0.3" data-paroller-direction="horizontal" data-paroller-type="background">
+    <section class="slide box95" id="settings" data-paroller-factor="0.3" data-paroller-direction="horizontal" data-paroller-type="background">
+      <div class="slide">
         <div class="content">
           <div class="title">
             <h1>Ｓｅｔｔｉｎｇｓ　（永翁愛）</h1>
@@ -80,12 +80,14 @@
             <br>
             <div class="flex1">
               <h1>Ｄａｔａ Ｕｐｌｏａｄ　（蒸のマ愛）</h1>
-              <button type="button" name="upload" class="edgeNone" onclick="">Upload Selected</button>
-              <button type="button" name="delete" class="edgeNone" onclick="">Delete Selected</button>
-              <button type="button" name="uploadAll" class="edgeRight" onclick="">Upload all</button>
+              <div class="flex flex-row flex-justify-space-evenly">
+                <button type="button" name="upload" class="edgeNone" onclick="">Upload Selected</button>
+                <button type="button" name="upload" class="edgeNone" onclick="deleteData();">Delete Selected</button>
+                <button id="selectAll" type="button" name="upload" onclick='selectAll();' class="edgeRight">Select All</button>
+              </div>
               <!-- Data Table -->
               <hr>
-              <div class="table">
+              <div class="table" style="width: 100%;">
                 <table>
                   <thead>
                     <tr>
@@ -97,73 +99,73 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight datacheck"></td>
                       <td>2019wasno</td>
                       <td>12</td>
                       <td>1983</td>
                     </tr>
                     <tr>
-                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight datacheck"></td>
                       <td>2019wasno</td>
                       <td>13</td>
                       <td>2046</td>
                     </tr>
                     <tr>
-                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight datacheck"></td>
                       <td>2019wasno</td>
                       <td>13</td>
                       <td>2046</td>
                     </tr>
                     <tr>
-                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight datacheck"></td>
                       <td>2019wasno</td>
                       <td>13</td>
                       <td>2046</td>
                     </tr>
                     <tr>
-                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight datacheck"></td>
                       <td>2019wasno</td>
                       <td>13</td>
                       <td>2046</td>
                     </tr>
                     <tr>
-                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight datacheck"></td>
                       <td>2019wasno</td>
                       <td>13</td>
                       <td>2046</td>
                     </tr>
                     <tr>
-                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight datacheck"></td>
                       <td>2019wasno</td>
                       <td>13</td>
                       <td>2046</td>
                     </tr>
                     <tr>
-                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight datacheck"></td>
                       <td>2019wasno</td>
                       <td>13</td>
                       <td>2046</td>
                     </tr>
                     <tr>
-                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight datacheck"></td>
                       <td>2019wasno</td>
                       <td>13</td>
                       <td>2046</td>
                     </tr>
                     <tr>
-                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight datacheck"></td>
                       <td>2019wasno</td>
                       <td>13</td>
                       <td>2046</td>
                     </tr>
                     <tr>
-                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight datacheck"></td>
                       <td>2019wasno</td>
                       <td>13</td>
                       <td>2046</td>
                     </tr>
                     <tr>
-                      <td><input type="checkbox" value="0" class="fatFinger edgeRight"></td>
+                      <td><input type="checkbox" value="0" class="fatFinger edgeRight datacheck"></td>
                       <td>2019wasno</td>
                       <td>13</td>
                       <td>2046</td>
@@ -180,7 +182,7 @@
 
     <!-- Match + Scout Select | Page 2 | Default Page -->
     <section class="slide" id="event">
-      <div class="slide" data-paroller-factor="0.3" data-paroller-direction="horizontal" data-paroller-type="background">
+      <div class="slide">
         <div class="content">
           <h1>Pre-Match</h1>
           <div class="matchSelect">
@@ -320,7 +322,7 @@
     <!-- Tele-Op | Page 4 -->
     <section class="slide" id="teleop">
       <div class="slide" data-paroller-factor="0.3" data-paroller-direction="horizontal" data-paroller-type="background">
-        <div class="content">
+        <div class="content scrollable">
           <div class="title-row">
             <img id="teleLogo" alt="Teleoperated Logo" class="title-img">
           </div>
