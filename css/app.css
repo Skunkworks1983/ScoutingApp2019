@@ -247,6 +247,17 @@ input.large {
   height: 120px;
   width: 70px;
 }
+#memesers{
+  justify-content: center;
+  align-items: center;
+  overflow:hidden;
+  height:500px;
+  width:500px;
+}
+
+.meme {
+    display: flex;
+}
 
 /* Page 2 */
 #event {

@@ -7,6 +7,7 @@ var i; var j; var k;
 var scoutList = ['Ethan Palisoc', 'Evan Palisoc', 'PP Large', 'Caleb Jones', 'Mezie Nwizugbo', 'Patrick Eaton'];
 var buttons;
 var verify = false;
+var meme;
 
 
 // interval for hue shifting
@@ -113,6 +114,8 @@ function sendRequest(target) {
     }
   }
 }
+meme = Math.floor(Math.random() * 40);
+document.getElementById("memesers").src = "assets/memes/" + meme + ".png";
 
 // make field go up
 function up(id, amount, limit) {
