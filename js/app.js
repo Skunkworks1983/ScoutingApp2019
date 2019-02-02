@@ -67,6 +67,10 @@ function selectAll() {
     source.innerHTML = 'Select All';
   }
 }
+//local localStorage
+localStorage.setItem("previousMatch", jObj.match);
+localStorage.setItem("previousScout", jObj.scoutName);
+
 
 // delete selected data and table entries
 function deleteData() {
@@ -126,7 +130,6 @@ function up(id, amount, limit) {
     return "Trying to go over 6"
   }
 }
-
 // make field go down
 function down(id, amount, limit) {
   var target = document.getElementById(id);
