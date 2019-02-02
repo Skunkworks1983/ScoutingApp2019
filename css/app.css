@@ -186,6 +186,67 @@ input.large {
   /* Windows 95 */
   font-family: "MS Sans Serif" !important;
 }
+.col1{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height:50px;
+  width:482px;
+}
+.matchnumberbox{
+  overflow: hidden;
+  display: flex;
+
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: solid red;
+  height: 100px;
+  width: 60px;
+}
+
+.matchnumberbox2 {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1em;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  border: solid red;
+  height: 120px;
+  width: 70px;
+}
+.matchnumberbox3{
+  overflow: hidden;
+  display: flex;
+
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: solid red;
+  height: 100px;
+  width: 60px;
+}
+
+.matchnumberbox4 {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1em;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  border: solid red;
+  height: 120px;
+  width: 70px;
+}
 
 /* Page 2 */
 #event {
