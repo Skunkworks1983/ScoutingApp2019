@@ -24,24 +24,8 @@ const matchesURL = "/matches/simple";
 var matches = new XMLHttpRequest();
 // define JSON objects
 let matchesObj;
-
-// init function
-$(document).ready(function() {
-  // CSS Scroll Snap Polyfill for older browsers
-  // scrollSnapPolyfill();
-  // initialize paroller.js
-  $("[data-paroller-factor]").paroller();
-
-  // unchecks checked radio buttons when clicked again
-  $('input[name="presence"]').click(function(){
-    if (this.previous) {
-        this.checked = false;
-    }
-    this.previous = this.checked;
-  });
-
-  console.log('loaded up');
-});
+// verify HTTP requests
+let verifyHTTP = false;
 
 // function changes the color of an element
 function changeButtonColor(id, color) {
@@ -81,8 +65,43 @@ function deleteData() {
   // TODO: delete JSON object from local storage
 }
 
+// session cache non-essential settings like scout name and match number
+function sessionStorage() {
+  if(storageAvailable('sessionStorage')) {
+    sessionStorage.matchNumber = $('#matchNumber').value;
+    sessionStorage.scoutName = $('#scouts').value;
+  } else {
+    alert('Your browser does not support the Web Storage API. If you are using Internet Explorer 7 or lower, try using a modern browser. If you are using private mode, switch to a regular one. If none of theses work, contact Skunk Works Robotics\'s Scouting Team.');
+  }
+}
+
+// check for Web Storage API support
+function storageAvailable(type) {
+    try {
+        var storage = window[type],
+            x = '__storage_test__';
+        storage.setItem(x, x);
+        storage.removeItem(x);
+        return true;
+    }
+    catch(e) {
+        return e instanceof DOMException && (
+            // everything except Firefox
+            e.code === 22 ||
+            // Firefox
+            e.code === 1014 ||
+            // test name field too, because code might not be present
+            // everything except Firefox
+            e.name === 'QuotaExceededError' ||
+            // Firefox
+            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+            // acknowledge QuotaExceededError only if there's something already stored
+            storage.length !== 0;
+    }
+}
+
 // function to send, recieve, and process the GET request for match data
-function sendRequest(target) {
+function sendGetRequest(target) {
   // send match http request
   matches.open("GET", TBAURL.concat(target + matchesURL));
   matches.setRequestHeader(TBAheader, TBAkey);
@@ -91,10 +110,10 @@ function sendRequest(target) {
     if(this.readyState === 4) {
       switch(this.status) {
           case 200:
-            console.log("Ranking request completed successfully");
+            console.log("Match request completed successfully");
             matchObj = JSON.parse(matches.responseText);
+            verifyHTTP = true;
             // changeButtonColor("startbutton", "#b7ffb4");
-            // matches
             break;
 
           case 401:
@@ -112,14 +131,43 @@ function sendRequest(target) {
 
           default:
             // changeButtonColor("startbutton", "#ffb5b5");
-            console.warn("Something wrong happened in rankings. This means the function went all the way through the switch without triggering any conditions");
+            console.warn("Something wrong happened in matches. This means the function went all the way through the switch without triggering any conditions");
             break;
       }
     }
   }
 }
-meme = Math.floor(Math.random() * 40);
-document.getElementById("memesers").src = "assets/memes/" + meme + ".png";
+
+// send get request + data validation
+function getRequest() {
+  var enterEvent = document.getElementById('eventcode');
+  var eventCode = enterEvent.value;
+  var ec1 = eventCode.substr(0,4);
+  var ec2 = eventCode.substr(4);
+  if(parseInt(ec1, 10) === 2019 && ec2.length === 2 || ec2.length === 3 || ec2.length === 4 || ec2.length === 5) {
+    sendGetRequest(eventCode);
+    setTimeout(function() {
+      if(verifyHTTP) {
+        enterEvent.style.boxShadow = '0px 0px';
+        localStorage.setItem('matchObj', JSON.stringify(removePlayoffs(matchObj)));
+        alert('Event match schedule has been recieved and is in local cache.');
+      } else {
+        console.warn('error with get request');
+        alert('Error with event code!');
+      }
+    }, 5000);
+  } else {
+    enterEvent.style.boxShadow = '0px 0px 2px 0.22em red';
+  }
+}
+
+function validateLocalStorage() {
+  if (typeof localStorage.matchObj !== 'undefined') {
+    console.log('Event Schedule is in local cache');
+  } else {
+    alert('Event Schedule is missing. Make sure you have one by getting it from the settings page!');
+  }
+}
 
 // make field go up
 function up(id, amount, limit) {
@@ -140,21 +188,7 @@ function down(id, amount, limit) {
   }
 }
 
-function getRequest() {
-  var enterEvent = document.getElementById('eventcode');
-  var eventCode = enterEvent.value;
-  var ec1 = eventCode.substr(0,4);
-  var ec2 = eventCode.substr(4);
-  if(parseInt(ec1, 10) === 2019 && ec2.length === 2 || ec2.length === 3 || ec2.length === 4 || ec2.length === 5) {
-    sendRequest(eventCode);
-    enterEvent.style.boxShadow = '0px 0px';
-    // send the request
-    return true
-  } else {
-    enterEvent.style.boxShadow = '0px 0px 2px 0.22em red';
-  }
-}
-
+// populate the scout name table
 function populateScouts() {
   var list = document.getElementById('scouts');
   for (i=0; i < scoutList.length; i++) {
@@ -167,6 +201,15 @@ function populateScouts() {
   }
 }
 
+// on submit or restart, return scoutname and match number to previous values
+function restoreFields() {
+  if(sessionStorage.submitted) {
+    $('#matchNumber').value = sessionStorage.match + 1;
+  }
+  $('#scouts').value = sessionStorage.scoutName;
+}
+
+// add data to upload table
 function populateTable() {
   // retrieve data out of local storage
   // get out the old table population code
@@ -216,10 +259,16 @@ function adjustColor() {
   }
 }
 
+function meme() {
+  meme = Math.floor(Math.random() * 68);
+  $('#memesers').attr('src', "assets/memes/"+meme+".png");
+}
+
 // this function removes any playoff matches (in case there are any)
-function removePlayoffs() {
-  matchesObj = matchesObj.filter(result => result.comp_level === "qm");
-  matchesObj = matchesObj.sort((a, b) => a.match_number - b.match_number);
+function removePlayoffs(object) {
+  object = object.filter(result => result.comp_level === "qm");
+  object = object.sort((a, b) => a.match_number - b.match_number);
+  return object
 }
 
 // applies data to local storage
@@ -227,10 +276,28 @@ function cacheSettings() {
 
 }
 
-// run code
-populateScouts();
-adjustColor();
+// init function
+$(document).ready(function() {
+  // CSS Scroll Snap Polyfill for older browsers
+  // scrollSnapPolyfill();
+  // initialize paroller.js
+  // $("[data-paroller-factor]").paroller();
 
+  // unchecks checked radio buttons when clicked again
+  $('input[name="presence"]').click(function(){
+    if (this.previous) {
+        this.checked = false;
+    }
+    this.previous = this.checked;
+  });
+
+  populateScouts();
+  adjustColor();
+  meme();
+  validateLocalStorage();
+
+  console.log('loaded up');
+});
 
 // background hue shifts
 // setInterval(function() {

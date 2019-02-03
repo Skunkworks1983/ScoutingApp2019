@@ -181,82 +181,10 @@ input.large {
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("../assets/vaporwave.jpg");
-  background-position: center;
+  background-position: center center;
 
   /* Windows 95 */
   font-family: "MS Sans Serif" !important;
-}
-.col1{
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  height:50px;
-  width:482px;
-}
-.matchnumberbox{
-  overflow: hidden;
-  display: flex;
-
-  justify-content: flex-start;
-  align-items: flex-start;
-  border: solid red;
-  height: 100px;
-  width: 60px;
-}
-
-.matchnumberbox2 {
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 1em;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-  border: solid red;
-  height: 120px;
-  width: 70px;
-}
-.matchnumberbox3{
-  overflow: hidden;
-  display: flex;
-
-  justify-content: flex-start;
-  align-items: flex-start;
-  border: solid red;
-  height: 100px;
-  width: 60px;
-}
-
-.matchnumberbox4 {
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 1em;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-  border: solid red;
-  height: 120px;
-  width: 70px;
-}
-#memesers{
-  justify-content: center;
-  align-items: center;
-  overflow:hidden;
-  height:500px;
-  width:500px;
-}
-
-.meme {
-    display: flex;
 }
 
 /* Page 2 */
@@ -273,42 +201,6 @@ input.large {
   background-position: right;
   background-image: url("../assets/sandstorm.jpg"); */
 }
-
-.matchnumberbox {
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 1em;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  border: 1px solid red;
-  height: 40px;
-  width: 60px;
-}
-
-.matchnumberbox2 {
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 1em;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-  border: 1px solid red;
-  height: 40px;
-  width: 60px;
-}
-
-
 
 /* Page 4 */
 #teleop {
@@ -491,20 +383,147 @@ span {
   box-sizing: content-box;
 }
 
-.meme {
-
-}
-
-#meme {
-
-}
-
 .up {
   background-color: rgba(120,0,0,0.5);
 }
 
 .down {
   background-color: rgba(0,0,120,0.5);
+}
+
+.col1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  height:50px;
+  width:482px;
+}
+
+.matchnumberbox {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+  -webkit-box-pack: start;
+
+  -ms-flex-pack: start;
+
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  border: solid red;
+  height: 100px;
+  width: 60px;
+}
+
+.matchnumberbox2 {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1em;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  border: solid red;
+  height: 120px;
+  width: 70px;
+}
+.matchnumberbox3 {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+  -webkit-box-pack: start;
+
+  -ms-flex-pack: start;
+
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  border: solid red;
+  height: 100px;
+  width: 60px;
+}
+
+.matchnumberbox4 {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1em;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  border: solid red;
+  height: 120px;
+  width: 70px;
+}
+
+#memesers {
+  width: 100%;
+}
+
+.meme {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
+  justify-content: space-evenly;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.matchnumberbox {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1em;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  border: 1px solid red;
+  height: 40px;
+  width: 60px;
+}
+
+.matchnumberbox2 {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1em;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  border: 1px solid red;
+  height: 40px;
+  width: 60px;
 }
 
 button.up, button.down {
