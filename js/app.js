@@ -9,7 +9,6 @@ var buttons;
 var verify = false;
 var meme;
 
-
 // interval for hue shifting
 const interval = 750;
 let degree = 0;
@@ -51,10 +50,6 @@ function selectAll() {
     source.innerHTML = 'Select All';
   }
 }
-//local localStorage
-localStorage.setItem("previousMatch", jObj.match);
-localStorage.setItem("previousScout", jObj.scoutName);
-
 
 // delete selected data and table entries
 function deleteData() {
@@ -164,6 +159,9 @@ function getRequest() {
 function validateLocalStorage() {
   if (typeof localStorage.matchObj !== 'undefined') {
     console.log('Event Schedule is in local cache');
+    matchObj = JSON.parse(localStorage.matchObj);
+    $('#eventcode').attr('value', matchObj[0].event_key);
+    document.getElementById('eventcode').style.boxShadow = '0px 0px 2px 0.22em green';
   } else {
     alert('Event Schedule is missing. Make sure you have one by getting it from the settings page!');
   }
