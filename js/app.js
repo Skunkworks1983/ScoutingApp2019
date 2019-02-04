@@ -139,7 +139,7 @@ function getRequest() {
   var eventCode = enterEvent.value;
   var ec1 = eventCode.substr(0,4);
   var ec2 = eventCode.substr(4);
-  if(parseInt(ec1, 10) === 2019 && ec2.length === 2 || ec2.length === 3 || ec2.length === 4 || ec2.length === 5) {
+  if(parseInt(ec1, 10) >= 2016 && ec2.length === 2 || ec2.length === 3 || ec2.length === 4 || ec2.length === 5) {
     sendGetRequest(eventCode);
     setTimeout(function() {
       if(verifyHTTP) {
