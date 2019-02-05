@@ -37,12 +37,12 @@
 
 <body>
   <!-- Scroll Buttons -->
-  <!-- TODO: add svg here that is animatable and clickable for use as scroll buttons -->
   <div class="nav-container">
     <img src="assets/arrow-left.svg" title="Previous Page" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();">
     <!-- <object type="image/svg+xml" data="assets/arrow-left.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
       Fallback Picture here
     </object> -->
+    <img src="assets/empty.svg" alt="Page Logo" id="title-img">
     <img src="assets/arrow-right.svg" title="Next Page" alt="navigation arrows" id="right-nav-arrow" onclick="scrollButtonRight();">
     <!-- <object type="image/svg+xml" data="assets/arrow-right.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
       Fallback image in here
@@ -50,7 +50,7 @@
   </div>
 
   <!-- Main -->
-  <div style="" id="scroll-container"  data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background">
+  <div id="scroll-container"  data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background" onscroll="scrollLogo();">
     <!-- Settings + Upload | Page 1 -->
     <section style="background-position-x: 50%; background-position-y: 50%;" class="slide box95" id="settings" data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background">
       <div class="slide">
@@ -133,9 +133,9 @@
     <!-- Sandstorm | Page 3 -->
     <section class="slide" id="sandstorm">
       <div class="slide" data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background">
+        <!-- <img id="sandstormLogo" alt="Sandstorm Logo" class="title-img"> -->
         <div class="content">
           <div class="title-row">
-            <img id="sandstormLogo" alt="Sandstorm Logo" class="title-img" style="flex: 1;">
             <div class="flex1" style="margin-left: 5vw;">
               <h4>Start Position</h4>
               <span>Level 1<input class="fatFinger" type="radio" name="startPos" value="0" id="startPos1"> Level 2<input class="fatFinger" type="radio" name="startPos" value="0" id="startPos2"> </span>
@@ -258,36 +258,20 @@
 
     <!-- Tele-Op | Page 4 -->
     <section class="slide" id="teleop">
+      <!-- <img id="teleLogo" alt="Teleoperated Logo" class="title-img"> -->
       <div class="slide" data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background">
         <div class="content scrollable">
-          <div class="title-row">
-            <img id="teleLogo" alt="Teleoperated Logo" class="title-img">
-          </div>
-          <div class="flex-row">
-            <span></span>
-            <span>Dead Bot &nbsp;<input type="radio" name="presence" value="0" id="teleOp.dead"></span>
-
-
-            <h3>Retrieved</h3>
-            <div class="">
-              <h4>From Loading Station</h4>
-              <div>Hatch &nbsp; <input class="edgeNone" type="number" id="" value="0" default="0" disabled></div>
-              <div>Cargo &nbsp; <input class="edgeNone" type="number" id="" value="0" default="0" disabled>
+          <div class="flex flex-row">
+            <div class="flex1">
+              <h3>Obscured</h3>
+              <span>
+                <input type="number" disabled value="0" id>
+                <input type="number" disabled>
+              </span>
             </div>
-            <div class="">
-              <h4>From Floor</h4>
-              <div>Hatch &nbsp; <input class="edgeNone" type="number" id="" value="0" default="0" disabled></div>
-              <div>Cargo &nbsp; <input class="edgeNone" type="number" id="" value="0" default="0" disabled></div>
+            <div class="flex1">
+              <h3>Unobscured</h3>
             </div>
-            <div class="matchnumberbox3">
-              </div>
-              <div class="col1">
-                <div class="matchnumberbox4">
-              </div>
-              </div>
-
-
-
           </div>
         </div>
       </div>
@@ -300,7 +284,7 @@
   <!-- Import Parallax.js -->
   <!-- <script src="js/parallax.min.js"></script> -->
   <!-- alternate parallax plugin (works for horizontal scrolling) -->
-  <script type="text/javascript" src="js/jquery.paroller.min.js"></script>
+  <!-- <script type="text/javascript" src="js/jquery.paroller.min.js"></script> -->
   <!-- Import Velocity.js -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js"></script>

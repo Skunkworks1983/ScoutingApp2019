@@ -152,6 +152,7 @@ input.large {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  flex-flow: column nowrap;
   z-index: 2;
   /* This attribute is not supported by any browser atm */ scroll-snap-stop: always;
 }
@@ -274,22 +275,19 @@ input.large {
   display: -ms-flexbox;
   display: flex;
   z-index: 3;
+  flex-flow: row nowrap;
+  justify-content: space-between;
   width: 100vw;
   max-height: 15vh;
   min-height: 10vh;
   position: fixed;
-  justify-self: center;
 }
 
 #left-nav-arrow {
-  -ms-flex-item-align: start;
-  align-self: flex-start;
   height: 12vh;
 }
 
 #right-nav-arrow {
-  -ms-flex-item-align: end;
-  align-self: flex-end;
   height: 12vh;
 }
 
@@ -535,10 +533,12 @@ button:focus {
   outline: none;
 }
 
+/* Windows 95 style button */
 button.win95 {
 
 }
 
+/* Windows 95 box */
 .box95 {
   background:#C0C0C0;
   border-width:1px;
@@ -547,10 +547,12 @@ button.win95 {
   border-radius: 0;
 }
 
+/* Windows 95 title bar */
 .title95 {
 
 }
 
+/* For the top row of each page */
 .title-row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -564,10 +566,11 @@ button.win95 {
   justify-content: flex-start;
 }
 
-.title-img {
-  max-height: 15vh;
+/* For the title images */
+#title-img {
+  max-height: 12vh;
   height: auto;
-
+  transition: all ease 0.5;
 }
 
 /* Reset (circle fill) animation */

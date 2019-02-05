@@ -26,6 +26,18 @@ let matchesObj;
 // verify HTTP requests
 let verifyHTTP = false;
 
+// page scroll positions
+page = {
+  settings: 0,
+  settings_alt: 1,
+  event: window.innerWidth,
+  event_alt: window.innerWidth + 2,
+  sandstorm: window.innerWidth * 2,
+  sandstorm_alt: window.innerWidth * 2 + 2,
+  teleop: window.innerwidth * 3,
+  teleop_alt: window.innerWidth * 3 + 2,
+};
+
 // function changes the color of an element
 function changeButtonColor(id, color) {
   button = document.getElementById(id);
@@ -220,38 +232,97 @@ function clearInput() {
 
 }
 
+// changes the logo on the title bar based on the scroll position
+function scrollLogo() {
+  var color = document.getElementById('colorTeam');
+  var img = $('#title-img');
+  var content = $('#scroll-container');
+  if(color.value === '1' || color.value === '2' || color.value === '3') {
+    switch(content.scrollLeft()) {
+      case 0:
+      case 1:
+      case 2:
+        img.attr('src', 'assets/empty.svg');
+        console.log('On settings page');
+        break;
+  
+      case page.event:
+      case page.event_alt:
+        img.attr('src', 'assets/empty.svg');
+        console.log('On event page');
+        break;
+  
+      case page.sandstorm:
+      case page.sandstorm_alt:
+        img.attr('src', 'assets/SandstormRed.png');
+        console.log('On sandstorm page');
+        break;
+  
+      case page.teleop:
+      case page.teleop_alt:
+        img.attr('src', 'assets/TeleOpRocketRed.gif');
+        console.log('On teleop page');
+        break;
+
+      default:
+        img.attr('src', 'assets/empty.svg');
+        console.log(content.scrollLeft());
+        // console.log('Not on a particular page');
+        break;
+    }  
+  } else if(color.value === '4' || color.value === '5' || color.value === '6') {
+    switch(content.scrollLeft()) {
+      case 0:
+      case 1:
+      case 2:
+        img.attr('src', 'assets/empty.svg');
+        console.log('On settings page');
+        break;
+  
+      case page.event:
+      case page.settings_alt:
+        img.attr('src', 'assets/empty.svg');
+        console.log('On event page');
+        break;
+  
+      case page.sandstorm:
+      case page.sandstorm_alt:
+        img.attr('src', 'assets/SandstormBlue.png');
+        console.log('On sandstorm page');
+        break;
+  
+      case page.teleop:
+      case page.teleop_alt:
+        img.attr('src', 'assets/TeleOpRocketBlue.gif');
+        console.log('On teleop page');
+        break;
+
+      default:
+        img.attr('src', 'assets/empty.svg');
+        console.log('Not on particular page');
+        break;
+    }  
+  }
+}
+
 // function changes the color of the sandstorm logo based on the tablet
 function adjustColor() {
   var color = document.getElementById('colorTeam');
-  var sandstormLogo = document.getElementById('sandstormLogo');
-  var teleLogo = document.getElementById('teleLogo');
+  // var sandstormLogo = document.getElementById('sandstormLogo');
+  // var teleLogo = document.getElementById('teleLogo');
   var teamNumber = document.getElementsByClassName('team-number');
   if(color.value === '1' || color.value === '2' || color.value === '3') {
-    // adjust sandstorm logo
-    sandstormLogo.setAttribute('src', 'assets/SandstormRed.png');
-
     // adjust team number border
     for(i=0; i < teamNumber.length; i++) {
       teamNumber[i].style.borderColor = 'red';
     };
-
-    // adjust tele logo color
-    teleLogo.setAttribute('src', 'assets/TeleOpRocketRed.gif');
-
     // adjust the select color
     color.style.backgroundColor = 'red';
   } else if(color.value === '4' || color.value === '5' || color.value === '6') {
-    // adjust sandstorm logo
-    sandstormLogo.setAttribute('src', 'assets/SandstormBlue.png');
-
     // adjust team number logo
     for(i=0; i < teamNumber.length; i++) {
       teamNumber[i].style.borderColor = 'blue';
     };
-
-    // adjust tele logo color
-    teleLogo.setAttribute('src', 'assets/TeleOpRocketBlue.gif');
-
     // adjust select color
     color.style.backgroundColor = 'blue';
   }
