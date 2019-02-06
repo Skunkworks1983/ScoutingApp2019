@@ -181,20 +181,47 @@ function validateLocalStorage() {
 
 // make field go up
 function up(id, amount, limit) {
-  var target = document.getElementById(id);
-  if(target.value < 6) {
-    target.setAttribute("value", parseInt(target.value, 10) + parseInt(amount, 10));
+  if(id === this) {
+    console.log('Pointed at \'this\' selector.');
+    if(target.value < limit) {
+      target.setAttribute("value", parseInt(target.value, 10) + parseInt(amount, 10));
+    } else {
+      return "Trying to go over " + limit;
+    }  
   } else {
-    return "Trying to go over 6"
+    console.log('Not pointed at \'this\' selector.');
+    var target = document.getElementById(id);
+    if(target.value < limit) {
+      target.setAttribute("value", parseInt(target.value, 10) + parseInt(amount, 10));
+    } else {
+      return "Trying to go over " + limit;
+    }
   }
 }
+
+function goUp(id) {
+  elem = id;
+  num = parseInt(elem.innerHTML,10);
+  if(num < 2) {
+    elem.innerHTML = num + 1;
+  }
+}
+
 // make field go down
 function down(id, amount, limit) {
-  var target = document.getElementById(id);
-  if(target.value > 0) {
-    target.setAttribute("value", parseInt(target.value, 10) - parseInt(amount, 10));
+  if(id === this) {
+    if(target.value > limit) {
+      target.setAttribute("value", parseInt(target.value, 10) - parseInt(amount, 10));
+    } else {
+      return "Trying to go under " + limit
+    }  
   } else {
-    return "Trying to go under 0"
+    var target = document.getElementById(id);
+    if(target.value > limit) {
+      target.setAttribute("value", parseInt(target.value, 10) - parseInt(amount, 10));
+    } else {
+      return "Trying to go under " + limit
+    }  
   }
 }
 
@@ -266,8 +293,7 @@ function scrollLogo() {
 
       default:
         img.attr('src', 'assets/empty.svg');
-        console.log(content.scrollLeft());
-        // console.log('Not on a particular page');
+        console.log('Not on a particular page');
         break;
     }  
   } else if(color.value === '4' || color.value === '5' || color.value === '6') {
@@ -329,7 +355,7 @@ function adjustColor() {
 }
 
 function meme() {
-  meme = Math.floor(Math.random() * 89);
+  meme = Math.floor(Math.random() * 90);
   $('#memesers').attr('src', "assets/memes/"+meme+".png");
 }
 

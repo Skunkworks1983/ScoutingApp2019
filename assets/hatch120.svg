@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="-127.97485"
+     inkscape:cx="273.56079"
      inkscape:cy="278.9775"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
@@ -58,19 +58,20 @@
      id="layer1"
      transform="translate(-35.279756,-37.398805)">
     <g
-       id="g852">
+       id="g852"
+       transform="rotate(90,95.279755,97.398804)">
       <circle
          r="59.73481"
          cy="97.398804"
          cx="95.279755"
          id="path815"
-         style="opacity:1;fill:#ffffff;stroke:#000000;stroke-width:0.53037852;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1" />
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.53037852;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
       <circle
          r="49.654728"
          cy="97.398804"
          cx="95.279755"
          id="path817"
-         style="opacity:1;fill:#fabe02;stroke:#fabe02;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:3,6;stroke-opacity:1;fill-opacity:1;stroke-dashoffset:0" />
+         style="opacity:1;fill:#fabe02;fill-opacity:1;stroke:#fabe02;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:3, 6;stroke-dashoffset:0;stroke-opacity:1" />
       <path
          inkscape:transform-center-y="6.214016"
          d="M 95.279755,97.022753 73.75377,59.738655 l 43.05197,-1e-6 z"
@@ -82,7 +83,7 @@
          sodipodi:r2="12.428032"
          sodipodi:r1="24.856066"
          sodipodi:cy="72.166687"
-         sodipodi:cx="95.279756"
+         sodipodi:cx="95.279755"
          sodipodi:sides="3"
          id="path829"
          style="opacity:1;fill:#545454;fill-opacity:1;stroke:none;stroke-width:8;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -99,7 +100,7 @@
          sodipodi:r2="12.428033"
          sodipodi:r1="24.856066"
          sodipodi:cy="-121.22987"
-         sodipodi:cx="95.279756"
+         sodipodi:cx="95.279755"
          sodipodi:sides="3"
          id="path829-6"
          style="opacity:1;fill:#545454;fill-opacity:1;stroke:none;stroke-width:8;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"

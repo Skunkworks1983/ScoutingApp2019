@@ -28,6 +28,11 @@ body {
   display: flex;
 }
 
+
+div {
+  text-align: center;
+}
+
 h1 {
   margin: 0;
   font-size: 1.6em;
@@ -101,9 +106,13 @@ input.large {
   height: auto;
 }
 
+input[type="number"] {
+  text-align: center;
+}
+
 .fatFinger { /* for fat fingers */
-  width: 2em;
-  height: 2em;
+  width: 2.5em;
+  height: 2.5em;
 }
 
 .title {
@@ -268,6 +277,11 @@ input.large {
 .flex-shrink {
   -ms-flex-negative: 1;
   flex-shrink: 1;
+}
+
+.flex-center {
+  justify-content: center;
+  align-content: center;
 }
 
 .nav-container {
@@ -573,16 +587,111 @@ button.win95 {
   transition: all ease 0.5;
 }
 
-/* Reset (circle fill) animation */
-@-webkit-keyframes resetCircle {
-  0% {
+/* hatch scores */
+.hatch {
+  /* width: 3em;
+  height: 3em; */
+  font-size: 2em;
+  font-weight: bold;
+  z-index: 5;
 
-  }
-  100% {
+  background-color: rgba(0,0,0,0);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url('../assets/hatch120.svg');
 
-  }
+  border: none;
+
+  -webkit-text-stroke: 1px black;
+  color: white;
+  text-shadow:
+      3px 3px 0 #000,
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
 }
 
+/* cargo scores */
+.cargo {
+  /* width: 3em;
+  height: 3em; */
+  font-size: 2em;
+  font-weight: bold;
+  z-index: 5;
+
+  background-color: rgba(0,0,0,0);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url('../assets/cargo120.svg');
+
+  border: none;
+
+  -webkit-text-stroke: 1px black;
+  color: white;
+  text-shadow:
+      3px 3px 0 #000,
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+}
+
+.rocket {
+  background-image: url('../assets/rocket.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.ship {
+  background-image: url('../assets/cargo-ship2.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.hab0 {
+  border-top: black 2px;
+  background-color: #EF7822;
+}
+
+.hab1 {
+  border-top: black 2px;
+  height: 100px;
+  background-color: #EF7822;
+}
+
+.hab2 {
+  border-top: black 2px;
+  height: 150px; 
+  background-color: #EF7822;
+}
+
+.hab3 {
+  border-top: black 2px;
+  height: 200px;
+  background-color: #EF7822;
+}
+
+.hab-center {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.stroke {
+  -webkit-text-stroke: 1px black;
+  color: white;
+  text-shadow:
+      3px 3px 0 #000,
+      -1px -1px 0 #000,  
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+}
+
+/* Reset (circle fill) animation */
 @keyframes resetCircle {
   0% {
 

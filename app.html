@@ -61,7 +61,7 @@
           <div class="flex-column">
             <div class="flex1">
               <div class="flex flex-row flex-justify-space-evenly">
-                <input type="text" title="Enter an event code here" value="Event Code Here" id="eventcode" min="6" max="9" class="edgeNone large">
+                <input type="text" title="Enter an event code here" value="Event Code Here" id="eventcode" class="edgeNone large">
                 <button type="button" name="eventcode-submit" onclick="getRequest();" class="edgeRight">Get Schedule</button>
                 <select class="edgeRight" name="Tablet Team Assignment" id="colorTeam" onchange="adjustColor();">
                   <optgroup label="Red">
@@ -260,17 +260,109 @@
     <section class="slide" id="teleop">
       <!-- <img id="teleLogo" alt="Teleoperated Logo" class="title-img"> -->
       <div class="slide" data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background">
-        <div class="content scrollable">
+        <div class="content "> <!-- Could add .scrollable here to make this page scrollable -->
           <div class="flex flex-row">
             <div class="flex1">
-              <h3>Obscured</h3>
-              <span>
-                <input type="number" disabled value="0" id>
-                <input type="number" disabled>
-              </span>
+              <h2>Obscured</h2>
+              <!-- <h3>Rocket</h3> -->
+              <h4>Level 3</h4>
+              <div class="rocket">
+                <h4>&nbsp;</h4>
+                <div class="flex flex-justify-space-evenly">
+                  <button class="hatch fatFinger" onclick="goUp(this);" id="teleOp.obscured.rocket.level3.hatch">0</button>
+                  <button class="cargo fatFinger" onclick="goUp(this);" id="teleOp.obscured.rocket.level3.cargo">0</button>
+                </div>
+                <h4>Level 2</h4>
+                <div class="flex flex-justify-space-evenly">
+                  <button class="hatch fatFinger" onclick="goUp(this);" id="teleOp.obscured.rocket.level2.hatch">0</button>
+                  <button class="cargo fatFinger" onclick="goUp(this);" id="teleOp.obscured.rocket.level2.cargo">0</button>
+                </div>
+                <h4>Level 1</h4>
+                <div class="flex flex-justify-space-evenly">
+                  <button class="hatch fatFinger" onclick="goUp(this);" id="teleOp.obscured.rocket.level1.hatch">0</button>
+                  <button class="cargo fatFinger" onclick="goUp(this);" id="teleOp.obscured.rocket.level1.cargo">0</button>
+                </div>
+              </div>
+              <br>
+              <hr>   
+              <h4>Cargo Ship</h4>         
+              <div class="ship flex flex-justify-space-evenly">
+                <button class="hatch fatFinger" onclick="goUp(this);" id="" >0</button>
+                <button class="cargo fatFinger" onclick="goUp(this);" id="" >0</button>
+              </div>
             </div>
             <div class="flex1">
-              <h3>Unobscured</h3>
+              <h2>Unobscured</h2>
+              <!-- <h3>Rocket</h3> -->
+              <h4>Level 3</h4>
+              <div class="rocket">
+                <h4>&nbsp;</h4>
+                <div class="flex flex-justify-space-evenly">
+                  <button class="hatch fatFinger" onclick="goUp(this);" id="">0</button>
+                  <button class="cargo fatFinger" onclick="goUp(this);" id="">0</button>
+                </div>
+                <h4>Level 2</h4>
+                <div class="flex flex-justify-space-evenly">
+                  <button class="hatch fatFinger" onclick="goUp(this);" id="">0</button>
+                  <button class="cargo fatFinger" onclick="goUp(this);" id="">0</button>
+                </div>
+                <h4>Level 1</h4>
+                <div class="flex flex-justify-space-evenly">
+                  <button class="hatch fatFinger" onclick="goUp(this);" id="">0</button>
+                  <button class="cargo fatFinger" onclick="goUp(this);" id="">0</button>
+                </div>
+              </div>
+              <br>
+              <hr>
+              <h4>Cargo Ship</h4>         
+              <div class="ship flex flex-justify-space-evenly">
+                <button class="hatch fatFinger" onclick="goUp(this);" id="" >0</button>
+                <button class="cargo fatFinger" onclick="goUp(this);" id="" >0</button>
+              </div>
+            </div>
+          </div>
+          <br>
+          <hr>
+          <h2>HAB Platform</h2>
+          <div class="flex flex-row">
+            <div class="flex1 flex-grow flex flex-column">
+              <div class="hab0 ">
+                <span class="hab-center">
+                  <h3>No Climb</h3>
+                  <input type="radio" name="HAB" id="" class="fatFinger">    
+                </span>
+              </div>
+              <div class="flex; flex-grow" style="justify-items: flex-end; background-color: white;">
+                <input class="fatFinger" type="checkbox" id="teleOp.deadBot">
+                <h3>Dead Bot</h3>
+              </div>
+            </div>
+            <div class="flex1 flex-grow">
+              <div class="hab1 ">
+                <span class="hab-center">
+                  <br>
+                  <h3>Level 1</h3>
+                  <input type="radio" name="HAB" id="" class="fatFinger">    
+                </span>
+              </div>
+            </div>
+            <div class="flex1 flex-grow">
+              <div class="hab2 ">
+                <span class="hab-center">
+                  <br><br>
+                  <h3>Level 2</h3>
+                  <input type="radio" name="HAB" id="" class="fatFinger">    
+                </span>
+              </div>
+            </div>
+            <div class="flex1 flex-grow">
+              <div class="hab3 ">
+                <span class="hab-center">
+                  <br><br><br>
+                  <h3>Level 3</h3>
+                  <input type="radio" name="HAB" id="" class="fatFinger">    
+                </span>
+              </div>
             </div>
           </div>
         </div>
