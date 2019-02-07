@@ -187,7 +187,7 @@ function up(id, amount, limit) {
       target.setAttribute("value", parseInt(target.value, 10) + parseInt(amount, 10));
     } else {
       return "Trying to go over " + limit;
-    }  
+    }
   } else {
     console.log('Not pointed at \'this\' selector.');
     var target = document.getElementById(id);
@@ -214,14 +214,14 @@ function down(id, amount, limit) {
       target.setAttribute("value", parseInt(target.value, 10) - parseInt(amount, 10));
     } else {
       return "Trying to go under " + limit
-    }  
+    }
   } else {
     var target = document.getElementById(id);
     if(target.value > limit) {
       target.setAttribute("value", parseInt(target.value, 10) - parseInt(amount, 10));
     } else {
       return "Trying to go under " + limit
-    }  
+    }
   }
 }
 
@@ -272,19 +272,19 @@ function scrollLogo() {
         img.attr('src', 'assets/empty.svg');
         console.log('On settings page');
         break;
-  
+
       case page.event:
       case page.event_alt:
         img.attr('src', 'assets/empty.svg');
         console.log('On event page');
         break;
-  
+
       case page.sandstorm:
       case page.sandstorm_alt:
         img.attr('src', 'assets/SandstormRed.png');
         console.log('On sandstorm page');
         break;
-  
+
       case page.teleop:
       case page.teleop_alt:
         img.attr('src', 'assets/TeleOpRocketRed.gif');
@@ -295,7 +295,7 @@ function scrollLogo() {
         img.attr('src', 'assets/empty.svg');
         console.log('Not on a particular page');
         break;
-    }  
+    }
   } else if(color.value === '4' || color.value === '5' || color.value === '6') {
     switch(content.scrollLeft()) {
       case 0:
@@ -304,19 +304,19 @@ function scrollLogo() {
         img.attr('src', 'assets/empty.svg');
         console.log('On settings page');
         break;
-  
+
       case page.event:
       case page.settings_alt:
         img.attr('src', 'assets/empty.svg');
         console.log('On event page');
         break;
-  
+
       case page.sandstorm:
       case page.sandstorm_alt:
         img.attr('src', 'assets/SandstormBlue.png');
         console.log('On sandstorm page');
         break;
-  
+
       case page.teleop:
       case page.teleop_alt:
         img.attr('src', 'assets/TeleOpRocketBlue.gif');
@@ -327,7 +327,7 @@ function scrollLogo() {
         img.attr('src', 'assets/empty.svg');
         console.log('Not on particular page');
         break;
-    }  
+    }
   }
 }
 
