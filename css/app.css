@@ -417,126 +417,26 @@ span {
   width:482px;
 }
 
-.matchnumberbox {
+.teamnumberbox {
   overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-
-  -webkit-box-pack: start;
-
-  -ms-flex-pack: start;
-
-  justify-content: flex-start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  border: solid red;
-  height: 100px;
-  width: 60px;
-}
-
-.matchnumberbox2 {
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   padding: 1em;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-  border: solid red;
-  height: 120px;
-  width: 70px;
-}
-.matchnumberbox3 {
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-
-  -webkit-box-pack: start;
-
-  -ms-flex-pack: start;
-
-  justify-content: flex-start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
-  border: solid red;
-  height: 100px;
-  width: 60px;
-}
-
-.matchnumberbox4 {
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 1em;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-  border: solid red;
-  height: 120px;
-  width: 70px;
-}
-
-#memesers {
-  width: 100%;
-}
-
-.meme {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-  -ms-flex-pack: space-evenly;
-  justify-content: space-evenly;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-.matchnumberbox {
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 1em;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: start;
-  -ms-flex-align: start;
-  align-items: flex-start;
   border: 1px solid red;
-  height: 40px;
-  width: 60px;
+  background: white;
+  height: 20px;
+  width:80px;
+}
+.box2{
+  overflow: hidden;
+  padding: 1em;
+  display: flex;
+  height: 20px;
+  width:80px;
 }
 
-.matchnumberbox2 {
-  overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  padding: 1em;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-  border: 1px solid red;
-  height: 40px;
-  width: 60px;
 }
+
+
 
 button.up, button.down {
   font-size: 2em;
@@ -607,7 +507,7 @@ button.win95 {
   color: white;
   text-shadow:
       3px 3px 0 #000,
-      -1px -1px 0 #000,  
+      -1px -1px 0 #000,
       1px -1px 0 #000,
       -1px 1px 0 #000,
       1px 1px 0 #000;
@@ -633,7 +533,7 @@ button.win95 {
   color: white;
   text-shadow:
       3px 3px 0 #000,
-      -1px -1px 0 #000,  
+      -1px -1px 0 #000,
       1px -1px 0 #000,
       -1px 1px 0 #000,
       1px 1px 0 #000;
@@ -664,7 +564,7 @@ button.win95 {
 
 .hab2 {
   border-top: black 2px;
-  height: 150px; 
+  height: 150px;
   background-color: #EF7822;
 }
 
@@ -685,7 +585,7 @@ button.win95 {
   color: white;
   text-shadow:
       3px 3px 0 #000,
-      -1px -1px 0 #000,  
+      -1px -1px 0 #000,
       1px -1px 0 #000,
       -1px 1px 0 #000,
       1px 1px 0 #000;
