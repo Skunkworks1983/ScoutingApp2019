@@ -161,6 +161,9 @@ input[type="number"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
   z-index: 2;
   /* This attribute is not supported by any browser atm */ scroll-snap-stop: always;
@@ -280,7 +283,10 @@ input[type="number"] {
 }
 
 .flex-center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -ms-flex-line-pack: center;
   align-content: center;
 }
 
@@ -289,7 +295,12 @@ input[type="number"] {
   display: -ms-flexbox;
   display: flex;
   z-index: 3;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row nowrap;
   flex-flow: row nowrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   width: 100vw;
   max-height: 15vh;
@@ -403,19 +414,6 @@ span {
   background-color: rgba(0,0,120,0.5);
 }
 
-.col1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-  height:50px;
-  width:482px;
-}
 
 .teamnumberbox {
   overflow: hidden;
@@ -484,6 +482,7 @@ button.win95 {
 #title-img {
   max-height: 12vh;
   height: auto;
+  -webkit-transition: all ease 0.5;
   transition: all ease 0.5;
 }
 
@@ -551,6 +550,14 @@ button.win95 {
   background-size: contain;
 }
 
+.retrieved {
+
+}
+
+.dropped {
+
+}
+
 .hab0 {
   border-top: black 2px;
   background-color: #EF7822;
@@ -592,6 +599,14 @@ button.win95 {
 }
 
 /* Reset (circle fill) animation */
+@-webkit-keyframes resetCircle {
+  0% {
+
+  }
+  100% {
+
+  }
+}
 @keyframes resetCircle {
   0% {
 
