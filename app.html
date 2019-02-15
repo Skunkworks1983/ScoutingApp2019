@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <!-- Make sure the page starts on app.html#event -->
+
 <head>
   <!-- MetaData -->
   <meta charset="utf-8" lang="en">
@@ -23,15 +24,17 @@
       container.scrollBy({
         top: 0,
         left: window.innerWidth,
-        behavior: 'smooth'});
+        behavior: 'smooth'
+      });
     }
 
     function scrollButtonLeft() {
       var container = document.getElementById('scroll-container');
       container.scrollBy({
         top: 0,
-        left: window.innerWidth*-1,
-        behavior: 'smooth'});
+        left: window.innerWidth * -1,
+        behavior: 'smooth'
+      });
     }
   </script>
 
@@ -52,7 +55,7 @@
   </div>
 
   <!-- Main -->
-  <div id="scroll-container"  data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background" onscroll="scrollLogo();">
+  <div id="scroll-container" data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background" onscroll="scrollLogo();">
     <!-- Settings + Upload | Page 1 -->
     <section style="background-position-x: 50%; background-position-y: 50%;" class="slide box95" id="settings" data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background">
       <div class="slide">
@@ -150,18 +153,18 @@
                 <div class="rocket">
                   <h4>&nbsp;</h4>
                   <div class="flex flex-justify-space-evenly">
-                    <button class="hatch fatFinger" onclick="goUp(this);" id="">0</button>
-                    <button class="cargo fatFinger" onclick="goUp(this);" id="">0</button>
+                    <button class="hatch fatFinger" onmousedown="goUp(this);" id="">0</button>
+                    <button class="cargo fatFinger" onmousedown="goUp(this);" id="">0</button>
                   </div>
                   <h4>Level 2</h4>
                   <div class="flex flex-justify-space-evenly">
-                    <button class="hatch fatFinger" onclick="goUp(this);" id="">0</button>
-                    <button class="cargo fatFinger" onclick="goUp(this);" id="">0</button>
+                    <button class="hatch fatFinger" onmousedown="goUp(this);" id="">0</button>
+                    <button class="cargo fatFinger" onmousedown="goUp(this);" id="">0</button>
                   </div>
                   <h4>Level 1</h4>
                   <div class="flex flex-justify-space-evenly">
-                    <button class="hatch fatFinger" onclick="goUp(this);" id="">0</button>
-                    <button class="cargo fatFinger" onclick="goUp(this);" id="">0</button>
+                    <button class="hatch fatFinger" onmousedown="goUp(this);" id="">0</button>
+                    <button class="cargo fatFinger" onmousedown="goUp(this);" id="">0</button>
                   </div>
                 </div>
                 <br>
@@ -194,16 +197,16 @@
                 <h3>Retrieved Game Pieces</h3>
                 <div class="">
                   <div class="retrieved flex flex-justify-space-evenly">
-                    <button class="hatch fatFinger" onclick="goUp(this);" id="" >0</button>
-                    <button class="cargo fatFinger" onclick="goUp(this);" id="" >0</button>
+                    <button class="hatch fatFinger" onmousedown="goUp(this);" id="">0</button>
+                    <button class="cargo fatFinger" onmousedown="goUp(this);" id="">0</button>
                   </div>
                 </div>
                 <hr>
                 <h3>Dropped Game Pieces</h3>
                 <div class="">
                   <div class="droppped flex flex-justify-space-evenly">
-                    <button class="hatch fatFinger" onclick="goUp(this);" id="" >0</button>
-                    <button class="cargo fatFinger" onclick="goUp(this);" id="" >0</button>
+                    <button class="hatch fatFinger" onmousedown="goUp(this);" id="">0</button>
+                    <button class="cargo fatFinger" onmousedown="goUp(this);" id="">0</button>
                   </div>
                 </div>
               </div>
@@ -219,35 +222,35 @@
     <section class="slide" id="teleop">
       <!-- <img id="teleLogo" alt="Teleoperated Logo" class="title-img"> -->
       <div class="slide" data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background">
-        <div class="content scrollable"> <!-- Could add .scrollable here to make this page scrollable -->
+        <div class="content scrollable">
+          <!-- Could add .scrollable here to make this page scrollable -->
           <div class="flex flex-row">
             <div class="flex1">
               <h2>Obscured</h2>
-              <!-- <h3>Rocket</h3> -->
               <h4>Level 3</h4>
               <div class="rocket">
                 <h4>&nbsp;</h4>
                 <div class="flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onclick="goUp(this);" id="teleOp.obscured.rocket.level3.hatch">0</button>
-                  <button class="cargo fatFinger" onclick="goUp(this);" id="teleOp.obscured.rocket.level3.cargo">0</button>
+                  <button class="hatch fatFinger" onmousedown="goUp(this);" id="teleOp.obscured.rocket.level3.hatch">0</button>
+                  <button class="cargo fatFinger" onmousedown="goUp(this);" id="teleOp.obscured.rocket.level3.cargo">0</button>
                 </div>
                 <h4>Level 2</h4>
                 <div class="flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onclick="goUp(this);" id="teleOp.obscured.rocket.level2.hatch">0</button>
-                  <button class="cargo fatFinger" onclick="goUp(this);" id="teleOp.obscured.rocket.level2.cargo">0</button>
+                  <button class="hatch fatFinger" onmousedown="goUp(this);" id="teleOp.obscured.rocket.level2.hatch">0</button>
+                  <button class="cargo fatFinger" onmousedown="goUp(this);" id="teleOp.obscured.rocket.level2.cargo">0</button>
                 </div>
                 <h4>Level 1</h4>
                 <div class="flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onclick="goUp(this);" id="teleOp.obscured.rocket.level1.hatch">0</button>
-                  <button class="cargo fatFinger" onclick="goUp(this);" id="teleOp.obscured.rocket.level1.cargo">0</button>
+                  <button class="hatch fatFinger" onmousedown="goUp(this);" id="teleOp.obscured.rocket.level1.hatch">0</button>
+                  <button class="cargo fatFinger" onmousedown="goUp(this);" id="teleOp.obscured.rocket.level1.cargo">0</button>
                 </div>
               </div>
               <br>
               <hr>
               <h4>Cargo Ship</h4>
               <div class="ship flex flex-justify-space-evenly">
-                <button class="hatch fatFinger" onclick="goUp(this);" id="" >0</button>
-                <button class="cargo fatFinger" onclick="goUp(this);" id="" >0</button>
+                <button class="hatch fatFinger" onmousedown="goUp(this);" id="">0</button>
+                <button class="cargo fatFinger" onmousedown="goUp(this);" id="">0</button>
               </div>
             </div>
             <div class="flex1">
@@ -257,26 +260,26 @@
               <div class="rocket">
                 <h4>&nbsp;</h4>
                 <div class="flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onclick="goUp(this);" id="">0</button>
-                  <button class="cargo fatFinger" onclick="goUp(this);" id="">0</button>
+                  <button class="hatch fatFinger" onmousedown="goUp(this);" id="">0</button>
+                  <button class="cargo fatFinger" onmousedown="goUp(this);" id="">0</button>
                 </div>
                 <h4>Level 2</h4>
                 <div class="flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onclick="goUp(this);" id="">0</button>
-                  <button class="cargo fatFinger" onclick="goUp(this);" id="">0</button>
+                  <button class="hatch fatFinger" onmousedown="goUp(this);" id="">0</button>
+                  <button class="cargo fatFinger" onmousedown="goUp(this);" id="">0</button>
                 </div>
                 <h4>Level 1</h4>
                 <div class="flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onclick="goUp(this);" id="">0</button>
-                  <button class="cargo fatFinger" onclick="goUp(this);" id="">0</button>
+                  <button class="hatch fatFinger" onmousedown="goUp(this);" id="">0</button>
+                  <button class="cargo fatFinger" onmousedown="goUp(this);" id="">0</button>
                 </div>
               </div>
               <br>
               <hr>
               <h4>Cargo Ship</h4>
               <div class="ship flex flex-justify-space-evenly">
-                <button class="hatch fatFinger" onclick="goUp(this);" id="" >0</button>
-                <button class="cargo fatFinger" onclick="goUp(this);" id="" >0</button>
+                <button class="hatch fatFinger" onmousedown="goUp(this);" id="">0</button>
+                <button class="cargo fatFinger" onmousedown="goUp(this);" id="">0</button>
               </div>
             </div>
           </div>
@@ -329,7 +332,7 @@
       <!-- <div class="teamnumberbox">
       </div> -->
     </section>
-    </div>
+  </div>
 
 
   <!-- Javascript -->
@@ -345,4 +348,5 @@
   <!-- Run app.js -->
   <script type="text/javascript" src="js/app.js"></script>
 </body>
+
 </html>

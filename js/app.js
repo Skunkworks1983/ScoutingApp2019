@@ -3,11 +3,14 @@
 // const scrollSnapPolyfill = require('css-scroll-snap-polyfill');
 
 // variables
-var i; var j; var k;
+var i;
+var j;
+var k;
 var scoutList = ['Ethan Palisoc', 'Evan Palisoc', 'PP Large', 'Caleb Jones', 'Mezie Nwizugbo', 'Patrick Eaton'];
 var buttons;
 var verify = false;
 var meme;
+var holdTimer;
 
 // interval for hue shifting
 const interval = 750;
@@ -15,7 +18,7 @@ let degree = 0;
 
 // urls
 const TBAheader = "X-TBA-Auth-Key";
-const TBAkey = "d4V33bAbuXiKfuLW1pc4BaLbr56BgiORtyM5hwmRLU5qNf6Rxh83noDdI0mPJJ3R";  // eventually this one should become user input
+const TBAkey = "d4V33bAbuXiKfuLW1pc4BaLbr56BgiORtyM5hwmRLU5qNf6Rxh83noDdI0mPJJ3R"; // eventually this one should become user input
 const TBAURL = "https://www.thebluealliance.com/api/v3/event/";
 const matchesURL = "/matches/simple";
 
@@ -37,6 +40,12 @@ page = {
   teleop: window.innerwidth * 3,
   teleop_alt: window.innerWidth * 3 + 2,
 };
+
+// Local Storage Object that stores the recorded match data
+eventData = {
+  eventCode_matchNumber1: {},
+  eventCode_matchNumber2: {}
+}
 
 // function changes the color of an element
 function changeButtonColor(id, color) {
@@ -66,7 +75,7 @@ function selectAll() {
 // delete selected data and table entries
 function deleteData() {
   let parent = $('.datacheck:checked').parents('tr');
-  for(i = 0; i < parent.length; i++) {
+  for (i = 0; i < parent.length; i++) {
     parent[i].remove();
   }
   // TODO: delete JSON object from local storage
@@ -74,7 +83,7 @@ function deleteData() {
 
 // session cache non-essential settings like scout name and match number
 function sessionStorage() {
-  if(storageAvailable('sessionStorage')) {
+  if (storageAvailable('sessionStorage')) {
     sessionStorage.matchNumber = $('#matchNumber').value;
     sessionStorage.scoutName = $('#scouts').value;
   } else {
@@ -84,27 +93,26 @@ function sessionStorage() {
 
 // check for Web Storage API support
 function storageAvailable(type) {
-    try {
-        var storage = window[type],
-            x = '__storage_test__';
-        storage.setItem(x, x);
-        storage.removeItem(x);
-        return true;
-    }
-    catch(e) {
-        return e instanceof DOMException && (
-            // everything except Firefox
-            e.code === 22 ||
-            // Firefox
-            e.code === 1014 ||
-            // test name field too, because code might not be present
-            // everything except Firefox
-            e.name === 'QuotaExceededError' ||
-            // Firefox
-            e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
-            // acknowledge QuotaExceededError only if there's something already stored
-            storage.length !== 0;
-    }
+  try {
+    var storage = window[type],
+      x = '__storage_test__';
+    storage.setItem(x, x);
+    storage.removeItem(x);
+    return true;
+  } catch (e) {
+    return e instanceof DOMException && (
+        // everything except Firefox
+        e.code === 22 ||
+        // Firefox
+        e.code === 1014 ||
+        // test name field too, because code might not be present
+        // everything except Firefox
+        e.name === 'QuotaExceededError' ||
+        // Firefox
+        e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+      // acknowledge QuotaExceededError only if there's something already stored
+      storage.length !== 0;
+  }
 }
 
 // function to send, recieve, and process the GET request for match data
@@ -114,32 +122,32 @@ function sendGetRequest(target) {
   matches.setRequestHeader(TBAheader, TBAkey);
   matches.send();
   matches.onreadystatechange = function() {
-    if(this.readyState === 4) {
-      switch(this.status) {
-          case 200:
-            console.log("Match request completed successfully");
-            matchObj = JSON.parse(matches.responseText);
-            verifyHTTP = true;
-            // changeButtonColor("startbutton", "#b7ffb4");
-            break;
+    if (this.readyState === 4) {
+      switch (this.status) {
+        case 200:
+          console.log("Match request completed successfully");
+          matchObj = JSON.parse(matches.responseText);
+          verifyHTTP = true;
+          // changeButtonColor("startbutton", "#b7ffb4");
+          break;
 
-          case 401:
-            console.warn("TBA API key is invalid");
-            console.info("Enter a valid key");
-            // changeButtonColor("startbutton", "#ffb5b5");
-            alert("TBA API key is invalid; Enter a valid key por favor. Error 401 <-- for the tech support");
-            break;
+        case 401:
+          console.warn("TBA API key is invalid");
+          console.info("Enter a valid key");
+          // changeButtonColor("startbutton", "#ffb5b5");
+          alert("TBA API key is invalid; Enter a valid key por favor. Error 401 <-- for the tech support");
+          break;
 
-          case 404:
-            console.info("Invalid URL");
-            // changeButtonColor("startbutton", "#ffb5b5");
-            alert("Invalid URL entered. Error 404 <-- for the tech support");
-            break;
+        case 404:
+          console.info("Invalid URL");
+          // changeButtonColor("startbutton", "#ffb5b5");
+          alert("Invalid URL entered. Error 404 <-- for the tech support");
+          break;
 
-          default:
-            // changeButtonColor("startbutton", "#ffb5b5");
-            console.warn("Something wrong happened in matches. This means the function went all the way through the switch without triggering any conditions");
-            break;
+        default:
+          // changeButtonColor("startbutton", "#ffb5b5");
+          console.warn("Something wrong happened in matches. This means the function went all the way through the switch without triggering any conditions");
+          break;
       }
     }
   }
@@ -149,12 +157,12 @@ function sendGetRequest(target) {
 function getRequest() {
   var enterEvent = document.getElementById('eventcode');
   var eventCode = enterEvent.value;
-  var ec1 = eventCode.substr(0,4);
+  var ec1 = eventCode.substr(0, 4);
   var ec2 = eventCode.substr(4);
-  if(parseInt(ec1, 10) >= 2016 && ec2.length === 2 || ec2.length === 3 || ec2.length === 4 || ec2.length === 5) {
+  if (parseInt(ec1, 10) >= 2016 && ec2.length === 2 || ec2.length === 3 || ec2.length === 4 || ec2.length === 5) {
     sendGetRequest(eventCode);
     setTimeout(function() {
-      if(verifyHTTP) {
+      if (verifyHTTP) {
         enterEvent.style.boxShadow = '0px 0px';
         localStorage.setItem('matchObj', JSON.stringify(removePlayoffs(matchObj)));
         alert('Event match schedule has been recieved and is in local cache.');
@@ -181,9 +189,9 @@ function validateLocalStorage() {
 
 // make field go up
 function up(id, amount, limit) {
-  if(id === this) {
+  if (id === this) {
     console.log('Pointed at \'this\' selector.');
-    if(target.value < limit) {
+    if (target.value < limit) {
       target.setAttribute("value", parseInt(target.value, 10) + parseInt(amount, 10));
     } else {
       return "Trying to go over " + limit;
@@ -191,7 +199,7 @@ function up(id, amount, limit) {
   } else {
     console.log('Not pointed at \'this\' selector.');
     var target = document.getElementById(id);
-    if(target.value < limit) {
+    if (target.value < limit) {
       target.setAttribute("value", parseInt(target.value, 10) + parseInt(amount, 10));
     } else {
       return "Trying to go over " + limit;
@@ -201,23 +209,23 @@ function up(id, amount, limit) {
 
 function goUp(id) {
   elem = id;
-  num = parseInt(elem.innerHTML,10);
-  if(num < 2) {
+  num = parseInt(elem.innerHTML, 10);
+  if (num < 2) {
     elem.innerHTML = num + 1;
   }
 }
 
 // make field go down
 function down(id, amount, limit) {
-  if(id === this) {
-    if(target.value > limit) {
+  if (id === this) {
+    if (target.value > limit) {
       target.setAttribute("value", parseInt(target.value, 10) - parseInt(amount, 10));
     } else {
       return "Trying to go under " + limit
     }
   } else {
     var target = document.getElementById(id);
-    if(target.value > limit) {
+    if (target.value > limit) {
       target.setAttribute("value", parseInt(target.value, 10) - parseInt(amount, 10));
     } else {
       return "Trying to go under " + limit
@@ -228,7 +236,7 @@ function down(id, amount, limit) {
 // populate the scout name table
 function populateScouts() {
   var list = document.getElementById('scouts');
-  for (i=0; i < scoutList.length; i++) {
+  for (i = 0; i < scoutList.length; i++) {
     scout = scoutList[i];
     menu = document.createElement('option');
     menu.setAttribute('value', scout);
@@ -240,7 +248,7 @@ function populateScouts() {
 
 // on submit or restart, return scoutname and match number to previous values
 function restoreFields() {
-  if(sessionStorage.submitted) {
+  if (sessionStorage.submitted) {
     $('#matchNumber').value = sessionStorage.match + 1;
   }
   $('#scouts').value = sessionStorage.scoutName;
@@ -264,8 +272,8 @@ function scrollLogo() {
   var color = document.getElementById('colorTeam');
   var img = $('#title-img');
   var content = $('#scroll-container');
-  if(color.value === '1' || color.value === '2' || color.value === '3') {
-    switch(content.scrollLeft()) {
+  if (color.value === '1' || color.value === '2' || color.value === '3') {
+    switch (content.scrollLeft()) {
       case 0:
       case 1:
       case 2:
@@ -296,8 +304,8 @@ function scrollLogo() {
         console.log('Not on a particular page');
         break;
     }
-  } else if(color.value === '4' || color.value === '5' || color.value === '6') {
-    switch(content.scrollLeft()) {
+  } else if (color.value === '4' || color.value === '5' || color.value === '6') {
+    switch (content.scrollLeft()) {
       case 0:
       case 1:
       case 2:
@@ -331,8 +339,15 @@ function scrollLogo() {
   }
 }
 
+// function that starts the hold process
+function startHold() {
+  console.log('hold started');
+  holdTimer = setTimeout(holdReset, 250);
+}
+
 // function that resets on hold
 function holdReset() {
+  console.log('circle triggered');
   var target = $(this);
   coords = {
     x: target.offset().left,
@@ -346,24 +361,29 @@ function holdReset() {
       id: 'ringTimer',
     })
     .css({
-      position: 'absolute',
-      top: coords.y + (target.width() - $('#ringTimer').width()) * 0.5,
-      left: coords.x + (target.height() - $('#ringTimer').height()) * 0.5,
-      zIndex: 10,
+      position: 'fixed',
+      top: Math.floor(coords.y + (target.width() - $('#ringTimer').width()) * 0.5) + 'px',
+      left: Math.floor(coords.x + (target.height() - $('#ringTimer').height()) * 0.5) + 'px',
+      zIndex: 100,
     })
   );
+  holdTimer = setTimeout(finishReset, 5000, target);
   // timer = window.setTimeout(finishReset, 2500, target);
-  console.log(coords.y + (target.width() - $('#ringTimer').width()) * 0.5);
-  console.log(coords.x + (target.height() - $('#ringTimer').height()) * 0.5);
+  console.log(Math.floor(coords.y + (target.width() - $('#ringTimer').width()) * 0.5) + 'px');
+  console.log(Math.floor(coords.x + (target.height() - $('#ringTimer').height()) * 0.5) + 'px');
 }
 
 function cancelReset() {
-
+  console.log('hold cancelled');
+  clearTimeout(holdTimer);
+  $('#ringTimer').remove();
 }
 
 function finishReset(target) {
-  $('#ringTimer').delete();
+  console.log("hold finished");
+  $('#ringTimer').remove();
   target.html(0);
+  window.navigator.vibrate(200);
 }
 
 // function changes the color of the sandstorm logo based on the tablet
@@ -372,16 +392,16 @@ function adjustColor() {
   // var sandstormLogo = document.getElementById('sandstormLogo');
   // var teleLogo = document.getElementById('teleLogo');
   var teamNumber = document.getElementsByClassName('team-number');
-  if(color.value === '1' || color.value === '2' || color.value === '3') {
+  if (color.value === '1' || color.value === '2' || color.value === '3') {
     // adjust team number border
-    for(i=0; i < teamNumber.length; i++) {
+    for (i = 0; i < teamNumber.length; i++) {
       teamNumber[i].style.borderColor = 'red';
     };
     // adjust the select color
     color.style.backgroundColor = 'red';
-  } else if(color.value === '4' || color.value === '5' || color.value === '6') {
+  } else if (color.value === '4' || color.value === '5' || color.value === '6') {
     // adjust team number logo
-    for(i=0; i < teamNumber.length; i++) {
+    for (i = 0; i < teamNumber.length; i++) {
       teamNumber[i].style.borderColor = 'blue';
     };
     // adjust select color
@@ -391,7 +411,7 @@ function adjustColor() {
 
 function meme() {
   meme = Math.floor(Math.random() * 90);
-  $('#memesers').attr('src', "assets/memes/"+meme+".png");
+  $('#memesers').attr('src', "assets/memes/" + meme + ".png");
 }
 
 // this function removes any playoff matches (in case there are any)
@@ -408,21 +428,19 @@ function cacheSettings() {
 
 // init function
 $(document).ready(function() {
-  // CSS Scroll Snap Polyfill for older browsers
-  // scrollSnapPolyfill();
-  // initialize paroller.js
-  // $("[data-paroller-factor]").paroller();
+  // disable right click
+  // document.addEventListener('contextmenu', event => event.preventDefault());
 
   // unchecks checked radio buttons when clicked again
-  $('input[name="presence"]').click(function(){
+  $('input[name="presence"]').click(function() {
     if (this.previous) {
-        this.checked = false;
+      this.checked = false;
     }
     this.previous = this.checked;
   });
 
   // add event listener to trigger the reset
-  $('button.hatch, button.cargo').on('mousedown', holdReset);
+  $('button.hatch, button.cargo').on('mousedown', holdReset); // startHold
   // stop the function on mouseup
   $('button.hatch, button.cargo').on('mouseup', cancelReset);
 
