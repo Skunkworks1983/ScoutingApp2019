@@ -331,6 +331,41 @@ function scrollLogo() {
   }
 }
 
+// function that resets on hold
+function holdReset() {
+  var target = $(this);
+  coords = {
+    x: target.offset().left,
+    y: target.offset().top
+  };
+  $(target).parents('#scroll-container').append($('<img></img>')
+    .attr({
+      width: '144px',
+      height: '144px',
+      src: 'assets/Animations/Clockwise Fill & Delete.gif',
+      id: 'ringTimer',
+    })
+    .css({
+      position: 'absolute',
+      top: coords.y + (target.width() - $('#ringTimer').width()) * 0.5,
+      left: coords.x + (target.height() - $('#ringTimer').height()) * 0.5,
+      zIndex: 10,
+    })
+  );
+  // timer = window.setTimeout(finishReset, 2500, target);
+  console.log(coords.y + (target.width() - $('#ringTimer').width()) * 0.5);
+  console.log(coords.x + (target.height() - $('#ringTimer').height()) * 0.5);
+}
+
+function cancelReset() {
+
+}
+
+function finishReset(target) {
+  $('#ringTimer').delete();
+  target.html(0);
+}
+
 // function changes the color of the sandstorm logo based on the tablet
 function adjustColor() {
   var color = document.getElementById('colorTeam');
@@ -385,6 +420,11 @@ $(document).ready(function() {
     }
     this.previous = this.checked;
   });
+
+  // add event listener to trigger the reset
+  $('button.hatch, button.cargo').on('mousedown', holdReset);
+  // stop the function on mouseup
+  $('button.hatch, button.cargo').on('mouseup', cancelReset);
 
   populateScouts();
   adjustColor();

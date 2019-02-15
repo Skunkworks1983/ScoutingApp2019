@@ -598,21 +598,3 @@ button.win95 {
       -1px 1px 0 #000,
       1px 1px 0 #000;
 }
-
-/* Reset (circle fill) animation */
-@-webkit-keyframes resetCircle {
-  0% {
-
-  }
-  100% {
-
-  }
-}
-@keyframes resetCircle {
-  0% {
-
-  }
-  100% {
-
-  }
-}
