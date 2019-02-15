@@ -415,13 +415,9 @@ span {
 }
 
 
-
-
 .teamnumberbox {
   overflow: hidden;
   padding: 1em;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   border: 1px solid red;
   background: white;
@@ -431,13 +427,16 @@ span {
 .box2{
   overflow: hidden;
   padding: 1em;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 20px;
   width:80px;
 }
-.down {
+
+}
+
+
+
+button.up, button.down {
   font-size: 2em;
   padding: 0.1em;
 }
