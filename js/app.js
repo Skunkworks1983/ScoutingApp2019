@@ -21,6 +21,7 @@ const TBAheader = "X-TBA-Auth-Key";
 const TBAkey = "d4V33bAbuXiKfuLW1pc4BaLbr56BgiORtyM5hwmRLU5qNf6Rxh83noDdI0mPJJ3R"; // eventually this one should become user input
 const TBAURL = "https://www.thebluealliance.com/api/v3/event/";
 const matchesURL = "/matches/simple";
+const path = ""; // add server path
 
 // get data from TBA
 var matches = new XMLHttpRequest();
@@ -263,8 +264,20 @@ function populateTable() {
 // on touch hold, clear inputs
 // send some sort of feedback to user
 // eg. vibration or circle loop closing timer; ideally both
-function clearInput() {
+function clearInput() {}
 
+// function updates the settings
+function updateSettings() {
+  localStorage.setItem("reversionType", $('#reversionType').val())
+  localStorage.setItem("station", $('#colorteam').val())
+
+}
+
+// runs when submit button is hit
+function submitSettings() {
+  console.log('redirecting to selection page');
+  updateSettings();
+  window.location.href = "selection.html";
 }
 
 // changes the logo on the title bar based on the scroll position
@@ -443,6 +456,7 @@ $(document).ready(function() {
     case 'selection.html':
       console.log();
       populateScouts();
+      meme();
       break;
 
       // for the sandstorm and teleop page, do the following
@@ -475,9 +489,9 @@ $(document).ready(function() {
   $('button.hatch, button.cargo').on('mouseup', cancelReset);
 
   // populateScouts();
-  adjustColor();
-  meme();
-  validateLocalStorage();
+  // adjustColor();
+  // meme();
+  // validateLocalStorage();
 
 
   console.log('loaded up');

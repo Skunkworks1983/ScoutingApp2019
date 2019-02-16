@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <!-- MetaData -->
+  <meta charset="utf-8" lang="en">
+  <meta name="viewport" content="initial-scale=1, width=device-width, user-scalable=no, maximum-scale=1, minimum-scale=1">
+  <meta name="author" content="Skunk Works Robotics Scouting Team">
+  <meta name="keywords" content="">
+  <meta name="robots" content="nofollow">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Collecting Match Data</title>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="css/app.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/bwlogo.png" type="image/png" sizes="64x64">
+
+  <!-- Scroll script needs to load first -->
+  <script type="text/javascript">
+    function scrollButtonRight() {
+      var container = document.getElementById('scroll-container');
+      container.scrollBy({
+        top: 0,
+        left: window.innerWidth,
+        behavior: 'smooth'
+      });
+    }
+
+    function scrollButtonLeft() {
+      var container = document.getElementById('scroll-container');
+      container.scrollBy({
+        top: 0,
+        left: window.innerWidth * -1,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+
+</head>
+
+<body>
+  <!-- Scroll Buttons -->
+  <div class="nav-container">
+    <img src="assets/arrow-left.svg" title="Previous Page" alt="navigation arrows" id="left-nav-arrow" onclick="window.location.href = 'settings.html'">
+    <!-- <object type="image/svg+xml" data="assets/arrow-left.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
+      Fallback Picture here
+      </object> -->
+    <img src="assets/arrow-right.svg" title="Next Page" alt="navigation arrows" id="right-nav-arrow" onclick="window.location.href = 'match.html'">
+    <!-- <object type="image/svg+xml" data="assets/arrow-right.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
+      Fallback image in here
+      </object> -->
+  </div>
+
+  <!-- Match + Scout Select | Page 2 | Default Page -->
+  <section class="slide" id="event">
+    <div class="slide">
+      <div class="content">
+        <h1>Pre-Match</h1>
+        <div class="matchSelect">
+          <h2>Match Select</h2>
+          <input type="text" name="" value="1" class="edgeRight" id="matchNumber">
+        </div>
+        <div class="scoutSelect">
+          <h2>Scout Select</h2>
+          <select class="edgeRight" name="" id="scouts"></select>
+        </div>
+        <hr>
+        <div class="meme">
+          <img src="" alt="" id="memesers">
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>
