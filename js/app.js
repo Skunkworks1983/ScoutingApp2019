@@ -367,7 +367,7 @@ function holdReset() {
       zIndex: 100,
     })
   );
-  holdTimer = setTimeout(finishReset, 5000, target);
+  holdTimer = setTimeout(finishReset, 2500, target);
   // timer = window.setTimeout(finishReset, 2500, target);
   console.log(Math.floor(coords.y + (target.width() - $('#ringTimer').width()) * 0.5) + 'px');
   console.log(Math.floor(coords.x + (target.height() - $('#ringTimer').height()) * 0.5) + 'px');
@@ -431,6 +431,36 @@ $(document).ready(function() {
   // disable right click
   // document.addEventListener('contextmenu', event => event.preventDefault());
 
+  // switch to determine the page
+  switch (location.href.split("/").slice(-1).join()) {
+    // for the settings page, do the following
+    case 'settings.html':
+      console.log('Settings Page');
+      validateLocalStorage();
+      break;
+
+      // for the match and scout selection page, do the following
+    case 'selection.html':
+      console.log();
+      populateScouts();
+      break;
+
+      // for the sandstorm and teleop page, do the following
+    case 'match.html':
+      // deselectable radio buttons
+      $('input[name="presence"]').click(function() {
+        if (this.previous) {
+          this.checked = false;
+        }
+        this.previous = this.checked;
+      });
+
+      // ??BUG?? Event does not bind 
+      $('#scroll-container').scroll(scrollLogo);
+
+      break;
+  };
+
   // unchecks checked radio buttons when clicked again
   $('input[name="presence"]').click(function() {
     if (this.previous) {
@@ -444,10 +474,11 @@ $(document).ready(function() {
   // stop the function on mouseup
   $('button.hatch, button.cargo').on('mouseup', cancelReset);
 
-  populateScouts();
+  // populateScouts();
   adjustColor();
   meme();
   validateLocalStorage();
+
 
   console.log('loaded up');
 });

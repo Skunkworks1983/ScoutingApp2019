@@ -39,8 +39,20 @@
 </head>
 
 <body>
+  <!-- Scroll Buttons -->
+  <div class="nav-container">
+    <img src="assets/arrow-left.svg" title="Previous Page" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();">
+    <!-- <object type="image/svg+xml" data="assets/arrow-left.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
+      Fallback Picture here
+      </object> -->
+    <img src="assets/empty.svg" alt="Page Logo" id="title-img">
+    <img src="assets/arrow-right.svg" title="Next Page" alt="navigation arrows" id="right-nav-arrow" onclick="scrollButtonRight();">
+    <!-- <object type="image/svg+xml" data="assets/arrow-right.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
+        Fallback image in here
+      </object> -->
+  </div>
 
-  <div id="scroll-container" data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background" onscroll="scrollLogo();">
+  <div id="scroll-container">
     <section style="background-position-x: 50%; background-position-y: 50%;" class="slide box95" id="settings" data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background">
       <div class="slide">
         <div class="content">
@@ -54,18 +66,6 @@
                 <input type="text" title="Enter an event code here" value="Event Code Here" id="eventcode" class="edgeNone large">
                 <button type="button" name="eventcode-submit" onclick="getRequest();" class="edgeRight">Get
                   Schedule</button>
-                <select class="edgeRight" name="Tablet Team Assignment" id="colorTeam" onchange="adjustColor();">
-                  <optgroup label="Red">
-                    <option value="1">Red 1</option>
-                    <option value="2">Red 2</option>
-                    <option value="3">Red 3</option>
-                  </optgroup>
-                  <optgroup label="Blue">
-                    <option value="4">Blue 1</option>
-                    <option value="5">Blue 2</option>
-                    <option value="6">Blue 3</option>
-                  </optgroup>
-                </select>
               </div>
               <br>
               <div>
@@ -98,13 +98,40 @@
                     <td>Team</td>
                   </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody>
+                </tbody>
               </table>
               <br><br><br><br><br>
             </div>
           </div>
         </div>
       </div>
+    </section>
+    <section style="background-position-x: 50%; background-position-y: 50%;" class="slide">
+      <div class="slide">
+        <div class="content">
+          <h1>Misc</h1>
+          <div class="flex justify-space-evenly">
+            <div class="flex1">
+              <h2>Tablet Station</h2>
+              <select class="edgeRight" name="Tablet Team Assignment" id="colorTeam" onchange="adjustColor();">
+                <optgroup label="Red">
+                  <option value="1">Red 1</option>
+                  <option value="2">Red 2</option>
+                  <option value="3">Red 3</option>
+                </optgroup>
+                <optgroup label="Blue">
+                  <option value="4">Blue 1</option>
+                  <option value="5">Blue 2</option>
+                  <option value="6">Blue 3</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="flex1">
+
+            </div>
+          </div>
+        </div>
     </section>
   </div>
 

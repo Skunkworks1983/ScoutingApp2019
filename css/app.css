@@ -194,13 +194,14 @@ input[type="number"] {
 
 /* Page 1 */
 #settings {
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat;
   background-size: cover;
   background-image: url("../assets/vaporwave.jpg");
-  background-position: center center;
-
+  background-position: center center; */
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
   /* Windows 95 */
-  font-family: "MS Sans Serif" !important;
+  /* font-family: "MS Sans Serif" !important; */
 }
 
 /* Page 2 */
@@ -553,9 +554,16 @@ button.win95 {}
   background-position: center;
 }
 
-.retrieved {}
+.retrieved {
+  background-image: url();
+}
 
-.dropped {}
+.dropped {
+  background-image: url('../assets/dropped.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
 
 .hab0 {
   border-top: black 2px;
