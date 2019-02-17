@@ -594,6 +594,15 @@ button.win95 {}
   border: none;
 }
 
+.fixedBottomRight {
+  position: fixed;
+  right: 5vw;
+  bottom: 5vh;
+  z-index: 11;
+  /* height: 20vh;
+  width: 20vh; */
+}
+
 .stroke {
   -webkit-text-stroke: 1px black;
   color: white;
