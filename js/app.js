@@ -142,10 +142,17 @@ currentData = {
     "recievedClimb": false, // boolean
   }
 }
+try {
+  function getMatchObj() {
+
+  }
+} catch (err) {
+  alert('The event schedule has not been defined!');
+}
 
 // write data to local storage
 function setCurrentData() {
-  eventCode = JSON.parse(localStorage.eventCode);
+  eventCode = localStorage.eventData;
   currentData.event = matchObj[0].event_key;
   currentData.match = localStorage.matchNumber;
   currentData.alliance = getAlliance();
@@ -223,8 +230,8 @@ function setCurrentData() {
   currentData.teleOp.dropped.cargo = $('#teleOp.dropped.cargo').html();
 
   // set currentData to localStorage
-  eventCode.push(currentData);
-  localStorage.setItem('eventCode', eventCode);
+  eventData.push(currentData);
+  localStorage.setItem('eventData', eventData);
 }
 
 // determine what alliance the tablet is
@@ -381,11 +388,11 @@ function sendGetRequest(target) {
 // send get request + data validation
 function getRequest() {
   var enterEvent = document.getElementById('eventcode');
-  var eventCode = enterEvent.value;
-  var ec1 = eventCode.substr(0, 4);
-  var ec2 = eventCode.substr(4);
+  var event_Code = enterEvent.value;
+  var ec1 = event_Code.substr(0, 4);
+  var ec2 = event_Code.substr(4);
   if (parseInt(ec1, 10) >= 2016 && ec2.length === 2 || ec2.length === 3 || ec2.length === 4 || ec2.length === 5) {
-    sendGetRequest(eventCode);
+    sendGetRequest(event_Code);
     setTimeout(function() {
       if (verifyHTTP) {
         enterEvent.style.boxShadow = '0px 0px';
@@ -710,7 +717,7 @@ function adjustColor() {
 }
 
 function meme() {
-  meme = Math.floor(Math.random() * 90);
+  meme = Math.floor(Math.random() * 121);
   $('#memesers').attr('src', "assets/memes/" + meme + ".png");
 }
 
@@ -750,7 +757,11 @@ $(document).ready(function() {
       populateScouts();
       meme();
       // increment match number
-      $('#matchNumber').val(parseInt(localStorage.matchNumber, 10) + 1);
+      if (typeof parseInt(localStorage.matchNumber, 10) === 'number') {
+        $('#matchNumber').val(parseInt(localStorage.matchNumber, 10) + 1);
+      } else {
+        $('#matchNumber').val(1);
+      }
       document.getElementById('scouts').selectedIndex = parseInt(localStorage.scoutIndex, 10);
       break;
 
@@ -775,6 +786,10 @@ $(document).ready(function() {
   $('input[name="presence"]').click(function() {
     if (this.previous) {
       this.checked = false;
+      console.log('unchecked the radio');
+    } else {
+      this.checked = true;
+      console.log('not uncheck radio');
     }
     this.previous = this.checked;
   });
