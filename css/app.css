@@ -58,11 +58,11 @@ tr {
   border-radius: 1em;
 }
 
-tbody tr:nth-child(odd) {
+tbody#submittedDataTable tr:nth-child(odd) {
   background-color: lightgrey;
 }
 
-tbody tr:nth-child(even) {
+tbody#submittedDataTable tr:nth-child(even) {
   background-color: white;
 }
 
@@ -136,6 +136,14 @@ input[type="number"] {
   overflow-x: hidden;
   overflow-y: scroll;
   height: 50vh;
+}
+
+#red {
+  background-color: #ffb7b7 !important;
+}
+
+#blue {
+  background-color: #b7d8ff !important;
 }
 
 /* Currently no polyfill for scroll snapping */
@@ -437,9 +445,9 @@ span {
   width: 80px;
 }
 
+#memesers {
+  width: 100%;
 }
-
-
 
 button.up,
 button.down {
@@ -555,7 +563,10 @@ button.win95 {}
 }
 
 .retrieved {
-  background-image: url();
+  background-image: url('../assets/fetch.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .dropped {
@@ -567,31 +578,48 @@ button.win95 {}
 
 .hab0 {
   border-top: black 2px;
-  background-color: #EF7822;
+  background-color: #fff;
+  border: #fff 5px;
 }
 
 .hab1 {
   border-top: black 2px;
   height: 100px;
-  background-color: #EF7822;
+  background-color: #fff;
+  border: #fff 5px;
 }
 
 .hab2 {
   border-top: black 2px;
   height: 150px;
-  background-color: #EF7822;
+  background-color: #fff;
+  border: #fff 5px;
 }
 
 .hab3 {
   border-top: black 2px;
   height: 200px;
-  background-color: #EF7822;
+  background-color: #fff;
+  border: #fff 5px;
 }
 
 .hab-center {
   padding: 0;
   margin: 0;
   border: none;
+}
+
+#hab {
+  background-color: #EF7822;
+}
+
+.fixedBottomRight {
+  position: fixed;
+  right: 5vw;
+  bottom: 5vh;
+  z-index: 11;
+  /* height: 20vh;
+  width: 20vh; */
 }
 
 .stroke {

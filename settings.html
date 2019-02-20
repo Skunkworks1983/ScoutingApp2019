@@ -55,21 +55,43 @@
   <div id="scroll-container">
     <section style="background-position-x: 50%; background-position-y: 50%;" class="slide box95" id="settings" data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background">
       <div class="slide">
-        <div class="content">
+        <div class="content scrollable">
           <div class="title">
             <h1>Ｓｅｔｔｉｎｇｓ　（永翁愛）</h1>
           </div>
           <div class="flex-column">
             <div class="flex1">
               <div class="flex flex-row flex-justify-space-evenly">
-                <input type="text" title="Enter an event code here" value="Event Code Here" id="eventcode" class="edgeNone large">
-                <button type="button" name="eventcode-submit" onclick="getRequest();" class="edgeRight">Get
+                <input type="text" title="Enter an event code here" value="Event Code Here" id="eventcode" class="edgeNone large" style="z-index: 13;">
+                <button type="button" name="eventcode-submit" onclick="getRequest();" class="edgeRight" style="z-index: 13;">Get
                   Schedule</button>
               </div>
               <br>
               <div>
                 <h2>Match Schedule</h2>
-                <iframe src="tools/viewschedule.html" frameborder="0" width="100%" height="800px"></iframe>
+                <div style="margin:auto auto; align-items:center; text-align:center;" class="tweb">
+                  <table class="tweb" style="width:100%">
+                    <colgroup>
+                      <col span="1">
+                      <col span="3" id="red">
+                      <col span="3" id="blue">
+                    </colgroup>
+                    <tr>
+                      <td>#</td>
+                      <td style="background-color:#ffb7b7">Red #1</td>
+                      <td style="background-color:#ffb7b7">Red #2</td>
+                      <td style="background-color:#ffb7b7">Red #3</td>
+                      <td style="background-color:#b7d8ff">Blue #1</td>
+                      <td style="background-color:#b7d8ff">Blue #2</td>
+                      <td style="background-color:#b7d8ff">Blue #3</td>
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                      <td colspan="9">Copyright &#xa9; 2018 Skunk Works Robotics</td>
+                    </tfoot>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -98,7 +120,7 @@
                     <td>Team</td>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody id="submittedDataTable">
                 </tbody>
               </table>
               <br><br><br><br><br>
@@ -134,6 +156,12 @@
                 <option value="2">Rollover</option>
                 <option value="3">Hold to Zero (PC Only)</option>
               </select>
+            </div>
+          </div>
+          <br>
+          <div class="flex justify-space-evenly">
+            <div class="flex1">
+              <button class="edgeNone" onclick="if(confirm('Do you really want to PURGE the *RED ARMY*? Hrrm, I meant the local storage... ~ Joseph Stalin')) {resetLocalStorage();};">Purge Local Storage</button> <!--  &#10; &#10; -->
             </div>
           </div>
         </div>

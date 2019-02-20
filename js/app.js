@@ -1,7 +1,3 @@
-// import polyfill
-// import scrollSnapPolyfill from 'node_modules/css-scroll-snap-polyfill/dist';
-// const scrollSnapPolyfill = require('css-scroll-snap-polyfill');
-
 // variables
 var i;
 var j;
@@ -43,9 +39,243 @@ page = {
 };
 
 // Local Storage Object that stores the recorded match data
-eventData = {
-  eventCode_matchNumber1: {},
-  eventCode_matchNumber2: {}
+// titles should be in format 'eventTitle_matchNumber'
+eventData = [];
+
+currentData = {
+  "event": "2019wasno", // string
+  "match": 1, // int
+  "alliance": "Red", // red or blue
+  "teamNumber": 0, // int
+  "scoutStation": 1, // int
+  "position": 1, // int
+  "noShow": false, // boolean
+  "startPos": 1, // int
+  "scoutName": "", // string
+  "sandStorm": {
+    "crossLine": false, // boolean
+    "deadBot": false, // boolean
+    "rocket": {
+      "level1": {
+        "hatch": 0, // int
+        "cargo": 0 // int 
+      },
+      "level2": {
+        "hatch": 0, // int
+        "cargo": 0 // int
+      },
+      "level3": {
+        "hatch": 0, // int
+        "cargo": 0 // int
+      }
+    },
+    "ship": {
+      "hatch": 0, // int
+      "cargo": 0 // int
+    },
+    "retrieved": {
+      "hatch": 0, // int
+      "cargo": 0 // int
+    },
+    "dropped": {
+      "hatch": 0, // int
+      "cargo": 0 // int
+    }
+  },
+  "teleOp": {
+    "obscured": {
+      "rocket": {
+        "level1": {
+          "hatch": 0, // int
+          "cargo": 0 // int
+        },
+        "level2": {
+          "hatch": 0, // int
+          "cargo": 0 // int
+        },
+        "level3": {
+          "hatch": 0, // int
+          "cargo": 0 // int
+        }
+      },
+      "ship": {
+        "hatch": 0, // int
+        "cargo": 0 // int
+      }
+    },
+    "unobscured": {
+      "rocket": {
+        "level1": {
+          "hatch": 0, // int
+          "cargo": 0 // int
+        },
+        "level2": {
+          "hatch": 0, // int
+          "cargo": 0 // int
+        },
+        "level3": {
+          "hatch": 0, // int
+          "cargo": 0 // int
+        }
+      },
+      "ship": {
+        "hatch": 0, // int
+        "cargo": 0 // int
+      }
+    },
+    "retrieved": {
+      "loading": {
+        "hatch": 0, // int
+        "cargo": 0 // int
+      },
+      "floor": {
+        "hatch": 0, // int
+        "cargo": 0 // int
+      }
+    },
+    "dropped": {
+      "hatch": 0, // int
+      "cargo": 0 // int
+    },
+    "climbLevel": 0, // int
+    "assistedClimb": false, // boolean
+    "recievedClimb": false, // boolean
+  }
+}
+try {
+  function getMatchObj() {
+
+  }
+} catch (err) {
+  alert('The event schedule has not been defined!');
+}
+
+// write data to local storage
+function setCurrentData() {
+  eventCode = localStorage.eventData;
+  currentData.event = matchObj[0].event_key;
+  currentData.match = localStorage.matchNumber;
+  currentData.alliance = getAlliance();
+  currentData.teamNumber = getTeamNumber();
+  currentData.position = getStation();
+  // get start pos
+  switch ($('input[name="startPos"]:checked').attr('id')) {
+    case 'startPos1':
+      currentData.startPos = 1;
+      break;
+
+    case 'startPos2':
+      currentData.startPos = 2;
+      break;
+  }
+  // sandstorm 
+  currentData.sandStorm.crossLine = document.getElementById('sandStorm.crossLine').checked;
+  // get presence
+  if ($('input[name="presence"]:checked') === null) {
+    currentData.noShow = false;
+    currentData.sandStorm.deadBot = false;
+  } else if ($('input[name="presence"]:checked').attr('id') === 'noShow') {
+    currentData.noShow = true;
+    currentData.sandStorm.deadBot = false;
+  } else if ($('input[name="presence"]:checked').attr('id') === 'sandStorm.deadBot') {
+    currentData.noShow = false;
+    currentData.sandStorm.deadBot = true;
+  }
+  // rocket
+  currentData.sandStorm.rocket.level1.hatch = $('#sandStorm.rocket.level1.hatch').html();
+  currentData.sandStorm.rocket.level1.cargo = $('#sandStorm.rocket.level1.cargo').html();
+  currentData.sandStorm.rocket.level2.hatch = $('#sandStorm.rocket.level2.hatch').html();
+  currentData.sandStorm.rocket.level2.cargo = $('#sandStorm.rocket.level2.cargo').html();
+  currentData.sandStorm.rocket.level3.hatch = $('#sandStorm.rocket.level3.hatch').html();
+  currentData.sandStorm.rocket.level3.cargo = $('#sandStorm.rocket.level3.cargo').html();
+  // ship
+  currentData.sandStorm.ship.hatch = $('#sandStorm.ship.hatch').html();
+  currentData.sandStorm.ship.cargo = $('#sandStorm.ship.cargo').html();
+  // retrieved 
+  currentData.sandStorm.retrieved.hatch = $('#sandStorm.retrieved.hatch').html();
+  currentData.sandStorm.retrieved.cargo = $('#sandStorm.retrieved.cargo').html();
+  // dropped
+  currentData.sandStorm.dropped.hatch = $('#sandStorm.dropped.hatch').html();
+  currentData.sandStorm.dropped.cargo = $('#sandStorm.dropped.cargo').html();
+  // teleop
+  // obscured
+  // rocket
+  currentData.teleOp.obscured.rocket.level1.hatch = $('#teleOp.obscured.rocket.level1.hatch').html();
+  currentData.teleOp.obscured.rocket.level1.cargo = $('#teleOp.obscured.rocket.level1.cargo').html();
+  currentData.teleOp.obscured.rocket.level2.hatch = $('#teleOp.obscured.rocket.level2.hatch').html();
+  currentData.teleOp.obscured.rocket.level2.cargo = $('#teleOp.obscured.rocket.level2.cargo').html();
+  currentData.teleOp.obscured.rocket.level3.hatch = $('#teleOp.obscured.rocket.level3.hatch').html();
+  currentData.teleOp.obscured.rocket.level3.cargo = $('#teleOp.obscured.rocket.level3.cargo').html();
+  // ship
+  currentData.teleOp.obscured.ship.hatch = $('#teleOp.obscured.ship.hatch').html();
+  currentData.teleOp.obscured.ship.cargo = $('#teleOp.obscured.ship.cargo').html();
+  // unobscured
+  // rocket
+  currentData.teleOp.unobscured.rocket.level1.hatch = $('#teleOp.unobscured.rocket.level1.hatch').html();
+  currentData.teleOp.unobscured.rocket.level1.cargo = $('#teleOp.unobscured.rocket.level1.cargo').html();
+  currentData.teleOp.unobscured.rocket.level2.hatch = $('#teleOp.unobscured.rocket.level2.hatch').html();
+  currentData.teleOp.unobscured.rocket.level2.cargo = $('#teleOp.unobscured.rocket.level2.cargo').html();
+  currentData.teleOp.unobscured.rocket.level3.hatch = $('#teleOp.unobscured.rocket.level3.hatch').html();
+  currentData.teleOp.unobscured.rocket.level3.cargo = $('#teleOp.unobscured.rocket.level3.cargo').html();
+  // ship
+  currentData.teleOp.unobscured.ship.hatch = $('#teleOp.unobscured.ship.hatch').html();
+  currentData.teleOp.unobscured.ship.cargo = $('#teleOp.unobscured.ship.cargo').html();
+  // retrieved
+  currentData.teleOp.retrieved.loading.hatch = $('#teleOp.retrieved.loading.hatch').html();
+  currentData.teleOp.retrieved.loading.cargo = $('#teleOp.retrieved.loading.cargo').html();
+  currentData.teleOp.retrieved.floor.hatch = $('#teleOp.retrieved.floor.hatch').html();
+  currentData.teleOp.retrieved.floor.cargo = $('#teleOp.retrieved.floor.cargo').html();
+  // dropped
+  currentData.teleOp.dropped.hatch = $('#teleOp.dropped.hatch').html();
+  currentData.teleOp.dropped.cargo = $('#teleOp.dropped.cargo').html();
+
+  // set currentData to localStorage
+  eventData.push(currentData);
+  localStorage.setItem('eventData', eventData);
+}
+
+// determine what alliance the tablet is
+function getAlliance() {
+  switch (parseInt(localStorage.station, 10)) {
+    case 1:
+    case 2:
+    case 3:
+      return ('red');
+    case 4:
+    case 5:
+    case 6:
+      return ('blue');
+  }
+}
+
+// determine what station the tablet is
+function getStation() {
+  switch (parseInt(localStorage.station, 10)) {
+    case 1:
+    case 4:
+      return (1);
+    case 2:
+    case 5:
+      return (2);
+    case 3:
+    case 6:
+      return (3);
+  }
+}
+
+// grabs the team number
+// should be called after tempStorage is run
+function getTeamNumber() {
+  match = localStorage.matchNumber;
+  alliance = getAlliance();
+  station = getStation();
+  if (alliance === 'red') {
+    teamNumber = parseInt(matchObj[match].alliances.red.team_keys[station].substr(3), 10);
+    return teamNumber;
+  } else if (alliance === 'blue') {
+    teamNumber = parseInt(matchObj[match].alliances.blue.team_keys[station].substr(3), 10);
+    return teamNumber;
+  }
 }
 
 // function changes the color of an element
@@ -83,10 +313,11 @@ function deleteData() {
 }
 
 // session cache non-essential settings like scout name and match number
-function sessionStorage() {
-  if (storageAvailable('sessionStorage')) {
-    sessionStorage.matchNumber = $('#matchNumber').value;
-    sessionStorage.scoutName = $('#scouts').value;
+function tempStorage() {
+  if (storageAvailable('localStorage')) {
+    localStorage.setItem('matchNumber', $('#matchNumber').val());
+    localStorage.setItem('scoutName', $('#scouts').val());
+    localStorage.setItem('scoutIndex', document.getElementById('scouts').selectedIndex);
   } else {
     alert('Your browser does not support the Web Storage API. If you are using Internet Explorer 7 or lower, try using a modern browser. If you are using private mode, switch to a regular one. If none of theses work, contact Skunk Works Robotics\'s Scouting Team.');
   }
@@ -157,16 +388,17 @@ function sendGetRequest(target) {
 // send get request + data validation
 function getRequest() {
   var enterEvent = document.getElementById('eventcode');
-  var eventCode = enterEvent.value;
-  var ec1 = eventCode.substr(0, 4);
-  var ec2 = eventCode.substr(4);
+  var event_Code = enterEvent.value;
+  var ec1 = event_Code.substr(0, 4);
+  var ec2 = event_Code.substr(4);
   if (parseInt(ec1, 10) >= 2016 && ec2.length === 2 || ec2.length === 3 || ec2.length === 4 || ec2.length === 5) {
-    sendGetRequest(eventCode);
+    sendGetRequest(event_Code);
     setTimeout(function() {
       if (verifyHTTP) {
         enterEvent.style.boxShadow = '0px 0px';
         localStorage.setItem('matchObj', JSON.stringify(removePlayoffs(matchObj)));
         alert('Event match schedule has been recieved and is in local cache.');
+        printMatches();
       } else {
         console.warn('error with get request');
         alert('Error with event code!');
@@ -177,6 +409,7 @@ function getRequest() {
   }
 }
 
+// validate the match object in storage
 function validateLocalStorage() {
   if (typeof localStorage.matchObj !== 'undefined') {
     console.log('Event Schedule is in local cache');
@@ -187,6 +420,77 @@ function validateLocalStorage() {
     alert('Event Schedule is missing. Make sure you have one by getting it from the settings page!');
   }
 }
+
+// retrieve the match schedule from local storage
+function grabMatch() {
+  return JSON.parse(localStorage.matchObj);
+}
+
+// populate the match schedule table
+function printMatches() {
+  var i;
+  var matches = JSON.parse(localStorage.matchObj);
+  console.log(matches);
+  for (i = 0; i < matches.length; i++) {
+    red1 = parseInt(matches[i].alliances.red.team_keys[0].substr(3), 10);
+    red2 = parseInt(matches[i].alliances.red.team_keys[1].substr(3), 10);
+    red3 = parseInt(matches[i].alliances.red.team_keys[2].substr(3), 10);
+    blue1 = parseInt(matches[i].alliances.blue.team_keys[0].substr(3), 10);
+    blue2 = parseInt(matches[i].alliances.blue.team_keys[1].substr(3), 10);
+    blue3 = parseInt(matches[i].alliances.blue.team_keys[2].substr(3), 10);
+
+    if (!document.getElementsByTagName) {
+      return
+    }
+
+    //now we are finding the table
+    table = document.getElementsByTagName("tbody").item(0);
+
+    //create a new row
+    row = document.createElement("tr");
+
+    //cells
+    teamnocell = document.createElement("td");
+    teamnocell1 = document.createElement("td");
+    teamnocell2 = document.createElement("td");
+    teamnocell3 = document.createElement("td");
+    teamnocell4 = document.createElement("td");
+    teamnocell5 = document.createElement("td");
+    teamnocell6 = document.createElement("td");
+
+    //text nodes
+    teamno = document.createTextNode(i + 1);
+    teamno1 = document.createTextNode(red1);
+    teamno2 = document.createTextNode(red2);
+    teamno3 = document.createTextNode(red3);
+    teamno4 = document.createTextNode(blue1);
+    teamno5 = document.createTextNode(blue2);
+    teamno6 = document.createTextNode(blue3);
+
+
+    //add the text nodes to cells
+    teamnocell.appendChild(teamno);
+    teamnocell1.appendChild(teamno1);
+    teamnocell2.appendChild(teamno2);
+    teamnocell3.appendChild(teamno3);
+    teamnocell4.appendChild(teamno4);
+    teamnocell5.appendChild(teamno5);
+    teamnocell6.appendChild(teamno6);
+
+
+    // append the cells to the row
+    row.appendChild(teamnocell);
+    row.appendChild(teamnocell1);
+    row.appendChild(teamnocell2);
+    row.appendChild(teamnocell3);
+    row.appendChild(teamnocell4);
+    row.appendChild(teamnocell5);
+    row.appendChild(teamnocell6);
+
+    //append the row to the table
+    table.appendChild(row);
+  }
+};
 
 // make field go up
 function up(id, amount, limit) {
@@ -208,10 +512,10 @@ function up(id, amount, limit) {
   }
 }
 
-function goUp(id) {
+function goUp(id, limit) {
   elem = id;
   num = parseInt(elem.innerHTML, 10);
-  if (num < 2) {
+  if (num < limit) {
     elem.innerHTML = num + 1;
   }
 }
@@ -247,30 +551,16 @@ function populateScouts() {
   }
 }
 
-// on submit or restart, return scoutname and match number to previous values
-function restoreFields() {
-  if (sessionStorage.submitted) {
-    $('#matchNumber').value = sessionStorage.match + 1;
-  }
-  $('#scouts').value = sessionStorage.scoutName;
-}
-
 // add data to upload table
 function populateTable() {
   // retrieve data out of local storage
   // get out the old table population code
 }
 
-// on touch hold, clear inputs
-// send some sort of feedback to user
-// eg. vibration or circle loop closing timer; ideally both
-function clearInput() {}
-
 // function updates the settings
 function updateSettings() {
   localStorage.setItem("reversionType", $('#reversionType').val())
-  localStorage.setItem("station", $('#colorteam').val())
-
+  localStorage.setItem("station", $('#colorTeam').val())
 }
 
 // runs when submit button is hit
@@ -399,6 +689,10 @@ function finishReset(target) {
   window.navigator.vibrate(200);
 }
 
+function submitData() {
+
+}
+
 // function changes the color of the sandstorm logo based on the tablet
 function adjustColor() {
   var color = document.getElementById('colorTeam');
@@ -411,19 +705,19 @@ function adjustColor() {
       teamNumber[i].style.borderColor = 'red';
     };
     // adjust the select color
-    color.style.backgroundColor = 'red';
+    color.style.backgroundColor = '#ffb7b7';
   } else if (color.value === '4' || color.value === '5' || color.value === '6') {
     // adjust team number logo
     for (i = 0; i < teamNumber.length; i++) {
       teamNumber[i].style.borderColor = 'blue';
     };
     // adjust select color
-    color.style.backgroundColor = 'blue';
+    color.style.backgroundColor = '#b7d8ff';
   }
 }
 
 function meme() {
-  meme = Math.floor(Math.random() * 90);
+  meme = Math.floor(Math.random() * 121);
   $('#memesers').attr('src', "assets/memes/" + meme + ".png");
 }
 
@@ -435,8 +729,9 @@ function removePlayoffs(object) {
 }
 
 // applies data to local storage
-function cacheSettings() {
-
+function resetLocalStorage() {
+  localStorage.clear();
+  localStorage.setItem('eventData', eventData);
 }
 
 // init function
@@ -450,17 +745,29 @@ $(document).ready(function() {
     case 'settings.html':
       console.log('Settings Page');
       validateLocalStorage();
+      adjustColor();
+      if (localStorage.matchObj) {
+        printMatches();
+      }
       break;
 
       // for the match and scout selection page, do the following
     case 'selection.html':
-      console.log();
+      console.log('selection page');
       populateScouts();
       meme();
+      // increment match number
+      if (typeof parseInt(localStorage.matchNumber, 10) === 'number') {
+        $('#matchNumber').val(parseInt(localStorage.matchNumber, 10) + 1);
+      } else {
+        $('#matchNumber').val(1);
+      }
+      document.getElementById('scouts').selectedIndex = parseInt(localStorage.scoutIndex, 10);
       break;
 
       // for the sandstorm and teleop page, do the following
     case 'match.html':
+      console.log('match page');
       // deselectable radio buttons
       $('input[name="presence"]').click(function() {
         if (this.previous) {
@@ -470,7 +777,7 @@ $(document).ready(function() {
       });
 
       // ??BUG?? Event does not bind 
-      $('#scroll-container').scroll(scrollLogo);
+      // $('#scroll-container').scroll(scrollLogo);
 
       break;
   };
@@ -479,21 +786,21 @@ $(document).ready(function() {
   $('input[name="presence"]').click(function() {
     if (this.previous) {
       this.checked = false;
+      console.log('unchecked the radio');
+    } else {
+      this.checked = true;
+      console.log('not uncheck radio');
     }
     this.previous = this.checked;
   });
 
+  if (localStorage.matchObj) {
+    matchObj = JSON.parse(localStorage.matchObj);
+  }
   // add event listener to trigger the reset
-  $('button.hatch, button.cargo').on('mousedown', holdReset); // startHold
+  // $('button.hatch, button.cargo').on('mousedown', holdReset); // startHold
   // stop the function on mouseup
-  $('button.hatch, button.cargo').on('mouseup', cancelReset);
-
-  // populateScouts();
-  // adjustColor();
-  // meme();
-  // validateLocalStorage();
-
-
+  // $('button.hatch, button.cargo').on('mouseup', cancelReset);
   console.log('loaded up');
 });
 

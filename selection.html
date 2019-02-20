@@ -47,7 +47,7 @@
     <!-- <object type="image/svg+xml" data="assets/arrow-left.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
       Fallback Picture here
       </object> -->
-    <img src="assets/arrow-right.svg" title="Next Page" alt="navigation arrows" id="right-nav-arrow" onclick="window.location.href = 'match.html'">
+    <img src="assets/arrow-right.svg" title="Next Page" alt="navigation arrows" id="right-nav-arrow" onclick="localStorage.setItem('match', $('matchNumber').val()); tempStorage(); window.location.href = 'match.html';">
     <!-- <object type="image/svg+xml" data="assets/arrow-right.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
       Fallback image in here
       </object> -->
@@ -73,6 +73,19 @@
       </div>
     </div>
   </section>
+
+  <!-- Javascript -->
+  <!-- Import JQuery -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Import Parallax.js -->
+  <!-- <script src="js/parallax.min.js"></script> -->
+  <!-- alternate parallax plugin (works for horizontal scrolling) -->
+  <!-- <script type="text/javascript" src="js/jquery.paroller.min.js"></script> -->
+  <!-- Import Velocity.js -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js"></script>
+  <!-- Run app.js -->
+  <script type="text/javascript" src="js/app.js"></script>
 
 </body>
 

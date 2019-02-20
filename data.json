@@ -3,7 +3,6 @@
   "match": 0,
   "alliance": "Red",
   "teamNumber": 0,
-  "scoutStation": 1,
   "position": 1,
   "noShow": false,
   "startPos": 1,
@@ -17,25 +16,25 @@
       },
       "level2": {
         "hatch": 0,
-        "cargo": 0 
+        "cargo": 0
       },
       "level3": {
         "hatch": 0,
-        "cargo": 0  
+        "cargo": 0
       }
     },
     "ship": {
       "hatch": 0,
       "cargo": 0
     },
-   "retrieved": {
+    "retrieved": {
       "hatch": 0,
       "cargo": 0
     },
     "dropped": {
       "hatch": 0,
       "cargo": 0
-    } 
+    }
   },
   "teleOp": {
     "obscured": {
@@ -46,11 +45,11 @@
         },
         "level2": {
           "hatch": 0,
-          "cargo": 0  
+          "cargo": 0
         },
         "level3": {
           "hatch": 0,
-          "cargo": 0  
+          "cargo": 0
         }
       },
       "ship": {
@@ -62,15 +61,15 @@
       "rocket": {
         "level1": {
           "hatch": 0,
-          "cargo": 0  
+          "cargo": 0
         },
         "level2": {
           "hatch": 0,
-          "cargo": 0  
+          "cargo": 0
         },
         "level3": {
           "hatch": 0,
-          "cargo": 0  
+          "cargo": 0
         }
       },
       "ship": {
