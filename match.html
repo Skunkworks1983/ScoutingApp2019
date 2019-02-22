@@ -68,18 +68,18 @@
                 <div class="rocket">
                   <h4>&nbsp;</h4>
                   <div class="flex flex-justify-space-evenly">
-                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.level3.hatch">0</button>
-                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.level3.cargo">0</button>
+                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level3.hatch">0</button>
+                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level3.cargo">0</button>
                   </div>
                   <h4>Level 2</h4>
                   <div class="flex flex-justify-space-evenly">
-                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.level2.hatch">0</button>
-                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.level2.cargo">0</button>
+                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level2.hatch">0</button>
+                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level2.cargo">0</button>
                   </div>
                   <h4>Level 1</h4>
                   <div class="flex flex-justify-space-evenly">
-                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.level1.hatch">0</button>
-                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.level1.cargo">0</button>
+                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level1.hatch">0</button>
+                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level1.cargo">0</button>
                   </div>
                 </div>
                 <br>
@@ -211,8 +211,8 @@
               <br>
               <h4>Dropped Game Pieces</h4>
               <div class="flex dropped flex-justify-space-evenly">
-                <button class="hatch fatFinger" onmousedown="goUp(this, 20);" id="teleOp.unobscured.dropped.hatch">0</button>
-                <button class="cargo fatFinger" onmousedown="goUp(this, 20);" id="teleOp.unobscured.dropped.cargo">0</button>
+                <button class="hatch fatFinger" onmousedown="goUp(this, 20);" id="teleOp.dropped.hatch">0</button>
+                <button class="cargo fatFinger" onmousedown="goUp(this, 20);" id="teleOp.dropped.cargo">0</button>
               </div>
               <br><br>
               <div class="flex; flex-grow" style="justify-items: flex-end; background-color: white;">
@@ -272,7 +272,7 @@
         </div>
       </div>
     </section>
-    <div class="fixedBottomRight edgeRight" onclick="setCurrentData(); window.location.href = 'selection.html'">
+    <div class="fixedBottomRight edgeRight" onclick="if(confirm('Are you sure you want to submit?')) {setCurrentData(); window.location.href = 'selection.html'}">
       Submit
     </div>
   </div>

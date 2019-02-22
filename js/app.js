@@ -7,6 +7,7 @@ var buttons;
 var verify = false;
 var meme;
 var holdTimer;
+var teamNumber;
 
 // interval for hue shifting
 const interval = 750;
@@ -22,7 +23,7 @@ const path = ""; // add server path
 // get data from TBA
 var matches = new XMLHttpRequest();
 // define JSON objects
-let matchesObj;
+let matchObj;
 // verify HTTP requests
 let verifyHTTP = false;
 
@@ -38,16 +39,11 @@ page = {
   teleop_alt: window.innerWidth * 3 + 2,
 };
 
-// Local Storage Object that stores the recorded match data
-// titles should be in format 'eventTitle_matchNumber'
-eventData = [];
-
 currentData = {
-  "event": "2019wasno", // string
+  "event": "", // string
   "match": 1, // int
   "alliance": "Red", // red or blue
   "teamNumber": 0, // int
-  "scoutStation": 1, // int
   "position": 1, // int
   "noShow": false, // boolean
   "startPos": 1, // int
@@ -143,7 +139,7 @@ currentData = {
   }
 }
 try {
-  function getMatchObj() {
+  function grabMatch() {
 
   }
 } catch (err) {
@@ -152,12 +148,13 @@ try {
 
 // write data to local storage
 function setCurrentData() {
-  eventCode = localStorage.eventData;
+  eventData = JSON.parse(localStorage.eventData);
   currentData.event = matchObj[0].event_key;
   currentData.match = localStorage.matchNumber;
   currentData.alliance = getAlliance();
   currentData.teamNumber = getTeamNumber();
   currentData.position = getStation();
+  currentData.scoutName = localStorage.scoutName;
   // get start pos
   switch ($('input[name="startPos"]:checked').attr('id')) {
     case 'startPos1':
@@ -182,56 +179,56 @@ function setCurrentData() {
     currentData.sandStorm.deadBot = true;
   }
   // rocket
-  currentData.sandStorm.rocket.level1.hatch = $('#sandStorm.rocket.level1.hatch').html();
-  currentData.sandStorm.rocket.level1.cargo = $('#sandStorm.rocket.level1.cargo').html();
-  currentData.sandStorm.rocket.level2.hatch = $('#sandStorm.rocket.level2.hatch').html();
-  currentData.sandStorm.rocket.level2.cargo = $('#sandStorm.rocket.level2.cargo').html();
-  currentData.sandStorm.rocket.level3.hatch = $('#sandStorm.rocket.level3.hatch').html();
-  currentData.sandStorm.rocket.level3.cargo = $('#sandStorm.rocket.level3.cargo').html();
+  currentData.sandStorm.rocket.level1.hatch = parseInt(document.getElementById('sandStorm.rocket.level1.hatch').innerHTML, 10);
+  currentData.sandStorm.rocket.level1.cargo = parseInt(document.getElementById('sandStorm.rocket.level1.cargo').innerHTML, 10);
+  currentData.sandStorm.rocket.level2.hatch = parseInt(document.getElementById('sandStorm.rocket.level2.hatch').innerHTML, 10);
+  currentData.sandStorm.rocket.level2.cargo = parseInt(document.getElementById('sandStorm.rocket.level2.cargo').innerHTML, 10);
+  currentData.sandStorm.rocket.level3.hatch = parseInt(document.getElementById('sandStorm.rocket.level3.hatch').innerHTML, 10);
+  currentData.sandStorm.rocket.level3.cargo = parseInt(document.getElementById('sandStorm.rocket.level3.cargo').innerHTML, 10);
   // ship
-  currentData.sandStorm.ship.hatch = $('#sandStorm.ship.hatch').html();
-  currentData.sandStorm.ship.cargo = $('#sandStorm.ship.cargo').html();
+  currentData.sandStorm.ship.hatch = parseInt(document.getElementById('sandStorm.ship.hatch').innerHTML, 10);
+  currentData.sandStorm.ship.cargo = parseInt(document.getElementById('sandStorm.ship.cargo').innerHTML, 10);
   // retrieved 
-  currentData.sandStorm.retrieved.hatch = $('#sandStorm.retrieved.hatch').html();
-  currentData.sandStorm.retrieved.cargo = $('#sandStorm.retrieved.cargo').html();
+  currentData.sandStorm.retrieved.hatch = parseInt(document.getElementById('sandStorm.retrieved.hatch').innerHTML, 10);
+  currentData.sandStorm.retrieved.cargo = parseInt(document.getElementById('sandStorm.retrieved.cargo').innerHTML, 10);
   // dropped
-  currentData.sandStorm.dropped.hatch = $('#sandStorm.dropped.hatch').html();
-  currentData.sandStorm.dropped.cargo = $('#sandStorm.dropped.cargo').html();
+  currentData.sandStorm.dropped.hatch = parseInt(document.getElementById('sandStorm.dropped.hatch').innerHTML, 10);
+  currentData.sandStorm.dropped.cargo = parseInt(document.getElementById('sandStorm.dropped.cargo').innerHTML, 10);
   // teleop
   // obscured
   // rocket
-  currentData.teleOp.obscured.rocket.level1.hatch = $('#teleOp.obscured.rocket.level1.hatch').html();
-  currentData.teleOp.obscured.rocket.level1.cargo = $('#teleOp.obscured.rocket.level1.cargo').html();
-  currentData.teleOp.obscured.rocket.level2.hatch = $('#teleOp.obscured.rocket.level2.hatch').html();
-  currentData.teleOp.obscured.rocket.level2.cargo = $('#teleOp.obscured.rocket.level2.cargo').html();
-  currentData.teleOp.obscured.rocket.level3.hatch = $('#teleOp.obscured.rocket.level3.hatch').html();
-  currentData.teleOp.obscured.rocket.level3.cargo = $('#teleOp.obscured.rocket.level3.cargo').html();
+  currentData.teleOp.obscured.rocket.level1.hatch = parseInt(document.getElementById('teleOp.obscured.rocket.level1.hatch').innerHTML, 10);
+  currentData.teleOp.obscured.rocket.level1.cargo = parseInt(document.getElementById('teleOp.obscured.rocket.level1.cargo').innerHTML, 10);
+  currentData.teleOp.obscured.rocket.level2.hatch = parseInt(document.getElementById('teleOp.obscured.rocket.level2.hatch').innerHTML, 10);
+  currentData.teleOp.obscured.rocket.level2.cargo = parseInt(document.getElementById('teleOp.obscured.rocket.level2.cargo').innerHTML, 10);
+  currentData.teleOp.obscured.rocket.level3.hatch = parseInt(document.getElementById('teleOp.obscured.rocket.level3.hatch').innerHTML, 10);
+  currentData.teleOp.obscured.rocket.level3.cargo = parseInt(document.getElementById('teleOp.obscured.rocket.level3.cargo').innerHTML, 10);
   // ship
-  currentData.teleOp.obscured.ship.hatch = $('#teleOp.obscured.ship.hatch').html();
-  currentData.teleOp.obscured.ship.cargo = $('#teleOp.obscured.ship.cargo').html();
+  currentData.teleOp.obscured.ship.hatch = parseInt(document.getElementById('teleOp.obscured.ship.hatch').innerHTML, 10);
+  currentData.teleOp.obscured.ship.cargo = parseInt(document.getElementById('teleOp.obscured.ship.cargo').innerHTML, 10);
   // unobscured
   // rocket
-  currentData.teleOp.unobscured.rocket.level1.hatch = $('#teleOp.unobscured.rocket.level1.hatch').html();
-  currentData.teleOp.unobscured.rocket.level1.cargo = $('#teleOp.unobscured.rocket.level1.cargo').html();
-  currentData.teleOp.unobscured.rocket.level2.hatch = $('#teleOp.unobscured.rocket.level2.hatch').html();
-  currentData.teleOp.unobscured.rocket.level2.cargo = $('#teleOp.unobscured.rocket.level2.cargo').html();
-  currentData.teleOp.unobscured.rocket.level3.hatch = $('#teleOp.unobscured.rocket.level3.hatch').html();
-  currentData.teleOp.unobscured.rocket.level3.cargo = $('#teleOp.unobscured.rocket.level3.cargo').html();
+  currentData.teleOp.unobscured.rocket.level1.hatch = parseInt(document.getElementById('teleOp.unobscured.rocket.level1.hatch').innerHTML, 10);
+  currentData.teleOp.unobscured.rocket.level1.cargo = parseInt(document.getElementById('teleOp.unobscured.rocket.level1.cargo').innerHTML, 10);
+  currentData.teleOp.unobscured.rocket.level2.hatch = parseInt(document.getElementById('teleOp.unobscured.rocket.level2.hatch').innerHTML, 10);
+  currentData.teleOp.unobscured.rocket.level2.cargo = parseInt(document.getElementById('teleOp.unobscured.rocket.level2.cargo').innerHTML, 10);
+  currentData.teleOp.unobscured.rocket.level3.hatch = parseInt(document.getElementById('teleOp.unobscured.rocket.level3.hatch').innerHTML, 10);
+  currentData.teleOp.unobscured.rocket.level3.cargo = parseInt(document.getElementById('teleOp.unobscured.rocket.level3.cargo').innerHTML, 10);
   // ship
-  currentData.teleOp.unobscured.ship.hatch = $('#teleOp.unobscured.ship.hatch').html();
-  currentData.teleOp.unobscured.ship.cargo = $('#teleOp.unobscured.ship.cargo').html();
+  currentData.teleOp.unobscured.ship.hatch = parseInt(document.getElementById('teleOp.unobscured.ship.hatch').innerHTML, 10);
+  currentData.teleOp.unobscured.ship.cargo = parseInt(document.getElementById('teleOp.unobscured.ship.cargo').innerHTML, 10);
   // retrieved
-  currentData.teleOp.retrieved.loading.hatch = $('#teleOp.retrieved.loading.hatch').html();
-  currentData.teleOp.retrieved.loading.cargo = $('#teleOp.retrieved.loading.cargo').html();
-  currentData.teleOp.retrieved.floor.hatch = $('#teleOp.retrieved.floor.hatch').html();
-  currentData.teleOp.retrieved.floor.cargo = $('#teleOp.retrieved.floor.cargo').html();
+  currentData.teleOp.retrieved.loading.hatch = parseInt(document.getElementById('teleOp.retrieved.loading.hatch').innerHTML, 10);
+  currentData.teleOp.retrieved.loading.cargo = parseInt(document.getElementById('teleOp.retrieved.loading.cargo').innerHTML, 10);
+  currentData.teleOp.retrieved.floor.hatch = parseInt(document.getElementById('teleOp.retrieved.floor.hatch').innerHTML, 10);
+  currentData.teleOp.retrieved.floor.cargo = parseInt(document.getElementById('teleOp.retrieved.floor.cargo').innerHTML, 10);
   // dropped
-  currentData.teleOp.dropped.hatch = $('#teleOp.dropped.hatch').html();
-  currentData.teleOp.dropped.cargo = $('#teleOp.dropped.cargo').html();
+  currentData.teleOp.dropped.hatch = parseInt(document.getElementById('teleOp.dropped.hatch').innerHTML, 10);
+  currentData.teleOp.dropped.cargo = parseInt(document.getElementById('teleOp.dropped.cargo').innerHTML, 10);
 
   // set currentData to localStorage
   eventData.push(currentData);
-  localStorage.setItem('eventData', eventData);
+  localStorage.setItem('eventData', JSON.stringify(eventData));
 }
 
 // determine what alliance the tablet is
@@ -266,15 +263,18 @@ function getStation() {
 // grabs the team number
 // should be called after tempStorage is run
 function getTeamNumber() {
-  match = localStorage.matchNumber;
+  console.log('looking for team number');
+  matchObj = grabMatch();
+  matchObj = JSON.parse(localStorage.matchObj);
+  match = localStorage.matchNumber - 1;
   alliance = getAlliance();
-  station = getStation();
+  station = getStation() - 1;
   if (alliance === 'red') {
     teamNumber = parseInt(matchObj[match].alliances.red.team_keys[station].substr(3), 10);
-    return teamNumber;
+    return teamNumber
   } else if (alliance === 'blue') {
     teamNumber = parseInt(matchObj[match].alliances.blue.team_keys[station].substr(3), 10);
-    return teamNumber;
+    return teamNumber
   }
 }
 
@@ -306,10 +306,15 @@ function selectAll() {
 // delete selected data and table entries
 function deleteData() {
   let parent = $('.datacheck:checked').parents('tr');
+  data = JSON.parse(localStorage.eventData);
   for (i = 0; i < parent.length; i++) {
-    parent[i].remove();
+    current = parent[i];
+    posArray = current.id;
+    data.splice(posArray, 1);
+    current.remove();
+    localStorage.setItem('eventData', JSON.stringify(data));
   }
-  // TODO: delete JSON object from local storage
+  eventData = JSON.parse(localStorage.eventData);
 }
 
 // session cache non-essential settings like scout name and match number
@@ -423,7 +428,8 @@ function validateLocalStorage() {
 
 // retrieve the match schedule from local storage
 function grabMatch() {
-  return JSON.parse(localStorage.matchObj);
+  matchObj = JSON.parse(localStorage.matchObj);
+  return matchObj
 }
 
 // populate the match schedule table
@@ -553,8 +559,35 @@ function populateScouts() {
 
 // add data to upload table
 function populateTable() {
-  // retrieve data out of local storage
-  // get out the old table population code
+  data = JSON.parse(localStorage.eventData);
+  for (i = 0; i < data.length; i++) {
+    event = data[i].event;
+    match = data[i].match;
+    team = data[i].teamNumber;
+    $('#submittedDataTable').append($('<tr></tr>')
+      .attr({
+        'class': i + 1,
+        'id': i
+      })
+      .append($('<td></td>')
+        .append($('<input>')
+          .attr({
+            'type': 'checkbox',
+            'class': 'datacheck fatFinger'
+          })
+        )
+      )
+      .append($('<td></td>')
+        .html(event)
+      )
+      .append($('<td></td>')
+        .html(match)
+      )
+      .append($('<td></td>')
+        .html(team)
+      )
+    );
+  }
 }
 
 // function updates the settings
@@ -717,7 +750,7 @@ function adjustColor() {
 }
 
 function meme() {
-  meme = Math.floor(Math.random() * 121);
+  meme = Math.floor(Math.random() * 113);
   $('#memesers').attr('src', "assets/memes/" + meme + ".png");
 }
 
@@ -731,11 +764,26 @@ function removePlayoffs(object) {
 // applies data to local storage
 function resetLocalStorage() {
   localStorage.clear();
-  localStorage.setItem('eventData', eventData);
+
+  // Local Storage Object that stores the recorded match data
+  // titles should be in format 'eventTitle_matchNumber'
+  eventData = [];
+
+  localStorage.setItem('eventData', JSON.stringify(eventData));
 }
 
 // init function
 $(document).ready(function() {
+  console.log('loaded up');
+
+  if (localStorage.matchObj) {
+    console.log('got the match object');
+    grabMatch();
+  } else {
+    warn('no match object');
+    alert('Get the event data from the settings screen!');
+  }
+
   // disable right click
   // document.addEventListener('contextmenu', event => event.preventDefault());
 
@@ -749,6 +797,7 @@ $(document).ready(function() {
       if (localStorage.matchObj) {
         printMatches();
       }
+      populateTable();
       break;
 
       // for the match and scout selection page, do the following
@@ -757,9 +806,11 @@ $(document).ready(function() {
       populateScouts();
       meme();
       // increment match number
-      if (typeof parseInt(localStorage.matchNumber, 10) === 'number') {
+      if (typeof localStorage.matchNumber === typeof '1') {
+        console.log('Match number is a number and has been incremented');
         $('#matchNumber').val(parseInt(localStorage.matchNumber, 10) + 1);
       } else {
+        console.log('Match number is not a number');
         $('#matchNumber').val(1);
       }
       document.getElementById('scouts').selectedIndex = parseInt(localStorage.scoutIndex, 10);
@@ -769,12 +820,25 @@ $(document).ready(function() {
     case 'match.html':
       console.log('match page');
       // deselectable radio buttons
+      // $('input[name="presence"]').click(function() {
+      //   if (this.previous) {
+      //     this.checked = false;
+      //   }
+      //   this.previous = this.checked;
+      // });
+
       $('input[name="presence"]').click(function() {
         if (this.previous) {
           this.checked = false;
+          console.log('unchecked the radio');
+        } else {
+          this.checked = true;
+          console.log('not uncheck radio');
         }
         this.previous = this.checked;
       });
+
+      $('#teamName').html(getTeamNumber());
 
       // ??BUG?? Event does not bind 
       // $('#scroll-container').scroll(scrollLogo);
@@ -782,26 +846,11 @@ $(document).ready(function() {
       break;
   };
 
-  // unchecks checked radio buttons when clicked again
-  $('input[name="presence"]').click(function() {
-    if (this.previous) {
-      this.checked = false;
-      console.log('unchecked the radio');
-    } else {
-      this.checked = true;
-      console.log('not uncheck radio');
-    }
-    this.previous = this.checked;
-  });
-
-  if (localStorage.matchObj) {
-    matchObj = JSON.parse(localStorage.matchObj);
-  }
   // add event listener to trigger the reset
   // $('button.hatch, button.cargo').on('mousedown', holdReset); // startHold
   // stop the function on mouseup
   // $('button.hatch, button.cargo').on('mouseup', cancelReset);
-  console.log('loaded up');
+
 });
 
 // background hue shifts
