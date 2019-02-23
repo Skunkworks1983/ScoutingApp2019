@@ -1,0 +1,25 @@
+.incrementButton{
+	ont-size: 2em;
+	border-style: solid;
+	border-width: 2px;
+	border-color: BLACK;
+	height: 50px;
+	width: 75px;
+	background-color: #EEEEEE;
+	border-radius: 25px;
+
+
+}
+
+.minusButtons{
+  {
+  	font-size: 2em;
+  	border-style: solid;
+  	border-width: 2px;
+  	border-color: BLACK;
+  	width: 100px;
+  	background-color: #EEEEEE;
+		border-radius: 150px;
+
+  }
+}
