@@ -2,7 +2,15 @@
 var i;
 var j;
 var k;
-var scoutList = ['Ethan Palisoc', 'Evan Palisoc', 'PP Large', 'Caleb Jones', 'Mezie Nwizugbo', 'Patrick Eaton'];
+// make a get request to fetch this
+var scoutList = [
+  'Ethan Palisoc',
+  'Evan Palisoc',
+  'PP Large',
+  'Caleb Jones',
+  'Mezie Nwizugbo',
+  'Patrick Eaton'
+];
 var buttons;
 var verify = false;
 var meme;
@@ -26,6 +34,9 @@ var matches = new XMLHttpRequest();
 let matchObj;
 // verify HTTP requests
 let verifyHTTP = false;
+
+// send data to server
+
 
 // page scroll positions
 page = {
@@ -315,6 +326,16 @@ function deleteData() {
     localStorage.setItem('eventData', JSON.stringify(data));
   }
   eventData = JSON.parse(localStorage.eventData);
+}
+
+function uploadData() {
+  let parent = $('.datacheck:checked').parents('tr');
+  data = JSON.parse(localStorage.eventData);
+  for (i = 0; i < parent.length; i++) {
+    current = parent[i];
+    posArray = current.id;
+
+  }
 }
 
 // session cache non-essential settings like scout name and match number
@@ -772,6 +793,42 @@ function resetLocalStorage() {
   localStorage.setItem('eventData', JSON.stringify(eventData));
 }
 
+// create the minus buttons
+function minusButtons() {
+  console.log('Creating Minus Buttons');
+  buttons = $('button.cargo, button.hatch');
+  parents = buttons.parent();
+  width = $(buttons[0]).css('width');
+  // create the minus buttons
+  for (i = 0; i < parents.length; i++) {
+    current = parents[i];
+    current = $(current);
+    current.append($('<img></img>')
+      .attr({
+        'class': 'arrow',
+        'width': parseInt(width.substr(0, 2)) * 0.2,
+      })
+    );
+    current.append($('<img></img>')
+      .attr({
+        'class': 'minus-button',
+        // 'src': 'assets/minus.svg',
+        'width': width,
+      })
+    );
+  }
+  // add the onclick function for the minus buttons
+  for (i = 0; i > buttons.length; i++) {
+    current = buttons[i];
+    id = current.id;
+    parent = current.parentElement;
+    minusButtons = $(parent).children('img:not(.arrow)');
+    for (j = 0; j > minusButtons.length; j++) {
+      $(minusButtons[j]).on('click', down(id, 1, 0));
+    }
+  }
+}
+
 // init function
 $(document).ready(function() {
   console.log('loaded up');
@@ -780,7 +837,7 @@ $(document).ready(function() {
     console.log('got the match object');
     grabMatch();
   } else {
-    warn('no match object');
+    console.warn('no match object');
     alert('Get the event data from the settings screen!');
   }
 
@@ -819,14 +876,8 @@ $(document).ready(function() {
       // for the sandstorm and teleop page, do the following
     case 'match.html':
       console.log('match page');
-      // deselectable radio buttons
-      // $('input[name="presence"]').click(function() {
-      //   if (this.previous) {
-      //     this.checked = false;
-      //   }
-      //   this.previous = this.checked;
-      // });
 
+      // deselectable radio buttons
       $('input[name="presence"]').click(function() {
         if (this.previous) {
           this.checked = false;
@@ -838,7 +889,44 @@ $(document).ready(function() {
         this.previous = this.checked;
       });
 
+      // varies the delete type based on the reversion type
+      switch (JSON.parse(localStorage.reversionType)) {
+        case 1:
+          console.log('setting minus buttons');
+          minusButtons();
+          break;
+        case 2:
+          console.log('setting rollover');
+          rollover();
+          break;
+        case 3:
+          console.log('setting hold to reset');
+          holdToReset();
+          break;
+        default:
+          console.warn('error with incrementation');
+      };
+
+      // change the colors of buttons according to alliance
       $('#teamName').html(getTeamNumber());
+      switch (getAlliance()) {
+        case 'red':
+          $('#teamName').attr({
+            'style': 'color:#ffb7b7',
+          });
+          $('div.fixedBottomRight').attr({
+            'style': 'background-color:#ffb7b7',
+          });
+          break;
+        case 'blue':
+          $('#teamName').attr({
+            'style': 'color:#b7d8ff',
+          });
+          $('div.fixedBottomRight').attr({
+            'style': 'background-color:#b7d8ff',
+          });
+          break;
+      }
 
       // ??BUG?? Event does not bind 
       // $('#scroll-container').scroll(scrollLogo);

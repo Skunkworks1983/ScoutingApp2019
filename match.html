@@ -47,7 +47,7 @@
     <!-- <object type="image/svg+xml" data="assets/arrow-left.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
           Fallback Picture here
         </object> -->
-    <!-- TODO: add team number here -->
+    <h1 id="teamName"></h1>
     <img src="assets/arrow-right.svg" title="Next Page" alt="navigation arrows" id="right-nav-arrow" onclick="scrollButtonRight();">
     <!-- <object type="image/svg+xml" data="assets/arrow-right.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
           Fallback image in here
@@ -58,28 +58,40 @@
     <!-- Sandstorm | Page 3 -->
     <section class="slide" id="sandstorm">
       <div class="slide">
-        <div class="content">
+        <div class="content scrollable">
           <h1>SANDSTORM</h1>
           <div class="flex-row">
-            <div class="flex" style="width: 100%">
+            <div class="flex flex-row" style="width: 100%">
               <div class="flex1" style="flex-flow: row wrap;">
                 <h2>Rocket</h2>
                 <h4>Level 3</h4>
                 <div class="rocket">
-                  <h4>&nbsp;</h4>
+                  <!-- <h4>&nbsp;</h4> -->
                   <div class="flex flex-justify-space-evenly">
-                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level3.hatch">0</button>
-                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level3.cargo">0</button>
+                    <div class="button-container">
+                      <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level3.hatch">0</button>
+                    </div>
+                    <div class="button-container">
+                      <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level3.cargo">0</button>
+                    </div>
                   </div>
                   <h4>Level 2</h4>
                   <div class="flex flex-justify-space-evenly">
-                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level2.hatch">0</button>
-                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level2.cargo">0</button>
+                    <div class="button-container">
+                      <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level2.hatch">0</button>
+                    </div>
+                    <div class="button-container">
+                      <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level2.cargo">0</button>
+                    </div>
                   </div>
                   <h4>Level 1</h4>
                   <div class="flex flex-justify-space-evenly">
-                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level1.hatch">0</button>
-                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level1.cargo">0</button>
+                    <div class="button-container">
+                      <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level1.hatch">0</button>
+                    </div>
+                    <div class="button-container">
+                      <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="sandStorm.rocket.level1.cargo">0</button>
+                    </div>
                   </div>
                 </div>
                 <br>
@@ -105,24 +117,36 @@
                 <h2>Cargo Ship</h2>
                 <br>
                 <div class="ship flex flex-row flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onclick="goUp(this, 8)" id="sandStorm.ship.hatch">0</button>
-                  <button class="cargo fatFinger" onclick="goUp(this, 8)" id="sandStorm.ship.cargo">0</button>
+                  <div class="button-container">
+                    <button class="hatch fatFinger" onclick="goUp(this, 8)" id="sandStorm.ship.hatch">0</button>
+                  </div>
+                  <div class="button-container">
+                    <button class="cargo fatFinger" onclick="goUp(this, 8)" id="sandStorm.ship.cargo">0</button>
+                  </div>
                 </div>
                 <br>
                 <hr>
                 <h3>Retrieved Game Pieces</h3>
                 <div class="">
                   <div class="retrieved flex flex-justify-space-evenly">
-                    <button class="hatch fatFinger" onmousedown="goUp(this, 20);" id="sandStorm.retrieved.hatch">0</button>
-                    <button class="cargo fatFinger" onmousedown="goUp(this, 20);" id="sandStorm.retrieved.cargo">0</button>
+                    <div class="button-container">
+                      <button class="hatch fatFinger" onmousedown="goUp(this, 20);" id="sandStorm.retrieved.hatch">0</button>
+                    </div>
+                    <div class="button-container">
+                      <button class="cargo fatFinger" onmousedown="goUp(this, 20);" id="sandStorm.retrieved.cargo">0</button>
+                    </div>
                   </div>
                 </div>
                 <hr>
                 <h3>Dropped Game Pieces</h3>
                 <div class="">
                   <div class="dropped flex flex-justify-space-evenly">
-                    <button class="hatch fatFinger" onmousedown="goUp(this, 20);" id="sandStorm.dropped.hatch">0</button>
-                    <button class="cargo fatFinger" onmousedown="goUp(this, 20);" id="sandStorm.dropped.cargo">0</button>
+                    <div class="button-container">
+                      <button class="hatch fatFinger" onmousedown="goUp(this, 20);" id="sandStorm.dropped.hatch">0</button>
+                    </div>
+                    <div class="button-container">
+                      <button class="cargo fatFinger" onmousedown="goUp(this, 20);" id="sandStorm.dropped.cargo">0</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -144,40 +168,64 @@
               <h2>Obscured</h2>
               <h4>Level 3</h4>
               <div class="rocket">
-                <h4>&nbsp;</h4>
+                <!-- <h4>&nbsp;</h4> -->
                 <div class="flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="teleOp.obscured.rocket.level3.hatch">0</button>
-                  <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="teleOp.obscured.rocket.level3.cargo">0</button>
+                  <div class="button-container">
+                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="teleOp.obscured.rocket.level3.hatch">0</button>
+                  </div>
+                  <div class="button-container">
+                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="teleOp.obscured.rocket.level3.cargo">0</button>
+                  </div>
                 </div>
                 <h4>Level 2</h4>
                 <div class="flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="teleOp.obscured.rocket.level2.hatch">0</button>
-                  <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="teleOp.obscured.rocket.level2.cargo">0</button>
+                  <div class="button-container">
+                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="teleOp.obscured.rocket.level2.hatch">0</button>
+                  </div>
+                  <div class="button-container">
+                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="teleOp.obscured.rocket.level2.cargo">0</button>
+                  </div>
                 </div>
                 <h4>Level 1</h4>
                 <div class="flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="teleOp.obscured.rocket.level1.hatch">0</button>
-                  <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="teleOp.obscured.rocket.level1.cargo">0</button>
+                  <div class="button-container">
+                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="teleOp.obscured.rocket.level1.hatch">0</button>
+                  </div>
+                  <div class="button-container">
+                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="teleOp.obscured.rocket.level1.cargo">0</button>
+                  </div>
                 </div>
               </div>
               <br>
               <h4>Cargo Ship</h4>
               <div class="ship flex flex-justify-space-evenly">
-                <button class="hatch fatFinger" onmousedown="goUp(this, 8);" id="teleOp.obscured.ship.hatch">0</button>
-                <button class="cargo fatFinger" onmousedown="goUp(this, 8);" id="teleOp.obscured.ship.cargo">0</button>
+                <div class="button-container">
+                  <button class="hatch fatFinger" onmousedown="goUp(this, 8);" id="teleOp.obscured.ship.hatch">0</button>
+                </div>
+                <div class="button-container">
+                  <button class="cargo fatFinger" onmousedown="goUp(this, 8);" id="teleOp.obscured.ship.cargo">0</button>
+                </div>
               </div>
               <br>
               <h3>Retrieved Game Pieces</h3>
               <div class="">
                 <h4>Floor</h4>
                 <div class="retrieved flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onmousedown="goUp(this, 20);" id="teleOp.retrieved.floor.hatch">0</button>
-                  <button class="cargo fatFinger" onmousedown="goUp(this, 20);" id="teleOp.retrieved.floor.cargo">0</button>
+                  <div class="button-container">
+                    <button class="hatch fatFinger" onmousedown="goUp(this, 20);" id="teleOp.retrieved.floor.hatch">0</button>
+                  </div>
+                  <div class="button-container">
+                    <button class="cargo fatFinger" onmousedown="goUp(this, 20);" id="teleOp.retrieved.floor.cargo">0</button>
+                  </div>
                 </div>
                 <h4>Loading</h4>
                 <div class="retrieved flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onmousedown="goUp(this, 20);" id="teleOp.retrieved.loading.hatch">0</button>
-                  <button class="cargo fatFinger" onmousedown="goUp(this, 20);" id="teleOp.retrieved.loading.cargo">0</button>
+                  <div class="button-container">
+                    <button class="hatch fatFinger" onmousedown="goUp(this, 20);" id="teleOp.retrieved.loading.hatch">0</button>
+                  </div>
+                  <div class="button-container">
+                    <button class="cargo fatFinger" onmousedown="goUp(this, 20);" id="teleOp.retrieved.loading.cargo">0</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -186,33 +234,53 @@
               <!-- <h3>Rocket</h3> -->
               <h4>Level 3</h4>
               <div class="rocket">
-                <h4>&nbsp;</h4>
+                <!-- <h4>&nbsp;</h4> -->
                 <div class="flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="teleOp.unobscured.rocket.level3.hatch">0</button>
-                  <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="teleOp.unobscured.rocket.level3.cargo">0</button>
+                  <div class="button-container">
+                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="teleOp.unobscured.rocket.level3.hatch">0</button>
+                  </div>
+                  <div class="button-container">
+                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="teleOp.unobscured.rocket.level3.cargo">0</button>
+                  </div>
                 </div>
                 <h4>Level 2</h4>
                 <div class="flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="teleOp.unobscured.rocket.level2.hatch">0</button>
-                  <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="teleOp.unobscured.rocket.level2.cargo">0</button>
+                  <div class="button-container">
+                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="teleOp.unobscured.rocket.level2.hatch">0</button>
+                  </div>
+                  <div class="button-container">
+                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="teleOp.unobscured.rocket.level2.cargo">0</button>
+                  </div>
                 </div>
                 <h4>Level 1</h4>
                 <div class="flex flex-justify-space-evenly">
-                  <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="teleOp.unobscured.rocket.level1.hatch">0</button>
-                  <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="teleOp.unobscured.rocket.level1.cargo">0</button>
+                  <div class="button-container">
+                    <button class="hatch fatFinger" onmousedown="goUp(this, 2);" id="teleOp.unobscured.rocket.level1.hatch">0</button>
+                  </div>
+                  <div class="button-container">
+                    <button class="cargo fatFinger" onmousedown="goUp(this, 2);" id="teleOp.unobscured.rocket.level1.cargo">0</button>
+                  </div>
                 </div>
               </div>
               <br>
               <h4>Cargo Ship</h4>
               <div class="ship flex flex-justify-space-evenly">
-                <button class="hatch fatFinger" onmousedown="goUp(this, 8);" id="teleOp.unobscured.ship.hatch">0</button>
-                <button class="cargo fatFinger" onmousedown="goUp(this, 8);" id="teleOp.unobscured.ship.cargo">0</button>
+                <div class="button-container">
+                  <button class="hatch fatFinger" onmousedown="goUp(this, 8);" id="teleOp.unobscured.ship.hatch">0</button>
+                </div>
+                <div class="button-container">
+                  <button class="cargo fatFinger" onmousedown="goUp(this, 8);" id="teleOp.unobscured.ship.cargo">0</button>
+                </div>
               </div>
               <br>
               <h4>Dropped Game Pieces</h4>
               <div class="flex dropped flex-justify-space-evenly">
-                <button class="hatch fatFinger" onmousedown="goUp(this, 20);" id="teleOp.dropped.hatch">0</button>
-                <button class="cargo fatFinger" onmousedown="goUp(this, 20);" id="teleOp.dropped.cargo">0</button>
+                <div class="button-container">
+                  <button class="hatch fatFinger" onmousedown="goUp(this, 20);" id="teleOp.dropped.hatch">0</button>
+                </div>
+                <div class="button-container">
+                  <button class="cargo fatFinger" onmousedown="goUp(this, 20);" id="teleOp.dropped.cargo">0</button>
+                </div>
               </div>
               <br><br>
               <div class="flex; flex-grow" style="justify-items: flex-end; background-color: white;">
