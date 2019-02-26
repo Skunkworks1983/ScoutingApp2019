@@ -9,8 +9,8 @@ const conString = "";
 app.get('/', (req, res) => res.send('Hello World!'));
 
 // listen for the JSON object, and parse it into SQL queries
-app.post('/', function() {}
+app.post('/', function() {
 
-);
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

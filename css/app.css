@@ -613,6 +613,27 @@ button.win95 {}
   background-color: #EF7822;
 }
 
+.button-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-items: center;
+  align-items: center;
+}
+
+.minus-button:nth-of-type(even) {
+  /* margin-top: 15px; */
+  content: url('../assets/minus.svg');
+}
+
+.minus-button:nth-of-type(odd) {
+  /* margin-top: 15px; */
+  content: url('../assets/minus_red.svg');
+}
+
+.arrow {
+  content: url('../assets/arrow-up.svg');
+}
+
 .fixedBottomRight {
   position: fixed;
   right: 5vw;
@@ -631,4 +652,9 @@ button.win95 {}
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000;
+}
+
+#teamName {
+  color: white;
+  font-size: 3em;
 }
