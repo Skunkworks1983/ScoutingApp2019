@@ -1,11 +1,8 @@
 {
   "name": "skunkserver",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "SQL endpoint for the app",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "scouting.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Skunkworks1983/ScoutingApp2019.git"
@@ -22,3 +19,4 @@
     "mysql": "^2.16.0"
   }
 }
+
