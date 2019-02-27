@@ -240,6 +240,7 @@ function setCurrentData() {
   // set currentData to localStorage
   eventData.push(currentData);
   localStorage.setItem('eventData', JSON.stringify(eventData));
+  window.location.href = 'selection.html';
 }
 
 // determine what alliance the tablet is
