@@ -26,7 +26,7 @@ const TBAheader = "X-TBA-Auth-Key";
 const TBAkey = "d4V33bAbuXiKfuLW1pc4BaLbr56BgiORtyM5hwmRLU5qNf6Rxh83noDdI0mPJJ3R"; // eventually this one should become user input
 const TBAURL = "https://www.thebluealliance.com/api/v3/event/";
 const matchesURL = "/matches/simple";
-const path = ""; // add server path
+const path = "http://ec2-54-234-76-73.compute-1.amazonaws.com";
 
 // get data from TBA
 var matches = new XMLHttpRequest();
@@ -334,7 +334,8 @@ function uploadData() {
   for (i = 0; i < parent.length; i++) {
     current = parent[i];
     posArray = current.id;
-
+    submitData(data[posArray]);
+    data.splice(posArray, 1);
   }
 }
 
@@ -370,6 +371,41 @@ function storageAvailable(type) {
         e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
       // acknowledge QuotaExceededError only if there's something already stored
       storage.length !== 0;
+  }
+}
+
+function createCORSRequest(method, url) {
+  var xhr = new XMLHttpRequest();
+  if ("withCredentials" in xhr) {
+
+    // Check if the XMLHttpRequest object has a "withCredentials" property.
+    // "withCredentials" only exists on XMLHTTPRequest2 objects.
+    xhr.open(method, url, true);
+
+  } else if (typeof XDomainRequest != "undefined") {
+
+    // Otherwise, check if XDomainRequest.
+    // XDomainRequest only exists in IE, and is IE's way of making CORS requests.
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+
+  } else {
+
+    // Otherwise, CORS is not supported by the browser.
+    xhr = null;
+
+  }
+  return xhr;
+}
+
+function submitData(line) {
+  eventData = JSON.parse(localStorage.eventData);
+  console.log(line);
+  var xhr = createCORSRequest('PUT', path);
+  // xhr.setRequestHeader('', '');
+  xhr.send(JSON.stringify(line));
+  xhr.onreadystatechange = function() {
+    console.log('Sent data');
   }
 }
 
@@ -743,10 +779,6 @@ function finishReset(target) {
   window.navigator.vibrate(200);
 }
 
-function submitData() {
-
-}
-
 // function changes the color of the sandstorm logo based on the tablet
 function adjustColor() {
   var color = document.getElementById('colorTeam');
@@ -786,8 +818,6 @@ function removePlayoffs(object) {
 function resetLocalStorage() {
   localStorage.clear();
 
-  // Local Storage Object that stores the recorded match data
-  // titles should be in format 'eventTitle_matchNumber'
   eventData = [];
 
   localStorage.setItem('eventData', JSON.stringify(eventData));
@@ -816,17 +846,18 @@ function minusButtons() {
         'width': width,
       })
     );
-  }
+  };
   // add the onclick function for the minus buttons
   for (i = 0; i > buttons.length; i++) {
-    current = buttons[i];
+    current = $(buttons[i]);
     id = current.id;
-    parent = current.parentElement;
-    minusButtons = $(parent).children('img:not(.arrow)');
+    parent = current.parent();
+    minusButtons = $(parent).children('img.minus-button');
     for (j = 0; j > minusButtons.length; j++) {
-      $(minusButtons[j]).on('click', down(id, 1, 0));
-    }
-  }
+      current1 = $(minusButtons);
+      minusButtons[j].on('click', down(id, 1, 0));
+    };
+  };
 }
 
 // init function

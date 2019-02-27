@@ -1,9 +1,9 @@
-CREATE TABLE Public.DeepSpace(
+CREATE TABLE DeepSpace(
 isTele                    bool, -- Is it tele?
 scoutName                 varchar(25),
 eventName                 varchar(20),
 teamNo                    int,
-match                     int,
+matchNumber               int,
 alliance                  varchar(4),
 autoStartLevel            int,
 autoCrossLine             bool,
