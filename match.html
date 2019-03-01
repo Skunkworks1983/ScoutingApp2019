@@ -247,7 +247,7 @@
               </div>
             </div>
             <div class="flex1">
-              <h3>Unobscured</h3>
+              <h3>Visible</h3>
               <div class="ship flex flex-justify-space-evenly">
                 <div class="button-container">
                   <button class="hatch fatFinger" onmousedown="goUp(this, 8);" id="teleOp.unobscured.ship.hatch">0</button>
@@ -267,7 +267,7 @@
                 </div>
               </div>
               <br><br>
-              <div class="flex; flex-grow" style="justify-items: flex-end; background-color: white;">
+              <div class="flex flex-grow flex-column" style="justify-items: center; background-color: white;">
                 <input class="fatFinger" type="checkbox" id="teleOp.deadBot">
                 <h3>Dead Bot</h3>
               </div>
@@ -313,13 +313,16 @@
               </div>
             </div>
           </div>
+          <br>
           <div class="flex flex-justify-space-evenly">
             <div class="flex1">
-
+              <h3>Assisted Climb</h3>
+              <input class="fatFinger" type="checkbox" id="teleOp.assistedClimb">
             </div>
-            <div>
-
-            </div class="flex1">
+            <div class="flex1">
+              <h3>Recieved Climb</h3>
+              <input class="fatFinger" type="checkbox" id="teleOp.recievedClimb">
+            </div>
           </div>
         </div>
       </div>

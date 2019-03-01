@@ -47,7 +47,6 @@ table {
   overflow-y: scroll;
   overflow-x: hidden;
   width: 100%;
-  max-height: 50%;
   border-collapse: separate;
 }
 
@@ -56,6 +55,18 @@ tr {
   border-color: black;
   border-width: 0.1em;
   border-radius: 1em;
+}
+
+#dataTable {
+  height: 80vh;
+}
+
+#submittedDataTable {
+  height: 80vh;
+}
+
+tbody#submittedDataTable tr {
+  font-size: 1.1em;
 }
 
 tbody#submittedDataTable tr:nth-child(odd) {
@@ -121,14 +132,11 @@ input[type="number"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-  -ms-flex-item-align: end;
-  align-self: flex-end;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .table {
@@ -385,9 +393,6 @@ input[type="number"] {
 
 .rotate {
   -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
-  -ms-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
   transform: rotate(-90deg);
 
   text-align: left;
@@ -403,7 +408,6 @@ input[type="number"] {
   border-top-right-radius: 0px;
 
   -webkit-box-shadow: -3px 3px 5px 0px rgba(0, 0, 0, 0.6);
-  -moz-box-shadow: -3px 3px 5px 0px rgba(0, 0, 0, 0.6);
   box-shadow: -3px 3px 5px 0px rgba(0, 0, 0, 0.6);
 }
 
@@ -665,12 +669,12 @@ button.win95 {}
   align-items: center;
 }
 
-.minus-button:nth-of-type(even) {
+.minus-button-blue {
   /* margin-top: 15px; */
   content: url('../assets/minus.svg');
 }
 
-.minus-button:nth-of-type(odd) {
+.minus-button-red {
   /* margin-top: 15px; */
   content: url('../assets/minus_red.svg');
 }

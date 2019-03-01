@@ -26,7 +26,7 @@ const TBAheader = "X-TBA-Auth-Key";
 const TBAkey = "d4V33bAbuXiKfuLW1pc4BaLbr56BgiORtyM5hwmRLU5qNf6Rxh83noDdI0mPJJ3R"; // eventually this one should become user input
 const TBAURL = "https://www.thebluealliance.com/api/v3/event/";
 const matchesURL = "/matches/simple";
-const path = "http://ec2-54-234-76-73.compute-1.amazonaws.com/:1983";
+const path = "http://ec2-18-212-243-43.compute-1.amazonaws.com:1983/";
 
 // get data from TBA
 var matches = new XMLHttpRequest();
@@ -147,6 +147,7 @@ currentData = {
     "climbLevel": 0, // int
     "assistedClimb": false, // boolean
     "recievedClimb": false, // boolean
+    "deadBot": false, // boolean
   }
 }
 try {
@@ -262,6 +263,12 @@ function setCurrentData() {
   // dropped
   currentData.teleOp.dropped.hatch = parseInt(document.getElementById('teleOp.dropped.hatch').innerHTML, 10);
   currentData.teleOp.dropped.cargo = parseInt(document.getElementById('teleOp.dropped.cargo').innerHTML, 10);
+
+  if ($('#teleOp.deadBot:checked') === null) {
+    currentData.teleOp.deadBot = false;
+  } else {
+    currentData.teleOp.deadBot = true;
+  }
 
   // set currentData to localStorage
   eventData.push(currentData);
@@ -430,7 +437,7 @@ function submitData(line) {
   console.log(line);
   var xhr = createCORSRequest('PUT', path);
   // xhr.setRequestHeader('', '');
-  xhr.setRequestHeader("Origin", "http://yeet.com");
+  // xhr.setRequestHeader("Origin", "http://yeet.com");
   xhr.setRequestHeader("Access-Control-Allow-Method", "PUT");
   xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
   xhr.setRequestHeader("Content-Type", "application/json");
@@ -585,24 +592,24 @@ function printMatches() {
 };
 
 // make field go up
-function up(id, amount, limit) {
-  if (id === this) {
-    console.log('Pointed at \'this\' selector.');
-    if (target.value < limit) {
-      target.setAttribute("value", parseInt(target.value, 10) + parseInt(amount, 10));
-    } else {
-      return "Trying to go over " + limit;
-    }
-  } else {
-    console.log('Not pointed at \'this\' selector.');
-    var target = document.getElementById(id);
-    if (target.value < limit) {
-      target.setAttribute("value", parseInt(target.value, 10) + parseInt(amount, 10));
-    } else {
-      return "Trying to go over " + limit;
-    }
-  }
-}
+// function up(id, amount, limit) {
+//   if (id === this) {
+//     console.log('Pointed at \'this\' selector.');
+//     if (target.value < limit) {
+//       target.setAttribute("value", parseInt(target.value, 10) + parseInt(amount, 10));
+//     } else {
+//       return "Trying to go over " + limit;
+//     }
+//   } else {
+//     console.log('Not pointed at \'this\' selector.');
+//     var target = document.getElementById(id);
+//     if (target.value < limit) {
+//       target.setAttribute("value", parseInt(target.value, 10) + parseInt(amount, 10));
+//     } else {
+//       return "Trying to go over " + limit;
+//     }
+//   }
+// }
 
 function goUp(id, limit) {
   elem = id;
@@ -852,29 +859,49 @@ function minusButtons() {
   parents = buttons.parent();
   width = $(buttons[0]).css('width');
   // create the minus buttons
-  for (i = 0; i < parents.length; i++) {
-    current = parents[i];
-    current = $(current);
-    current.append($('<img></img>')
-      .attr({
-        'class': 'arrow',
-        'width': parseInt(width.substr(0, 2)) * 0.2,
-      })
-    );
-    current.append($('<img></img>')
-      .attr({
-        'class': 'minus-button',
-        // 'src': 'assets/minus.svg',
-        'width': width,
-      })
-    );
-  };
+  if (getAlliance() === 'red') {
+    for (i = 0; i < parents.length; i++) {
+      current = parents[i];
+      current = $(current);
+      current.append($('<img></img>')
+        .attr({
+          'class': 'arrow',
+          'width': parseInt(width.substr(0, 2)) * 0.2,
+        })
+      );
+      current.append($('<img></img>')
+        .attr({
+          'class': 'minus-button-red',
+          // 'src': 'assets/minus.svg',
+          'width': width,
+        })
+      );
+    }
+  } else if (getAlliance() === 'blue') {
+    for (i = 0; i < parents.length; i++) {
+      current = parents[i];
+      current = $(current);
+      current.append($('<img></img>')
+        .attr({
+          'class': 'arrow',
+          'width': parseInt(width.substr(0, 2)) * 0.2,
+        })
+      );
+      current.append($('<img></img>')
+        .attr({
+          'class': 'minus-button-blue',
+          // 'src': 'assets/minus.svg',
+          'width': width,
+        })
+      );
+    };
+  }
   // add the onclick function for the minus buttons
   for (i = 0; i < buttons.length; i++) {
     current = $(buttons[i]);
     id = current.attr('id');
     parent = current.parent();
-    minusButtons = $(parent).children('img.minus-button');
+    minusButtons = $(parent).children('img.minus-button-red, img.minus-button-blue');
     minusButtons.on('click', {
       'id': id,
       'amount': 1,
@@ -909,6 +936,8 @@ $(document).ready(function() {
         printMatches();
       }
       populateTable();
+      document.getElementById('colorTeam').selectedIndex = parseInt(localStorage.station, 10);
+      adjustColor();
       break;
 
       // for the match and scout selection page, do the following
