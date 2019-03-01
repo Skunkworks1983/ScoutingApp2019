@@ -26,7 +26,7 @@ const TBAheader = "X-TBA-Auth-Key";
 const TBAkey = "d4V33bAbuXiKfuLW1pc4BaLbr56BgiORtyM5hwmRLU5qNf6Rxh83noDdI0mPJJ3R"; // eventually this one should become user input
 const TBAURL = "https://www.thebluealliance.com/api/v3/event/";
 const matchesURL = "/matches/simple";
-const path = "http://ec2-54-234-76-73.compute-1.amazonaws.com";
+const path = "http://ec2-54-234-76-73.compute-1.amazonaws.com/:1983";
 
 // get data from TBA
 var matches = new XMLHttpRequest();
@@ -94,15 +94,15 @@ currentData = {
       "rocket": {
         "level1": {
           "hatch": 0, // int
-          "cargo": 0 // int
+          // "cargo": 0 // int
         },
         "level2": {
           "hatch": 0, // int
-          "cargo": 0 // int
+          // "cargo": 0 // int
         },
         "level3": {
           "hatch": 0, // int
-          "cargo": 0 // int
+          // "cargo": 0 // int
         }
       },
       "ship": {
@@ -157,6 +157,32 @@ try {
   alert('The event schedule has not been defined!');
 }
 
+// function to flatten JSON object because Erik is too lazy to write a parse function for a nested object
+Object.flatten = function(data) {
+  var result = {};
+
+  function recurse(cur, prop) {
+    if (Object(cur) !== cur) {
+      result[prop] = cur;
+    } else if (Array.isArray(cur)) {
+      for (var i = 0, l = cur.length; i < l; i++)
+        recurse(cur[i], prop + "[" + i + "]");
+      if (l == 0)
+        result[prop] = [];
+    } else {
+      var isEmpty = true;
+      for (var p in cur) {
+        isEmpty = false;
+        recurse(cur[p], prop ? prop + "." + p : p);
+      }
+      if (isEmpty && prop)
+        result[prop] = {};
+    }
+  }
+  recurse(data, "");
+  return result;
+}
+
 // write data to local storage
 function setCurrentData() {
   eventData = JSON.parse(localStorage.eventData);
@@ -209,11 +235,11 @@ function setCurrentData() {
   // obscured
   // rocket
   currentData.teleOp.obscured.rocket.level1.hatch = parseInt(document.getElementById('teleOp.obscured.rocket.level1.hatch').innerHTML, 10);
-  currentData.teleOp.obscured.rocket.level1.cargo = parseInt(document.getElementById('teleOp.obscured.rocket.level1.cargo').innerHTML, 10);
+  // currentData.teleOp.obscured.rocket.level1.cargo = parseInt(document.getElementById('teleOp.obscured.rocket.level1.cargo').innerHTML, 10);
   currentData.teleOp.obscured.rocket.level2.hatch = parseInt(document.getElementById('teleOp.obscured.rocket.level2.hatch').innerHTML, 10);
-  currentData.teleOp.obscured.rocket.level2.cargo = parseInt(document.getElementById('teleOp.obscured.rocket.level2.cargo').innerHTML, 10);
+  // currentData.teleOp.obscured.rocket.level2.cargo = parseInt(document.getElementById('teleOp.obscured.rocket.level2.cargo').innerHTML, 10);
   currentData.teleOp.obscured.rocket.level3.hatch = parseInt(document.getElementById('teleOp.obscured.rocket.level3.hatch').innerHTML, 10);
-  currentData.teleOp.obscured.rocket.level3.cargo = parseInt(document.getElementById('teleOp.obscured.rocket.level3.cargo').innerHTML, 10);
+  // currentData.teleOp.obscured.rocket.level3.cargo = parseInt(document.getElementById('teleOp.obscured.rocket.level3.cargo').innerHTML, 10);
   // ship
   currentData.teleOp.obscured.ship.hatch = parseInt(document.getElementById('teleOp.obscured.ship.hatch').innerHTML, 10);
   currentData.teleOp.obscured.ship.cargo = parseInt(document.getElementById('teleOp.obscured.ship.cargo').innerHTML, 10);
@@ -404,6 +430,10 @@ function submitData(line) {
   console.log(line);
   var xhr = createCORSRequest('PUT', path);
   // xhr.setRequestHeader('', '');
+  xhr.setRequestHeader("Origin", "http://yeet.com");
+  xhr.setRequestHeader("Access-Control-Allow-Method", "PUT");
+  xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
+  xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(JSON.stringify(line));
   xhr.onreadystatechange = function() {
     console.log('Sent data');
@@ -531,7 +561,6 @@ function printMatches() {
     teamno5 = document.createTextNode(blue2);
     teamno6 = document.createTextNode(blue3);
 
-
     //add the text nodes to cells
     teamnocell.appendChild(teamno);
     teamnocell1.appendChild(teamno1);
@@ -540,7 +569,6 @@ function printMatches() {
     teamnocell4.appendChild(teamno4);
     teamnocell5.appendChild(teamno5);
     teamnocell6.appendChild(teamno6);
-
 
     // append the cells to the row
     row.appendChild(teamnocell);
@@ -585,20 +613,13 @@ function goUp(id, limit) {
 }
 
 // make field go down
-function down(id, amount, limit) {
-  if (id === this) {
-    if (target.value > limit) {
-      target.setAttribute("value", parseInt(target.value, 10) - parseInt(amount, 10));
-    } else {
-      return "Trying to go under " + limit
-    }
+function down(event) {
+  target = $(document.getElementById(event.data.id));
+  val = parseInt(target.html(), 10);
+  if (val > event.data.limit) {
+    target.html(val - event.data.amount);
   } else {
-    var target = document.getElementById(id);
-    if (target.value > limit) {
-      target.setAttribute("value", parseInt(target.value, 10) - parseInt(amount, 10));
-    } else {
-      return "Trying to go under " + limit
-    }
+    console.log('Trying to go under ' + event.data.limit);
   }
 }
 
@@ -849,15 +870,16 @@ function minusButtons() {
     );
   };
   // add the onclick function for the minus buttons
-  for (i = 0; i > buttons.length; i++) {
+  for (i = 0; i < buttons.length; i++) {
     current = $(buttons[i]);
-    id = current.id;
+    id = current.attr('id');
     parent = current.parent();
     minusButtons = $(parent).children('img.minus-button');
-    for (j = 0; j > minusButtons.length; j++) {
-      current1 = $(minusButtons);
-      minusButtons[j].on('click', down(id, 1, 0));
-    };
+    minusButtons.on('click', {
+      'id': id,
+      'amount': 1,
+      'limit': 0,
+    }, down);
   };
 }
 
@@ -949,6 +971,9 @@ $(document).ready(function() {
           $('div.fixedBottomRight').attr({
             'style': 'background-color:#ffb7b7',
           });
+          $('.rotate').attr({
+            'style': 'background-color:#ffb7b7',
+          })
           break;
         case 'blue':
           $('#teamName').attr({
@@ -957,6 +982,9 @@ $(document).ready(function() {
           $('div.fixedBottomRight').attr({
             'style': 'background-color:#b7d8ff',
           });
+          $('.rotate').attr({
+            'style': 'background-color:#b7d8ff',
+          })
           break;
       }
 
