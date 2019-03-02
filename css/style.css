@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Audiowide');
+
+canvas {
+  display: block;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+
+body {
+  background-color: #000000;
+  background-image: url('../assets/sunset2.gif');
+
+  background-size: cover;
+}
+
+.splash-title {
+  position: absolute;
+  bottom: 10vh;
+  left: 10vw;
+  color: white;
+  font-size: 3em;
+  font-family: 'Audiowide', cursive;
+}
+
+.logo {
+  z-index: 5;
+  position: absolute;
+  top: 5vh;
+  left: 5vw;
+  width: 24vw;
+  height: 24vw;
+  background-image: url('../assets/Skunk Works Astronaut Logo Transparent (1).png');
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#rainbow {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+}
+
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-flicker {
+  -webkit-animation: flickerAnimation 2s infinite;
+  -moz-animation: flickerAnimation 2s infinite;
+  -o-animation: flickerAnimation 2s infinite;
+  animation: flickerAnimation 2s infinite;
+}

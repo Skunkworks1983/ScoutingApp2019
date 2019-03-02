@@ -1,10 +1,9 @@
 {
-  "event": "2019wasno",
+  "event": "",
   "match": 0,
-  "alliance": "Red",
+  "alliance": "",
   "teamNumber": 0,
-  "scoutStation": 1,
-  "position": 1,
+  "driverPosition": 1,
   "noShow": false,
   "startPos": 1,
   "sandStorm": {
@@ -17,40 +16,37 @@
       },
       "level2": {
         "hatch": 0,
-        "cargo": 0 
+        "cargo": 0
       },
       "level3": {
         "hatch": 0,
-        "cargo": 0  
+        "cargo": 0
       }
     },
     "ship": {
       "hatch": 0,
       "cargo": 0
     },
-   "retrieved": {
+    "retrieved": {
       "hatch": 0,
       "cargo": 0
     },
     "dropped": {
       "hatch": 0,
       "cargo": 0
-    } 
+    }
   },
   "teleOp": {
     "obscured": {
       "rocket": {
         "level1": {
-          "hatch": 0,
-          "cargo": 0
+          "hatch": 0
         },
         "level2": {
-          "hatch": 0,
-          "cargo": 0  
+          "hatch": 0
         },
         "level3": {
-          "hatch": 0,
-          "cargo": 0  
+          "hatch": 0
         }
       },
       "ship": {
@@ -62,15 +58,15 @@
       "rocket": {
         "level1": {
           "hatch": 0,
-          "cargo": 0  
+          "cargo": 0
         },
         "level2": {
           "hatch": 0,
-          "cargo": 0  
+          "cargo": 0
         },
         "level3": {
           "hatch": 0,
-          "cargo": 0  
+          "cargo": 0
         }
       },
       "ship": {

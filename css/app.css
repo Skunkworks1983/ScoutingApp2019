@@ -47,7 +47,6 @@ table {
   overflow-y: scroll;
   overflow-x: hidden;
   width: 100%;
-  max-height: 50%;
   border-collapse: separate;
 }
 
@@ -58,11 +57,23 @@ tr {
   border-radius: 1em;
 }
 
-tbody tr:nth-child(odd) {
+#dataTable {
+  height: 80vh;
+}
+
+#submittedDataTable {
+  height: 80vh;
+}
+
+tbody#submittedDataTable tr {
+  font-size: 1.1em;
+}
+
+tbody#submittedDataTable tr:nth-child(odd) {
   background-color: lightgrey;
 }
 
-tbody tr:nth-child(even) {
+tbody#submittedDataTable tr:nth-child(even) {
   background-color: white;
 }
 
@@ -93,8 +104,9 @@ thead {
   font-size: 1.3em;
 }
 
-h3, h4 {
-  margin:0;
+h3,
+h4 {
+  margin: 0;
 }
 
 input {
@@ -110,7 +122,8 @@ input[type="number"] {
   text-align: center;
 }
 
-.fatFinger { /* for fat fingers */
+.fatFinger {
+  /* for fat fingers */
   width: 2.5em;
   height: 2.5em;
 }
@@ -119,14 +132,11 @@ input[type="number"] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-  -ms-flex-item-align: end;
-  align-self: flex-end;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .table {
@@ -134,6 +144,14 @@ input[type="number"] {
   overflow-x: hidden;
   overflow-y: scroll;
   height: 50vh;
+}
+
+#red {
+  background-color: #ffb7b7 !important;
+}
+
+#blue {
+  background-color: #b7d8ff !important;
 }
 
 /* Currently no polyfill for scroll snapping */
@@ -166,7 +184,8 @@ input[type="number"] {
   -ms-flex-flow: column nowrap;
   flex-flow: column nowrap;
   z-index: 2;
-  /* This attribute is not supported by any browser atm */ scroll-snap-stop: always;
+  /* This attribute is not supported by any browser atm */
+  scroll-snap-stop: always;
 }
 
 /* Contents of the slide */
@@ -191,13 +210,14 @@ input[type="number"] {
 
 /* Page 1 */
 #settings {
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat;
   background-size: cover;
   background-image: url("../assets/vaporwave.jpg");
-  background-position: center center;
-
+  background-position: center center; */
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
   /* Windows 95 */
-  font-family: "MS Sans Serif" !important;
+  /* font-family: "MS Sans Serif" !important; */
 }
 
 /* Page 2 */
@@ -256,6 +276,12 @@ input[type="number"] {
   -webkit-box-flex: 1;
   -ms-flex: 1;
   flex: 1;
+}
+
+.flex2 {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
 }
 
 .flex-grow {
@@ -365,6 +391,30 @@ input[type="number"] {
   text-align: center;
 }
 
+.rotate {
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+
+  text-align: left;
+  float: left;
+  /* padding: 3px; */
+  /* border: black solid 2px; */
+  /* margin-top: 2em; */
+  position: absolute;
+  top: 3vh;
+  left: -5vh;
+
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+
+  -webkit-box-shadow: -3px 3px 5px 0px rgba(0, 0, 0, 0.6);
+  box-shadow: -3px 3px 5px 0px rgba(0, 0, 0, 0.6);
+}
+
+.rotate-container {
+  position: relative;
+}
+
 .matchSelect {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -407,36 +457,42 @@ span {
 }
 
 .up {
-  background-color: rgba(120,0,0,0.5);
+  background-color: rgba(120, 0, 0, 0.5);
 }
 
 .down {
-  background-color: rgba(0,0,120,0.5);
+  background-color: rgba(0, 0, 120, 0.5);
 }
 
 
 .teamnumberbox {
   overflow: hidden;
   padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   border: 1px solid red;
   background: white;
   height: 20px;
-  width:80px;
+  width: 80px;
 }
-.box2{
+
+.box2 {
   overflow: hidden;
   padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 20px;
-  width:80px;
+  width: 80px;
 }
 
+#memesers {
+  width: 100%;
 }
 
-
-
-button.up, button.down {
+button.up,
+button.down {
   font-size: 2em;
   padding: 0.1em;
 }
@@ -446,23 +502,19 @@ button:focus {
 }
 
 /* Windows 95 style button */
-button.win95 {
-
-}
+button.win95 {}
 
 /* Windows 95 box */
 .box95 {
-  background:#C0C0C0;
-  border-width:1px;
-  border-color:#FFFFFF #808080 #808080 #FFFFFF;
-  border-style:solid;
+  background: #C0C0C0;
+  border-width: 1px;
+  border-color: #FFFFFF #808080 #808080 #FFFFFF;
+  border-style: solid;
   border-radius: 0;
 }
 
 /* Windows 95 title bar */
-.title95 {
-
-}
+.title95 {}
 
 /* For the top row of each page */
 .title-row {
@@ -494,7 +546,7 @@ button.win95 {
   font-weight: bold;
   z-index: 5;
 
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -505,11 +557,11 @@ button.win95 {
   -webkit-text-stroke: 1px black;
   color: white;
   text-shadow:
-      3px 3px 0 #000,
-      -1px -1px 0 #000,
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000;
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 /* cargo scores */
@@ -520,7 +572,7 @@ button.win95 {
   font-weight: bold;
   z-index: 5;
 
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -531,54 +583,66 @@ button.win95 {
   -webkit-text-stroke: 1px black;
   color: white;
   text-shadow:
-      3px 3px 0 #000,
-      -1px -1px 0 #000,
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000;
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
 }
 
 .rocket {
   background-image: url('../assets/rocket.svg');
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
 }
 
 .ship {
   background-image: url('../assets/cargo-ship2.png');
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
 }
 
 .retrieved {
-
+  background-image: url('../assets/fetch.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .dropped {
-
+  background-image: url('../assets/dropped.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .hab0 {
   border-top: black 2px;
-  background-color: #EF7822;
+  background-color: #fff;
+  border: #fff 5px;
 }
 
 .hab1 {
   border-top: black 2px;
   height: 100px;
-  background-color: #EF7822;
+  background-color: #fff;
+  border: #fff 5px;
 }
 
 .hab2 {
   border-top: black 2px;
   height: 150px;
-  background-color: #EF7822;
+  background-color: #fff;
+  border: #fff 5px;
 }
 
 .hab3 {
   border-top: black 2px;
   height: 200px;
-  background-color: #EF7822;
+  background-color: #fff;
+  border: #fff 5px;
 }
 
 .hab-center {
@@ -587,13 +651,59 @@ button.win95 {
   border: none;
 }
 
+#hab {
+  background-color: #EF7822;
+}
+
+.button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  justify-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.minus-button-blue {
+  /* margin-top: 15px; */
+  content: url('../assets/minus.svg');
+}
+
+.minus-button-red {
+  /* margin-top: 15px; */
+  content: url('../assets/minus_red.svg');
+}
+
+.arrow {
+  content: url('../assets/arrow-up.svg');
+}
+
+.fixedBottomRight {
+  position: fixed;
+  right: 5vw;
+  bottom: 5vh;
+  z-index: 11;
+  /* height: 20vh;
+  width: 20vh; */
+}
+
 .stroke {
   -webkit-text-stroke: 1px black;
   color: white;
   text-shadow:
-      3px 3px 0 #000,
-      -1px -1px 0 #000,
-      1px -1px 0 #000,
-      -1px 1px 0 #000,
-      1px 1px 0 #000;
+    3px 3px 0 #000,
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+#teamName {
+  color: white;
+  font-size: 3em;
 }

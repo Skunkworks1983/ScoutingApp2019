@@ -10,10 +10,11 @@
   <meta name="keywords" content="">
   <meta name="robots" content="nofollow">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Settings</title>
+  <title>Settings - Skunk Works 1983 Scouting</title>
 
   <!-- Stylesheet -->
   <link rel="stylesheet" type="text/css" href="css/app.css">
+  <link rel="icon" href="assets/gear2.png" type="image/png" sizes="64x64">
 
   <!-- Scroll script needs to load first -->
   <script type="text/javascript">
@@ -39,70 +40,149 @@
 </head>
 
 <body>
-  <div id="scroll-container" data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background" onscroll="scrollLogo();">
+  <!-- Scroll Buttons -->
+  <div class="nav-container">
+    <img src="assets/arrow-left.svg" title="Previous Page" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();">
+    <!-- <object type="image/svg+xml" data="assets/arrow-left.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
+      Fallback Picture here
+      </object> -->
+    <button onclick="submitSettings()" title="Continue to next section" class="edgeNone" style="height: 8vh; margin:auto">Continue</button>
+    <img src="assets/arrow-right.svg" title="Next Page" alt="navigation arrows" id="right-nav-arrow" onclick="scrollButtonRight();">
+    <!-- <object type="image/svg+xml" data="assets/arrow-right.svg" alt="navigation arrows" id="left-nav-arrow" onclick="scrollButtonLeft();" title="Previous Page">
+      Fallback image in here
+      </object> -->
+  </div>
+
+  <div id="scroll-container">
     <section style="background-position-x: 50%; background-position-y: 50%;" class="slide box95" id="settings" data-paroller-factor="100" data-paroller-direction="horizontal" data-paroller-type="background">
       <div class="slide">
-        <div class="content">
+        <div class="content scrollable">
           <div class="title">
-            <br><br><br>
-            <h1>Ｓｅｔｔｉｎｇｓ　（永翁愛）</h1>
+            <br>
+            <h1 style="text-align:center">Settings</h1>
           </div>
           <div class="flex-column">
             <div class="flex1">
               <div class="flex flex-row flex-justify-space-evenly">
-                <input type="text" title="Enter an event code here" value="Event Code Here" id="eventcode" class="edgeNone large">
-                <button type="button" name="eventcode-submit" onclick="getRequest();" class="edgeRight">Get
+                <input type="text" title="Enter an event code here" value="Event Code Here" id="eventcode" class="edgeNone large" style="z-index: 13;">
+                <button type="button" name="eventcode-submit" onclick="getRequest();" class="edgeRight" style="z-index: 13;">Get
                   Schedule</button>
-                <select class="edgeRight" name="Tablet Team Assignment" id="colorTeam" onchange="adjustColor();">
-                  <optgroup label="Red">
-                    <option value="1">Red 1</option>
-                    <option value="2">Red 2</option>
-                    <option value="3">Red 3</option>
-                  </optgroup>
-                  <optgroup label="Blue">
-                    <option value="4">Blue 1</option>
-                    <option value="5">Blue 2</option>
-                    <option value="6">Blue 3</option>
-                  </optgroup>
-                </select>
               </div>
-            </div>
-            <br>
-            <div class="flex1">
-              <h1>Ｄａｔａ Ｕｐｌｏａｄ　（蒸のマ愛）</h1>
-              <div class="flex flex-row flex-justify-space-evenly">
-                <button type="button" name="upload" class="edgeNone" onclick="">Upload Selected</button>
-                <button type="button" name="upload" class="edgeNone" onclick="deleteData();">Delete
-                  Selected</button>
-                <button id="selectAll" type="button" name="upload" onclick='selectAll();' class="edgeRight">Select
-                  All</button>
-              </div>
-              <!-- Data Table -->
-              <hr>
-              <div class="table" style="width: 100%;">
-                <table>
-                  <thead>
+              <br>
+              <div>
+                <h2>Match Schedule</h2>
+                <div style="margin:auto auto; align-items:center; text-align:center;" class="tweb">
+                  <table class="tweb" style="width:100%">
+                    <colgroup>
+                      <col span="1">
+                      <col span="3" id="red">
+                      <col span="3" id="blue">
+                    </colgroup>
                     <tr>
                       <td>#</td>
-                      <td>Event</td>
-                      <td>Match</td>
-                      <td>Team</td>
+                      <td style="background-color:#ffb7b7">Red #1</td>
+                      <td style="background-color:#ffb7b7">Red #2</td>
+                      <td style="background-color:#ffb7b7">Red #3</td>
+                      <td style="background-color:#b7d8ff">Blue #1</td>
+                      <td style="background-color:#b7d8ff">Blue #2</td>
+                      <td style="background-color:#b7d8ff">Blue #3</td>
                     </tr>
-                  </thead>
-                  <tbody>
-
-                  </tbody>
-                </table>
-                <br><br><br><br><br>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                      <td colspan="9">Copyright &#xa9; 2018 Skunk Works Robotics</td>
+                    </tfoot>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="box2">
+    </section>
+    <section style="background-position-x: 50%; background-position-y: 50%;" class="slide">
+      <div class="slide">
+        <div class="content">
+          <div class="flex1" style="height: 100%">
+            <h1>Data Upload</h1>
+            <div class="flex flex-row flex-justify-space-evenly">
+              <button type="button" name="upload" class="edgeNone" onclick="uploadData();">Upload Selected</button>
+              <button type="button" name="upload" class="edgeNone" onclick="deleteData();">Delete Selected</button>
+              <button id="selectAll" type="button" name="upload" onclick='selectAll();' class="edgeRight">Select All</button>
+            </div>
+            <!-- Data Table -->
+            <hr>
+            <div class="table scrollable" style="width: 100%; height: 80vh">
+              <table>
+                <thead>
+                  <tr>
+                    <td>#</td>
+                    <td>Event</td>
+                    <td>Match</td>
+                    <td>Team</td>
+                  </tr>
+                </thead>
+                <tbody id="submittedDataTable">
+                </tbody>
+              </table>
+              <br><br><br><br><br>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+    <section style="background-position-x: 50%; background-position-y: 50%;" class="slide">
+      <div class="slide">
+        <div class="content">
+          <h1>Misc</h1>
+          <div class="flex justify-space-evenly">
+            <div class="flex1">
+              <h2>Tablet Station</h2>
+              <select class="edgeRight" name="Tablet Team Assignment" id="colorTeam" onchange="adjustColor();">
+                <optgroup label="Red">
+                  <option value="1">Red 1</option>
+                  <option value="2">Red 2</option>
+                  <option value="3">Red 3</option>
+                </optgroup>
+                <optgroup label="Blue">
+                  <option value="4">Blue 1</option>
+                  <option value="5">Blue 2</option>
+                  <option value="6">Blue 3</option>
+                </optgroup>
+              </select>
+            </div>
+            <div class="flex1">
+              <h2>Reversion Type</h2>
+              <select class="edgeRight" id="reversionType">
+                <option value="1">Minus Buttons</option>
+                <option value="2" disabled>Rollover</option>
+                <option value="3" disabled>Hold to Zero (PC Only)</option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <div class="flex justify-space-evenly">
+            <div class="flex1">
+              <button class="edgeNone" onclick="if(confirm('Do you really want to PURGE the *RED ARMY*? Hrrm, I meant the local storage... ~ Joseph Stalin')) {resetLocalStorage(); window.location.reload();};">Purge Local Storage</button> <!--  &#10; &#10; -->
+            </div>
+          </div>
+        </div>
+    </section>
   </div>
+
+  <!-- Javascript -->
+  <!-- Import JQuery -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Import Parallax.js -->
+  <!-- <script src="js/parallax.min.js"></script> -->
+  <!-- alternate parallax plugin (works for horizontal scrolling) -->
+  <!-- <script type="text/javascript" src="js/jquery.paroller.min.js"></script> -->
+  <!-- Import Velocity.js -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.ui.min.js"></script>
+  <!-- Run app.js -->
+  <script type="text/javascript" src="js/app.js"></script>
+
 </body>
 
 </html>
