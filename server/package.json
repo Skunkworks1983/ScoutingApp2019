@@ -1,0 +1,22 @@
+{
+  "name": "skunkserver",
+  "version": "1.0.0",
+  "description": "SQL endpoint for the app",
+  "main": "scouting.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skunkworks1983/ScoutingApp2019.git"
+  },
+  "author": "Erik Pratt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Skunkworks1983/ScoutingApp2019/issues"
+  },
+  "homepage": "https://github.com/Skunkworks1983/ScoutingApp2019#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  }
+}
+
