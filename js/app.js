@@ -678,8 +678,8 @@ function populateScouts() {
 function populateTable() {
   data = JSON.parse(localStorage.eventData);
   for (i = 0; i < data.length; i++) {
-    event = data[i].event;
-    match = data[i].match;
+    event = data[i].eventName;
+    match = data[i].matchNumber;
     team = data[i].teamNumber;
     $('#submittedDataTable').append($('<tr></tr>')
       .attr({
