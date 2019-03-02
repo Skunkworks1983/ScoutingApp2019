@@ -4,12 +4,31 @@ var j;
 var k;
 // make a get request to fetch this
 var scoutList = [
-  'Ethan Palisoc',
-  'Evan Palisoc',
-  'PP Large',
-  'Caleb Jones',
-  'Mezie Nwizugbo',
-  'Patrick Eaton'
+  'Ethan',
+  'Brien David',
+  'Anthony',
+  'Ian',
+  'Ryan',
+  'Joel',
+  'Evan',
+  'Benji',
+  'Kevin',
+  'Alex K',
+  'Jimmy',
+  'Sam',
+  'Ryan',
+  'Dillon',
+  'Marco',
+  'Kai',
+  'Enzo',
+  'Kyle',
+  'Alex L',
+  'Ian',
+  'Ryan',
+  'Joel',
+  'Evan',
+  'Kyle',
+  'Caleb',
 ];
 var buttons;
 var verify = false;
@@ -51,11 +70,11 @@ page = {
 };
 
 currentData = {
-  "event": "", // string
-  "match": 1, // int
+  "eventName": "", // string
+  "matchNumber": 1, // int
   "alliance": "Red", // red or blue
   "teamNumber": 0, // int
-  "position": 1, // int
+  "driverPosition": 1, // int
   "noShow": false, // boolean
   "startPos": 1, // int
   "scoutName": "", // string
@@ -158,40 +177,14 @@ try {
   alert('The event schedule has not been defined!');
 }
 
-// function to flatten JSON object because Erik is too lazy to write a parse function for a nested object
-Object.flatten = function(data) {
-  var result = {};
-
-  function recurse(cur, prop) {
-    if (Object(cur) !== cur) {
-      result[prop] = cur;
-    } else if (Array.isArray(cur)) {
-      for (var i = 0, l = cur.length; i < l; i++)
-        recurse(cur[i], prop + "[" + i + "]");
-      if (l == 0)
-        result[prop] = [];
-    } else {
-      var isEmpty = true;
-      for (var p in cur) {
-        isEmpty = false;
-        recurse(cur[p], prop ? prop + "." + p : p);
-      }
-      if (isEmpty && prop)
-        result[prop] = {};
-    }
-  }
-  recurse(data, "");
-  return result;
-}
-
 // write data to local storage
 function setCurrentData() {
   eventData = JSON.parse(localStorage.eventData);
-  currentData.event = matchObj[0].event_key;
-  currentData.match = localStorage.matchNumber;
+  currentData.eventName = matchObj[0].event_key;
+  currentData.matchNumber = localStorage.matchNumber;
   currentData.alliance = getAlliance();
   currentData.teamNumber = getTeamNumber();
-  currentData.position = getStation();
+  currentData.driverPosition = getStation();
   currentData.scoutName = localStorage.scoutName;
   // get start pos
   switch ($('input[name="startPos"]:checked').attr('id')) {
@@ -264,10 +257,48 @@ function setCurrentData() {
   currentData.teleOp.dropped.hatch = parseInt(document.getElementById('teleOp.dropped.hatch').innerHTML, 10);
   currentData.teleOp.dropped.cargo = parseInt(document.getElementById('teleOp.dropped.cargo').innerHTML, 10);
 
+  // check for deadbot
   if ($('#teleOp.deadBot:checked') === null) {
     currentData.teleOp.deadBot = false;
   } else {
     currentData.teleOp.deadBot = true;
+  }
+
+  // check for assisted climb
+  if ($('#teleOp.assistedClimb:checked') === null) {
+    currentData.teleOp.assistedClimb = false;
+  } else {
+    currentData.teleOp.assistedClimb = true;
+  }
+
+  // check for recieved climb
+  if ($('#teleOp.recievedClimb:checked') === null) {
+    currentData.teleOp.recievedClimb = false;
+  } else {
+    currentData.teleOp.recievedClimb = true;
+  }
+
+  // determine the climb level
+  switch ($('input[name="HAB"]:checked').attr('id')) {
+    case 'teleOp.climbLevel3':
+      currentData.teleOp.climbLevel = 3;
+      break;
+
+    case 'teleOp.climbLevel2':
+      currentData.teleOp.climbLevel = 2;
+      break;
+
+    case 'teleOp.climbLevel1':
+      currentData.teleOp.climbLevel = 1;
+      break;
+
+    case 'teleOp.climbLevel0':
+      currentData.teleOp.climbLevel = 0;
+      break;
+
+    default:
+      currentData.teleOp.climbLevel = -1;
+      break;
   }
 
   // set currentData to localStorage
@@ -936,8 +967,14 @@ $(document).ready(function() {
         printMatches();
       }
       populateTable();
-      document.getElementById('colorTeam').selectedIndex = parseInt(localStorage.station, 10);
+      document.getElementById('colorTeam').selectedIndex = parseInt(localStorage.station, 10) - 1;
       adjustColor();
+      $('html').css({
+        backgroundImage: 'url("assets/settings-background.png")',
+        backgroundRepeat: 'no-repeat',
+        backgroundAttachment: 'fixed',
+        backgroundSize: 'cover'
+      });
       break;
 
       // for the match and scout selection page, do the following

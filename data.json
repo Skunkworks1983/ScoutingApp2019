@@ -3,7 +3,7 @@
   "match": 0,
   "alliance": "",
   "teamNumber": 0,
-  "position": 1,
+  "driverPosition": 1,
   "noShow": false,
   "startPos": 1,
   "sandStorm": {
@@ -40,16 +40,13 @@
     "obscured": {
       "rocket": {
         "level1": {
-          "hatch": 0,
-          "cargo": 0
+          "hatch": 0
         },
         "level2": {
-          "hatch": 0,
-          "cargo": 0
+          "hatch": 0
         },
         "level3": {
-          "hatch": 0,
-          "cargo": 0
+          "hatch": 0
         }
       },
       "ship": {
