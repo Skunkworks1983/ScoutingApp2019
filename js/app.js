@@ -29,6 +29,9 @@ var scoutList = [
   'Evan',
   'Kyle',
   'Caleb',
+  'Nathan H',
+  'Nathan M',
+  'Other Nathan'
 ];
 var buttons;
 var verify = false;

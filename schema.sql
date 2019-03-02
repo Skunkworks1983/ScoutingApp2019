@@ -7,6 +7,7 @@ CREATE TABLE DeepSpace
   driverPosition int,
   noShow boolean,
   startPos int,
+  scoutName varchar(25),
   sandStorm_crossLine boolean,
   sandStorm_deadBot boolean,
   sandStorm_rocket_level1_hatch int,
@@ -46,6 +47,7 @@ CREATE TABLE DeepSpace
   teleOp_climbLevel int,
   teleOp_assistedClimb boolean,
   teleOp_recievedClimb boolean,
+  teleOp_deadBot boolean,
 
-  PRIMARY KEY	(eventName, teamNumber, matchNumber)
+  PRIMARY KEY	(eventName, teamNumber, matchNumber, scoutName)
 );
