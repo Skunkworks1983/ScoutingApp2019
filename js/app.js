@@ -184,7 +184,7 @@ try {
 function setCurrentData() {
   eventData = JSON.parse(localStorage.eventData);
   currentData.eventName = matchObj[0].event_key;
-  currentData.matchNumber = localStorage.matchNumber;
+  currentData.matchNumber = parseInt(localStorage.matchNumber, 10);
   currentData.alliance = getAlliance();
   currentData.teamNumber = getTeamNumber();
   currentData.driverPosition = getStation();
@@ -397,14 +397,34 @@ function deleteData() {
 }
 
 function uploadData() {
+  try {
+    test = 'test';
+    submitData(test);
+  } catch (err) {
+    alert('The data did not send correctly. Check your internet or server settings.');
+  }
+
   let parent = $('.datacheck:checked').parents('tr');
   data = JSON.parse(localStorage.eventData);
   for (i = 0; i < parent.length; i++) {
     current = parent[i];
     posArray = current.id;
-    submitData(data[posArray]);
-    data.splice(posArray, 1);
+    num = data[posArray].matchNumber;
+    setTimeout(() => {
+      submitData(data[posArray]);
+    }, 400);
+    feedbackOnUpload(parent, num);
   }
+}
+
+function feedbackOnUpload(target, num) {
+  target.children().remove();
+  target.append($('<td></td>')
+    .html('Data sent for Match ' + num)
+    .attr({
+      'colspan': 4,
+    })
+  );
 }
 
 // session cache non-essential settings like scout name and match number
@@ -476,9 +496,9 @@ function submitData(line) {
   xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(JSON.stringify(line));
-  xhr.onreadystatechange = function() {
-    console.log('Sent data');
-  }
+  // xhr.onreadystatechange = function() {
+  //   console.log('Sent data');
+  // }
 }
 
 // function to send, recieve, and process the GET request for match data
