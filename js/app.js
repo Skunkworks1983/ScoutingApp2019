@@ -413,7 +413,7 @@ function uploadData() {
     setTimeout(() => {
       submitData(data[posArray]);
     }, 400);
-    feedbackOnUpload(parent, num);
+    feedbackOnUpload(current, num);
   }
 }
 
