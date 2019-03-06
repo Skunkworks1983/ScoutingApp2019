@@ -397,28 +397,24 @@ function deleteData() {
 }
 
 function uploadData() {
-  try {
-    test = 'test';
-    submitData(test);
-  } catch (err) {
-    alert('The data did not send correctly. Check your internet or server settings.');
-  }
-
   let parent = $('.datacheck:checked').parents('tr');
   data = JSON.parse(localStorage.eventData);
   for (i = 0; i < parent.length; i++) {
     current = parent[i];
-    posArray = current.id;
-    num = data[posArray].matchNumber;
-    setTimeout(() => {
-      submitData(data[posArray]);
-    }, 400);
-    feedbackOnUpload(current, num);
+    console.log(current);
+    posArray = parseInt(current.id, 10);
+    console.log(posArray);
+    // num = data[posArray].matchNumber;
+    setTimeout(function() {
+      submitData(data[posArray])
+    }, 1500);
+    // feedbackOnUpload(current, num);
+    // }, 1400);
   }
 }
 
 function feedbackOnUpload(target, num) {
-  target.children().remove();
+  $(target).children().remove();
   target.append($('<td></td>')
     .html('Data sent for Match ' + num)
     .attr({
