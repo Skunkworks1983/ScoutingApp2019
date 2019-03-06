@@ -405,9 +405,10 @@ function uploadData() {
     posArray = parseInt(current.id, 10);
     console.log(posArray);
     // num = data[posArray].matchNumber;
-    setTimeout(function() {
-      submitData(data[posArray])
-    }, 1500);
+    // setTimeout(function() {
+    //   submitData(data[posArray])
+    // }, 1500);
+    submitData(data[posArray]);
     // feedbackOnUpload(current, num);
     // }, 1400);
   }
