@@ -1,3 +1,4 @@
+use matches;
 select * from DeepSpace
-where eventName = '2019wasno'
+where teleOp_climbLevel = -1
 order by matchNumber;

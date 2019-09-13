@@ -48,7 +48,13 @@ const TBAheader = "X-TBA-Auth-Key";
 const TBAkey = "d4V33bAbuXiKfuLW1pc4BaLbr56BgiORtyM5hwmRLU5qNf6Rxh83noDdI0mPJJ3R"; // eventually this one should become user input
 const TBAURL = "https://www.thebluealliance.com/api/v3/event/";
 const matchesURL = "/matches/simple";
-const path = "http://ec2-18-212-243-43.compute-1.amazonaws.com:1983/";
+const DEBUG = true;
+var path;
+if (DEBUG) {
+  path = "http://127.0.0.1:3000/data/";
+} else {
+  path = "http://73.109.240.48:1983/data/";
+}
 
 // get data from TBA
 var matches = new XMLHttpRequest();
@@ -183,6 +189,7 @@ try {
 // write data to local storage
 function setCurrentData() {
   eventData = JSON.parse(localStorage.eventData);
+  // eventData = localStorage.eventData;
   currentData.eventName = matchObj[0].event_key;
   currentData.matchNumber = parseInt(localStorage.matchNumber, 10);
   currentData.alliance = getAlliance();
@@ -487,10 +494,9 @@ function submitData(line) {
   eventData = JSON.parse(localStorage.eventData);
   console.log(line);
   var xhr = createCORSRequest('PUT', path);
-  // xhr.setRequestHeader('', '');
-  // xhr.setRequestHeader("Origin", "http://yeet.com");
-  xhr.setRequestHeader("Access-Control-Allow-Method", "PUT");
-  xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
+  // xhr.setRequestHeader("Access-Control-Allow-Method", "PUT");
+  // xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
+  // xhr.setRequestHeader("Access-Control-Allow-Origin", `anonymous`)
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(JSON.stringify(line));
   // xhr.onreadystatechange = function() {
