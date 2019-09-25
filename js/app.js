@@ -4,34 +4,18 @@ var j;
 var k;
 // make a get request to fetch this
 var scoutList = [
-  'Ethan',
-  'Brien David',
-  'Anthony',
   'Ian',
-  'Ryan',
-  'Joel',
-  'Evan',
-  'Benji',
-  'Kevin',
-  'Alex K',
-  'Jimmy',
-  'Sam',
-  'Ryan',
-  'Dillon',
-  'Marco',
   'Kai',
-  'Enzo',
-  'Kyle',
-  'Alex L',
-  'Ian',
-  'Ryan',
+  'Ben',
+  'Asa',
+  'Kevin T',
   'Joel',
-  'Evan',
-  'Kyle',
-  'Caleb',
-  'Nathan H',
-  'Nathan M',
-  'Other Nathan'
+  'Jimmy',
+  'Reese',
+  'Aldrei',
+  'Sam',
+  'Lucero',
+  'Ryan',
 ];
 var buttons;
 var verify = false;
@@ -48,12 +32,12 @@ const TBAheader = "X-TBA-Auth-Key";
 const TBAkey = "d4V33bAbuXiKfuLW1pc4BaLbr56BgiORtyM5hwmRLU5qNf6Rxh83noDdI0mPJJ3R"; // eventually this one should become user input
 const TBAURL = "https://www.thebluealliance.com/api/v3/event/";
 const matchesURL = "/matches/simple";
-const DEBUG = true;
+const DEBUG = false;
 var path;
 if (DEBUG) {
-  path = "http://127.0.0.1:3000/data/";
+  path = "http://127.0.0.1:3000/";
 } else {
-  path = "http://73.109.240.48:1983/data/";
+  path = "http://73.109.240.48:1983/";
 }
 
 // get data from TBA
@@ -493,15 +477,27 @@ function createCORSRequest(method, url) {
 function submitData(line) {
   eventData = JSON.parse(localStorage.eventData);
   console.log(line);
-  var xhr = createCORSRequest('PUT', path);
-  // xhr.setRequestHeader("Access-Control-Allow-Method", "PUT");
-  // xhr.setRequestHeader("Access-Control-Allow-Headers", "*");
-  // xhr.setRequestHeader("Access-Control-Allow-Origin", `anonymous`)
+  var xhr = createCORSRequest('PUT', `${path}data/`);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.send(JSON.stringify(line));
-  // xhr.onreadystatechange = function() {
-  //   console.log('Sent data');
-  // }
+}
+
+// get the custom JSON match schedule
+function getCustomMatchSchedule() {
+  var settings = {
+    url: `${path}matchSchedule`,
+    headers: {
+      'X-TBA-Auth-Key': TBAkey
+    }
+  }
+  response = $.get(settings);
+  response.done(() => {
+    matchObj = response.responseJSON;
+  });
+  response.fail(() => {
+    console.error(`Error ${response.status} with schedule request.`)
+    alert('Could not find custom schedule');
+  })
 }
 
 // function to send, recieve, and process the GET request for match data
@@ -518,6 +514,11 @@ function sendGetRequest(target) {
           matchObj = JSON.parse(matches.responseText);
           verifyHTTP = true;
           // changeButtonColor("startbutton", "#b7ffb4");
+          if (matchObj.length === 0) {
+            if (confirm('TBA has no schedule for the inputted event! Check for typos, and hit cancel. If TBA doesn\'t have the match schedule, hit the confirm button to grab a custom one from the server.')) {
+              getCustomMatchSchedule();
+            }
+          }
           break;
 
         case 401:
@@ -532,7 +533,6 @@ function sendGetRequest(target) {
           // changeButtonColor("startbutton", "#ffb5b5");
           alert("Invalid URL entered. Error 404 <-- for the tech support");
           break;
-
         default:
           // changeButtonColor("startbutton", "#ffb5b5");
           console.warn("Something wrong happened in matches. This means the function went all the way through the switch without triggering any conditions");
